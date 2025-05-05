@@ -1,0 +1,15 @@
+# See docs at: https://mystmd.org/guide/frontmatter
+version: 1
+project:
+  id: feb2375d-3838-4365-bbd7-f43d501cdcbe
+  # title:
+  # description:
+  # keywords: []
+  # authors: []
+  github: https://github.com/eoxhub-workspaces/eoxhub-notebooks
+  # To autogenerate a Table of Contents, run "jupyter book init --write-toc"
+site:
+  template: book-theme
+  # options:
+  #   favicon: favicon.ico
+  #   logo: site_logo.png
