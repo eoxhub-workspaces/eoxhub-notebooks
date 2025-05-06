@@ -1,2 +1,4 @@
 # MyST build outputs
 _build
+.ipynb_checkpoints
+dask_tutorials/wildfires/
