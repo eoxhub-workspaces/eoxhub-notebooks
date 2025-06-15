@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Scale your processes with Dask - hands on example",
+    "description": "",
+    "metadata": {},
+    "image": "build/_assets/previews/notebooks_pangeo-dask_notebooks_example_wildfires_preview.png",
+    "link": "notebooks/pangeo-dask-notebooks/example-wildfires",
+    "org": "eoxhub-workspaces",
+    "repo": "eoxhub-notebooks",
+    "source": "local",
+    "path": "notebooks/pangeo-dask_notebooks/example_wildfires.ipynb",
+    "gitpuller": "https://workspace.earthcode.eox.at/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/pangeo-dask_notebooks/example_wildfires.ipynb&branch=main"
+  }
+]

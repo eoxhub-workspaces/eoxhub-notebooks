@@ -1,0 +1,618 @@
+<div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme="dark"],
+html[data-theme="dark"],
+body[data-theme="dark"],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1f1f1f;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 0 20px 0 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: inline-block;
+  opacity: 0;
+  height: 0;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:focus + label {
+  border: 2px solid var(--xr-font-color0);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: "►";
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: "▼";
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: "(";
+}
+
+.xr-dim-list:after {
+  content: ")";
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ",";
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt; Size: 13MB
+Dimensions:      (y: 2030, x: 1606, time: 1)
+Coordinates:
+  * y            (y) float64 16kB 4.547e+06 4.547e+06 ... 4.537e+06 4.537e+06
+  * x            (x) float64 13kB 2.667e+06 2.667e+06 ... 2.675e+06 2.675e+06
+    spatial_ref  int32 4B 3857
+  * time         (time) datetime64[ns] 8B 2021-08-13T09:20:07.382000
+Data variables:
+    nir          (time, y, x) uint16 7MB dask.array&lt;chunksize=(1, 100, 1606), meta=np.ndarray&gt;
+    swir22       (time, y, x) uint16 7MB dask.array&lt;chunksize=(1, 100, 1606), meta=np.ndarray&gt;</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-2d4cc340-3c70-436b-b927-94bf4e24d7af' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-2d4cc340-3c70-436b-b927-94bf4e24d7af' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>y</span>: 2030</li><li><span class='xr-has-index'>x</span>: 1606</li><li><span class='xr-has-index'>time</span>: 1</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-3019ef16-fdb1-4542-bbc6-75fffd40aca4' class='xr-section-summary-in' type='checkbox'  checked><label for='section-3019ef16-fdb1-4542-bbc6-75fffd40aca4' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>y</span></div><div class='xr-var-dims'>(y)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>4.547e+06 4.547e+06 ... 4.537e+06</div><input id='attrs-9e876274-981b-4ed4-80ec-2e516bd7937e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-9e876274-981b-4ed4-80ec-2e516bd7937e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a91d04b3-b713-4c11-8750-b2520c08d726' class='xr-var-data-in' type='checkbox'><label for='data-a91d04b3-b713-4c11-8750-b2520c08d726' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>metre</dd><dt><span>resolution :</span></dt><dd>-5.0</dd><dt><span>crs :</span></dt><dd>EPSG:3857</dd></dl></div><div class='xr-var-data'><pre>array([4547152.5, 4547147.5, 4547142.5, ..., 4537017.5, 4537012.5, 4537007.5])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>x</span></div><div class='xr-var-dims'>(x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>2.667e+06 2.667e+06 ... 2.675e+06</div><input id='attrs-c372d9da-931e-43da-8349-9931cc414146' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c372d9da-931e-43da-8349-9931cc414146' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f7d891f3-bdf9-4c49-af9b-d9ed238d858b' class='xr-var-data-in' type='checkbox'><label for='data-f7d891f3-bdf9-4c49-af9b-d9ed238d858b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>metre</dd><dt><span>resolution :</span></dt><dd>5.0</dd><dt><span>crs :</span></dt><dd>EPSG:3857</dd></dl></div><div class='xr-var-data'><pre>array([2667472.5, 2667477.5, 2667482.5, ..., 2675487.5, 2675492.5, 2675497.5])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>spatial_ref</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>int32</div><div class='xr-var-preview xr-preview'>3857</div><input id='attrs-5805ae80-17e7-4873-8ffa-058c76b13e4d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5805ae80-17e7-4873-8ffa-058c76b13e4d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-243b02b7-7822-44bf-840b-f207905083f5' class='xr-var-data-in' type='checkbox'><label for='data-243b02b7-7822-44bf-840b-f207905083f5' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>spatial_ref :</span></dt><dd>PROJCRS[&quot;WGS 84 / Pseudo-Mercator&quot;,BASEGEOGCRS[&quot;WGS 84&quot;,ENSEMBLE[&quot;World Geodetic System 1984 ensemble&quot;,MEMBER[&quot;World Geodetic System 1984 (Transit)&quot;],MEMBER[&quot;World Geodetic System 1984 (G730)&quot;],MEMBER[&quot;World Geodetic System 1984 (G873)&quot;],MEMBER[&quot;World Geodetic System 1984 (G1150)&quot;],MEMBER[&quot;World Geodetic System 1984 (G1674)&quot;],MEMBER[&quot;World Geodetic System 1984 (G1762)&quot;],MEMBER[&quot;World Geodetic System 1984 (G2139)&quot;],MEMBER[&quot;World Geodetic System 1984 (G2296)&quot;],ELLIPSOID[&quot;WGS 84&quot;,6378137,298.257223563,LENGTHUNIT[&quot;metre&quot;,1]],ENSEMBLEACCURACY[2.0]],PRIMEM[&quot;Greenwich&quot;,0,ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],ID[&quot;EPSG&quot;,4326]],CONVERSION[&quot;Popular Visualisation Pseudo-Mercator&quot;,METHOD[&quot;Popular Visualisation Pseudo Mercator&quot;,ID[&quot;EPSG&quot;,1024]],PARAMETER[&quot;Latitude of natural origin&quot;,0,ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],ID[&quot;EPSG&quot;,8801]],PARAMETER[&quot;Longitude of natural origin&quot;,0,ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],ID[&quot;EPSG&quot;,8802]],PARAMETER[&quot;False easting&quot;,0,LENGTHUNIT[&quot;metre&quot;,1],ID[&quot;EPSG&quot;,8806]],PARAMETER[&quot;False northing&quot;,0,LENGTHUNIT[&quot;metre&quot;,1],ID[&quot;EPSG&quot;,8807]]],CS[Cartesian,2],AXIS[&quot;easting (X)&quot;,east,ORDER[1],LENGTHUNIT[&quot;metre&quot;,1]],AXIS[&quot;northing (Y)&quot;,north,ORDER[2],LENGTHUNIT[&quot;metre&quot;,1]],USAGE[SCOPE[&quot;Web mapping and visualisation.&quot;],AREA[&quot;World between 85.06°S and 85.06°N.&quot;],BBOX[-85.06,-180,85.06,180]],ID[&quot;EPSG&quot;,3857]]</dd><dt><span>crs_wkt :</span></dt><dd>PROJCRS[&quot;WGS 84 / Pseudo-Mercator&quot;,BASEGEOGCRS[&quot;WGS 84&quot;,ENSEMBLE[&quot;World Geodetic System 1984 ensemble&quot;,MEMBER[&quot;World Geodetic System 1984 (Transit)&quot;],MEMBER[&quot;World Geodetic System 1984 (G730)&quot;],MEMBER[&quot;World Geodetic System 1984 (G873)&quot;],MEMBER[&quot;World Geodetic System 1984 (G1150)&quot;],MEMBER[&quot;World Geodetic System 1984 (G1674)&quot;],MEMBER[&quot;World Geodetic System 1984 (G1762)&quot;],MEMBER[&quot;World Geodetic System 1984 (G2139)&quot;],MEMBER[&quot;World Geodetic System 1984 (G2296)&quot;],ELLIPSOID[&quot;WGS 84&quot;,6378137,298.257223563,LENGTHUNIT[&quot;metre&quot;,1]],ENSEMBLEACCURACY[2.0]],PRIMEM[&quot;Greenwich&quot;,0,ANGLEUNIT[&quot;degree&quot;,0.0174532925199433]],ID[&quot;EPSG&quot;,4326]],CONVERSION[&quot;Popular Visualisation Pseudo-Mercator&quot;,METHOD[&quot;Popular Visualisation Pseudo Mercator&quot;,ID[&quot;EPSG&quot;,1024]],PARAMETER[&quot;Latitude of natural origin&quot;,0,ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],ID[&quot;EPSG&quot;,8801]],PARAMETER[&quot;Longitude of natural origin&quot;,0,ANGLEUNIT[&quot;degree&quot;,0.0174532925199433],ID[&quot;EPSG&quot;,8802]],PARAMETER[&quot;False easting&quot;,0,LENGTHUNIT[&quot;metre&quot;,1],ID[&quot;EPSG&quot;,8806]],PARAMETER[&quot;False northing&quot;,0,LENGTHUNIT[&quot;metre&quot;,1],ID[&quot;EPSG&quot;,8807]]],CS[Cartesian,2],AXIS[&quot;easting (X)&quot;,east,ORDER[1],LENGTHUNIT[&quot;metre&quot;,1]],AXIS[&quot;northing (Y)&quot;,north,ORDER[2],LENGTHUNIT[&quot;metre&quot;,1]],USAGE[SCOPE[&quot;Web mapping and visualisation.&quot;],AREA[&quot;World between 85.06°S and 85.06°N.&quot;],BBOX[-85.06,-180,85.06,180]],ID[&quot;EPSG&quot;,3857]]</dd><dt><span>GeoTransform :</span></dt><dd>2667470 5 0 4547155 0 -5</dd></dl></div><div class='xr-var-data'><pre>array(3857, dtype=int32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2021-08-13T09:20:07.382000</div><input id='attrs-66edb841-2ce6-40e0-9a8c-2695d3f2145e' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-66edb841-2ce6-40e0-9a8c-2695d3f2145e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5d66a624-a01f-4a62-8b26-09808a6b394f' class='xr-var-data-in' type='checkbox'><label for='data-5d66a624-a01f-4a62-8b26-09808a6b394f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([&#x27;2021-08-13T09:20:07.382000000&#x27;], dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-f91ee63d-3425-4838-912a-088c64a65adb' class='xr-section-summary-in' type='checkbox'  checked><label for='section-f91ee63d-3425-4838-912a-088c64a65adb' class='xr-section-summary' >Data variables: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>nir</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>uint16</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 100, 1606), meta=np.ndarray&gt;</div><input id='attrs-26b9c86d-1c7a-4c21-8f28-08f7f8216710' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-26b9c86d-1c7a-4c21-8f28-08f7f8216710' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-95aab9af-acae-488f-81fb-8ffab673e3cb' class='xr-var-data-in' type='checkbox'><label for='data-95aab9af-acae-488f-81fb-8ffab673e3cb' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>nodata :</span></dt><dd>0</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table style="border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 6.22 MiB </td>
+                        <td> 313.67 kiB </td>
+                    </tr>
+                    
+                    <tr>
+                        <th> Shape </th>
+                        <td> (1, 2030, 1606) </td>
+                        <td> (1, 100, 1606) </td>
+                    </tr>
+                    <tr>
+                        <th> Dask graph </th>
+                        <td colspan="2"> 21 chunks in 3 graph layers </td>
+                    </tr>
+                    <tr>
+                        <th> Data type </th>
+                        <td colspan="2"> uint16 numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="169" height="184" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="24" y2="14" style="stroke-width:2" />
+  <line x1="10" y1="5" x2="24" y2="20" />
+  <line x1="10" y1="11" x2="24" y2="26" />
+  <line x1="10" y1="17" x2="24" y2="32" />
+  <line x1="10" y1="23" x2="24" y2="38" />
+  <line x1="10" y1="29" x2="24" y2="44" />
+  <line x1="10" y1="35" x2="24" y2="50" />
+  <line x1="10" y1="41" x2="24" y2="56" />
+  <line x1="10" y1="47" x2="24" y2="62" />
+  <line x1="10" y1="53" x2="24" y2="68" />
+  <line x1="10" y1="65" x2="24" y2="79" />
+  <line x1="10" y1="70" x2="24" y2="85" />
+  <line x1="10" y1="76" x2="24" y2="91" />
+  <line x1="10" y1="82" x2="24" y2="97" />
+  <line x1="10" y1="88" x2="24" y2="103" />
+  <line x1="10" y1="94" x2="24" y2="109" />
+  <line x1="10" y1="100" x2="24" y2="115" />
+  <line x1="10" y1="106" x2="24" y2="121" />
+  <line x1="10" y1="112" x2="24" y2="127" />
+  <line x1="10" y1="120" x2="24" y2="134" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="10" y2="120" style="stroke-width:2" />
+  <line x1="24" y1="14" x2="24" y2="134" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.0,0.0 24.9485979497544,14.948597949754403 24.9485979497544,134.9485979497544 10.0,120.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="104" y2="0" style="stroke-width:2" />
+  <line x1="24" y1="14" x2="119" y2="14" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="24" y2="14" style="stroke-width:2" />
+  <line x1="104" y1="0" x2="119" y2="14" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.0,0.0 104.93596059113301,0.0 119.88455854088741,14.948597949754403 24.9485979497544,14.948597949754403" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="24" y1="14" x2="119" y2="14" style="stroke-width:2" />
+  <line x1="24" y1="20" x2="119" y2="20" />
+  <line x1="24" y1="26" x2="119" y2="26" />
+  <line x1="24" y1="32" x2="119" y2="32" />
+  <line x1="24" y1="38" x2="119" y2="38" />
+  <line x1="24" y1="44" x2="119" y2="44" />
+  <line x1="24" y1="50" x2="119" y2="50" />
+  <line x1="24" y1="56" x2="119" y2="56" />
+  <line x1="24" y1="62" x2="119" y2="62" />
+  <line x1="24" y1="68" x2="119" y2="68" />
+  <line x1="24" y1="79" x2="119" y2="79" />
+  <line x1="24" y1="85" x2="119" y2="85" />
+  <line x1="24" y1="91" x2="119" y2="91" />
+  <line x1="24" y1="97" x2="119" y2="97" />
+  <line x1="24" y1="103" x2="119" y2="103" />
+  <line x1="24" y1="109" x2="119" y2="109" />
+  <line x1="24" y1="115" x2="119" y2="115" />
+  <line x1="24" y1="121" x2="119" y2="121" />
+  <line x1="24" y1="127" x2="119" y2="127" />
+  <line x1="24" y1="134" x2="119" y2="134" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="24" y1="14" x2="24" y2="134" style="stroke-width:2" />
+  <line x1="119" y1="14" x2="119" y2="134" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="24.9485979497544,14.948597949754403 119.88455854088741,14.948597949754403 119.88455854088741,134.9485979497544 24.9485979497544,134.9485979497544" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="72.416578" y="154.948598" font-size="1.0rem" font-weight="100" text-anchor="middle" >1606</text>
+  <text x="139.884559" y="74.948598" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,139.884559,74.948598)">2030</text>
+  <text x="7.474299" y="147.474299" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(45,7.474299,147.474299)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>swir22</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>uint16</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 100, 1606), meta=np.ndarray&gt;</div><input id='attrs-bc463b71-c122-4cd6-a226-3cefdbf4460a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-bc463b71-c122-4cd6-a226-3cefdbf4460a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f1b07e41-d5b5-46d8-a3a6-5658f7e0ef4f' class='xr-var-data-in' type='checkbox'><label for='data-f1b07e41-d5b5-46d8-a3a6-5658f7e0ef4f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>nodata :</span></dt><dd>0</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table style="border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 6.22 MiB </td>
+                        <td> 313.67 kiB </td>
+                    </tr>
+                    
+                    <tr>
+                        <th> Shape </th>
+                        <td> (1, 2030, 1606) </td>
+                        <td> (1, 100, 1606) </td>
+                    </tr>
+                    <tr>
+                        <th> Dask graph </th>
+                        <td colspan="2"> 21 chunks in 3 graph layers </td>
+                    </tr>
+                    <tr>
+                        <th> Data type </th>
+                        <td colspan="2"> uint16 numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="169" height="184" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="24" y2="14" style="stroke-width:2" />
+  <line x1="10" y1="5" x2="24" y2="20" />
+  <line x1="10" y1="11" x2="24" y2="26" />
+  <line x1="10" y1="17" x2="24" y2="32" />
+  <line x1="10" y1="23" x2="24" y2="38" />
+  <line x1="10" y1="29" x2="24" y2="44" />
+  <line x1="10" y1="35" x2="24" y2="50" />
+  <line x1="10" y1="41" x2="24" y2="56" />
+  <line x1="10" y1="47" x2="24" y2="62" />
+  <line x1="10" y1="53" x2="24" y2="68" />
+  <line x1="10" y1="65" x2="24" y2="79" />
+  <line x1="10" y1="70" x2="24" y2="85" />
+  <line x1="10" y1="76" x2="24" y2="91" />
+  <line x1="10" y1="82" x2="24" y2="97" />
+  <line x1="10" y1="88" x2="24" y2="103" />
+  <line x1="10" y1="94" x2="24" y2="109" />
+  <line x1="10" y1="100" x2="24" y2="115" />
+  <line x1="10" y1="106" x2="24" y2="121" />
+  <line x1="10" y1="112" x2="24" y2="127" />
+  <line x1="10" y1="120" x2="24" y2="134" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="10" y2="120" style="stroke-width:2" />
+  <line x1="24" y1="14" x2="24" y2="134" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.0,0.0 24.9485979497544,14.948597949754403 24.9485979497544,134.9485979497544 10.0,120.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="104" y2="0" style="stroke-width:2" />
+  <line x1="24" y1="14" x2="119" y2="14" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="24" y2="14" style="stroke-width:2" />
+  <line x1="104" y1="0" x2="119" y2="14" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.0,0.0 104.93596059113301,0.0 119.88455854088741,14.948597949754403 24.9485979497544,14.948597949754403" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="24" y1="14" x2="119" y2="14" style="stroke-width:2" />
+  <line x1="24" y1="20" x2="119" y2="20" />
+  <line x1="24" y1="26" x2="119" y2="26" />
+  <line x1="24" y1="32" x2="119" y2="32" />
+  <line x1="24" y1="38" x2="119" y2="38" />
+  <line x1="24" y1="44" x2="119" y2="44" />
+  <line x1="24" y1="50" x2="119" y2="50" />
+  <line x1="24" y1="56" x2="119" y2="56" />
+  <line x1="24" y1="62" x2="119" y2="62" />
+  <line x1="24" y1="68" x2="119" y2="68" />
+  <line x1="24" y1="79" x2="119" y2="79" />
+  <line x1="24" y1="85" x2="119" y2="85" />
+  <line x1="24" y1="91" x2="119" y2="91" />
+  <line x1="24" y1="97" x2="119" y2="97" />
+  <line x1="24" y1="103" x2="119" y2="103" />
+  <line x1="24" y1="109" x2="119" y2="109" />
+  <line x1="24" y1="115" x2="119" y2="115" />
+  <line x1="24" y1="121" x2="119" y2="121" />
+  <line x1="24" y1="127" x2="119" y2="127" />
+  <line x1="24" y1="134" x2="119" y2="134" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="24" y1="14" x2="24" y2="134" style="stroke-width:2" />
+  <line x1="119" y1="14" x2="119" y2="134" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="24.9485979497544,14.948597949754403 119.88455854088741,14.948597949754403 119.88455854088741,134.9485979497544 24.9485979497544,134.9485979497544" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="72.416578" y="154.948598" font-size="1.0rem" font-weight="100" text-anchor="middle" >1606</text>
+  <text x="139.884559" y="74.948598" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,139.884559,74.948598)">2030</text>
+  <text x="7.474299" y="147.474299" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(45,7.474299,147.474299)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-26d94415-0099-49b4-a278-749f8a8c3f44' class='xr-section-summary-in' type='checkbox'  ><label for='section-26d94415-0099-49b4-a278-749f8a8c3f44' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>y</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-c96cd7f5-00c9-42c7-be9c-c5c897e0dc25' class='xr-index-data-in' type='checkbox'/><label for='index-c96cd7f5-00c9-42c7-be9c-c5c897e0dc25' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([4547152.5, 4547147.5, 4547142.5, 4547137.5, 4547132.5, 4547127.5,
+       4547122.5, 4547117.5, 4547112.5, 4547107.5,
+       ...
+       4537052.5, 4537047.5, 4537042.5, 4537037.5, 4537032.5, 4537027.5,
+       4537022.5, 4537017.5, 4537012.5, 4537007.5],
+      dtype=&#x27;float64&#x27;, name=&#x27;y&#x27;, length=2030))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>x</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-c237cafe-2bc0-46db-978a-b034440daee9' class='xr-index-data-in' type='checkbox'/><label for='index-c237cafe-2bc0-46db-978a-b034440daee9' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([2667472.5, 2667477.5, 2667482.5, 2667487.5, 2667492.5, 2667497.5,
+       2667502.5, 2667507.5, 2667512.5, 2667517.5,
+       ...
+       2675452.5, 2675457.5, 2675462.5, 2675467.5, 2675472.5, 2675477.5,
+       2675482.5, 2675487.5, 2675492.5, 2675497.5],
+      dtype=&#x27;float64&#x27;, name=&#x27;x&#x27;, length=1606))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><input type='checkbox' disabled/><label></label><input id='index-dd9db6f6-b0e5-43c3-a6e1-4015189d4019' class='xr-index-data-in' type='checkbox'/><label for='index-dd9db6f6-b0e5-43c3-a6e1-4015189d4019' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;2021-08-13 09:20:07.382000&#x27;], dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;time&#x27;, freq=None))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-4453c896-65ea-40cc-b7c4-39908483b525' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-4453c896-65ea-40cc-b7c4-39908483b525' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div>
