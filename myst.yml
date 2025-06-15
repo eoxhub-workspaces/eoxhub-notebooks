@@ -9,7 +9,7 @@ project:
   # description:
   # keywords: []
   # authors: []
-  github: https://github.com/eoxhub-workspaces/eoxhub-notebooks
+  github: https://github.com/eoxhub-workspaces/eoxhub-notebooks/
   # To autogenerate a Table of Contents, run "jupyter book init --write-toc"
 site:
   template: book-theme
