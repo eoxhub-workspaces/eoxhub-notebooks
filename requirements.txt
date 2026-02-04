@@ -1,5 +1,5 @@
-mystmd=1.8.0
-pillow=12.1.0
-pyyaml=6.0.3
-jinja=23.1.6
-nbformat=5.10.4
+mystmd==1.8.0
+pillow==12.1.0
+pyyaml==6.0.3
+jinja==23.1.6
+nbformat==5.10.4
