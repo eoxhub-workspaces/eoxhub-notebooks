@@ -38,10 +38,7 @@ jobs:
         run: |
           # Clear potential other myst configurations in external_notebooks
           find external_notebooks -type f \( -iname "myst.yaml" -o -iname "myst.yml" \) -exec rm -v {} +
-          jupyter book build --html
-
-      - name: Generate Notebook List
-        run: npm run build
+          npm run build
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
