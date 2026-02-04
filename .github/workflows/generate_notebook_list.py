@@ -14,7 +14,6 @@ ROOT_DIR = os.path.abspath(".")
 OUTPUT_FILE = "notebooks.json"
 NOTEBOOK_DIR = "notebooks"
 SUBMODULE_ROOT = "external_notebooks"
-JHUB_INSTANCE = "workspace.earthcode.eox.at"
 IGNORE_FOLDERS = ["venv", ".git", ".github", "_build", "_data", "dist"]
 DEF_ORG = "eoxhub-workspaces"
 DEF_REPO = "eoxhub-notebooks"
@@ -207,7 +206,7 @@ def collect_notebooks():
                     "repo": DEF_REPO,
                     "source": "local",
                     "path": rel_path,
-                    "gitpuller": f"https://{JHUB_INSTANCE}/hub/user-redirect/git-pull?repo={git_url}&urlpath=lab/tree/{DEF_REPO}/{rel_path}&branch=main",
+                    "gitpuller": f"https://{{JHUB_HOST}}/hub/user-redirect/git-pull?repo={git_url}&urlpath=lab/tree/{DEF_REPO}/{rel_path}&branch=main",
                 })
 
     # --- Submodule notebooks
@@ -247,7 +246,7 @@ def collect_notebooks():
                             "repo": git_info["repo"],
                             "source": "submodule",
                             "path": rel_path,
-                            "gitpuller": f"https://{JHUB_INSTANCE}/hub/user-redirect/git-pull?repo={git_url}&urlpath=lab/tree/{DEF_REPO}/{repo_path}&branch=main",
+                            "gitpuller": f"https://{{JHUB_HOST}}/hub/user-redirect/git-pull?repo={git_url}&urlpath=lab/tree/{git_info['repo']}/{repo_path}&branch=main",
                         })
 
     return catalog

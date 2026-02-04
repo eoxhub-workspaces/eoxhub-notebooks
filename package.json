@@ -1,0 +1,16 @@
+{
+  "name": "eoxhub-notebooks",
+  "version": "0.0.1",
+  "description": "MyST project with custom script injection",
+  "scripts": {
+    "start": "myst start",
+    "build": "myst build --html && node inject-scripts.js && python .github/workflows/generate_notebook_list.py && cp notebooks.json _build/html/notebooks.json && cp index.html _build/html/index.html && touch _build/html/.nojekyll",
+    "clean": "myst clean"
+  },
+  "devDependencies": {
+    "mystmd": "latest"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

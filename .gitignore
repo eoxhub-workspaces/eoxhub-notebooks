@@ -2,3 +2,4 @@
 _build
 .ipynb_checkpoints
 dask_tutorials/wildfires/
+notebooks.json
