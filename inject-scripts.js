@@ -27,82 +27,94 @@ const DYNAMIC_SCRIPT = `
 
 <script>
   (function() {
-    const FALLBACK_HUB = "https://workspace.cubes-and-clouds.earthcode.eox.at/hub/user-redirect/git-pull";
+    // 1. STATE MANAGEMENT
+    // Start with the generic fallback, but we will overwrite this
+    // as soon as Luigi gives us the real context.
+    const DEFAULT_FALLBACK = "https://workspace.cubes-and-clouds.earthcode.eox.at/hub/user-redirect/git-pull";
+    let activeHubUrl = DEFAULT_FALLBACK;
     
-    // --- LOGGER UTILITY ---
-    const LOG_PREFIX = "🛠️ [MicroFrontend Debug]:";
-    function log(msg, data = "") {
-        console.log(\`\${LOG_PREFIX} \${msg}\`, data);
-    }
-    function warn(msg, data = "") {
-        console.warn(\`\${LOG_PREFIX} \${msg}\`, data);
-    }
+    const LOG_PREFIX = "🛠️ [MicroFrontend]:";
+    function log(msg) { console.log(\`\${LOG_PREFIX} \${msg}\`); }
 
-    // --- 1. LUIGI LOADER ---
+    // --- 2. LUIGI LOADER & CONTEXT HANDLER ---
     function loadLuigiClient(callback) {
         if (window.LuigiClient) {
-            log("LuigiClient already present on window");
+            setupContextListener();
             callback();
             return;
         }
-        log("Loading Luigi Client from CDN...");
         const script = document.createElement('script');
         script.src = 'https://unpkg.com/@luigi-project/client/luigi-client.js';
         script.onload = () => {
-            log("Luigi Client script loaded.");
-            
-            // --- DEBUG: LISTEN FOR HANDSHAKE ---
-            // This is the critical part. If this never fires, your iframe is isolated.
-            if (window.LuigiClient) {
-                window.LuigiClient.addInitListener((context) => {
-                    console.group(LOG_PREFIX + " ✅ HANDSHAKE SUCCESSFUL");
-                    console.log("Context Data:", context);
-                    console.log("Internal Path:", window.LuigiClient.getPathParams());
-                    console.groupEnd();
-                });
-            }
+            setupContextListener();
             callback();
         };
-        script.onerror = () => warn("❌ Failed to load Luigi Client script");
         document.head.appendChild(script);
     }
 
-    // --- 2. URL PARSING ---
+    function setupContextListener() {
+        if (!window.LuigiClient) return;
+
+        // Listen for the handshake data from the Parent Frame
+        window.LuigiClient.addInitListener((context) => {
+            log("✅ Context Received");
+            
+            // EXTRACT DYNAMIC HOME URL
+            // structure: context.workspaceConfig.home -> "https://workspace.triallps25..."
+            if (context.workspaceConfig && context.workspaceConfig.home) {
+                const home = context.workspaceConfig.home;
+                // Ensure no trailing slash, then append the hub path
+                activeHubUrl = home.replace(/\\/$/, '') + "/hub/user-redirect/git-pull";
+                
+                log("Updated Hub URL to: " + activeHubUrl);
+                
+                // Force update any buttons already rendered on the page
+                refreshRocketLinks();
+            }
+        });
+    }
+
+    // --- 3. URL BUILDERS ---
     function getRepoInfo() {
         const editLink = document.querySelector('a.myst-fm-edit-link');
-        if (!editLink || !editLink.href) {
-            // warn("No Edit link found. Cannot calculate repo info.");
-            return null;
-        }
+        if (!editLink || !editLink.href) return null;
         try {
             const url = new URL(editLink.href);
             const parts = url.pathname.split('/');
-            // Expecting: /ORG/REPO/edit/BRANCH/PATH...
-            if (parts.length < 6 || parts[3] !== 'edit') {
-                warn("Edit link structure unrecognised:", url.pathname);
-                return null;
-            }
+            if (parts.length < 6 || parts[3] !== 'edit') return null;
             return {
                 repoUrl: \`https://github.com/\${parts[1]}/\${parts[2]}\`,
                 branch: parts[4],
                 filePath: parts.slice(5).join('/') 
             };
-        } catch (e) { 
-            warn("Error parsing edit link:", e);
-            return null; 
-        }
+        } catch (e) { return null; }
     }
 
     function getLaunchUrl() {
         const info = getRepoInfo();
         if (!info) return null;
+        
         const repoName = info.repoUrl.split('/').pop(); 
         const jupyterPath = \`lab/tree/\${repoName}/\${info.filePath}\`;
+        
+        // Use the DYNAMIC 'activeHubUrl' here
         const query = \`?repo=\${encodeURIComponent(info.repoUrl)}&urlpath=\${encodeURIComponent(jupyterPath)}&branch=\${info.branch}\`;
-        return \`\${FALLBACK_HUB}\${query}\`;
+        return \`\${activeHubUrl}\${query}\`;
     }
 
-    // --- 3. BACK BUTTON ---
+    // Helper to update existing buttons when context arrives
+    function refreshRocketLinks() {
+        const btn = document.querySelector('.custom-rocket-btn');
+        if (btn) {
+            const newUrl = getLaunchUrl();
+            if (newUrl) {
+                btn.href = newUrl;
+                log("Refreshed Button HREF");
+            }
+        }
+    }
+
+    // --- 4. BUTTON CREATORS ---
     function createBackButton() {
         const btn = document.createElement('a');
         btn.className = 'custom-toolbar-btn custom-back-btn';
@@ -113,26 +125,18 @@ const DYNAMIC_SCRIPT = `
 
         btn.addEventListener('click', (e) => {
             e.preventDefault();
-            
-            const isLuigiReady = window.LuigiClient && window.LuigiClient.isLuigiClientInitialized();
-            
-            console.group(LOG_PREFIX + " ⬅️ Back Button Clicked");
-            console.log("Luigi Initialized:", isLuigiReady);
-            
-            if (isLuigiReady) {
-                console.log("Action: Calling LuigiClient.linkManager().goBack()");
+            if (window.LuigiClient && window.LuigiClient.isLuigiClientInitialized()) {
                 window.LuigiClient.linkManager().goBack();
             } else {
-                console.log("Action: Calling window.history.back() (Fallback)");
                 window.history.back();
             }
-            console.groupEnd();
         });
         return btn;
     }
 
-    // --- 4. ROCKET BUTTON ---
     function createRocketButton() {
+        // Initial create might happen before Context arrives
+        // That's fine, we update it in 'refreshRocketLinks' later
         const absoluteUrl = getLaunchUrl();
         if (!absoluteUrl) return null;
 
@@ -147,67 +151,48 @@ const DYNAMIC_SCRIPT = `
         link.addEventListener('click', (e) => {
             const isLuigiReady = window.LuigiClient && window.LuigiClient.isLuigiClientInitialized();
             
-            console.group(LOG_PREFIX + " 🚀 Rocket Button Clicked");
-            console.log("Luigi Initialized:", isLuigiReady);
-            console.log("Target Absolute URL:", absoluteUrl);
+            // RE-READ the href at click time to ensure we use the updated URL
+            // (in case context arrived after button creation)
+            const currentHref = link.href;
 
             if (isLuigiReady) {
                 e.preventDefault();
                 try {
-                    const urlObj = new URL(absoluteUrl);
+                    const urlObj = new URL(currentHref);
                     const params = Object.fromEntries(urlObj.searchParams);
                     const relativePath = urlObj.pathname;
                     
-                    console.log("Adding Core Params:", params);
                     window.LuigiClient.addCoreSearchParams(params);
-                    
-                    console.log("Navigating to Relative Path:", relativePath);
                     window.LuigiClient.linkManager()
                         .preserveQueryParams(true)
                         .navigate(relativePath);
                 } catch (err) {
-                    console.error("Luigi Navigation Error:", err);
-                    window.open(absoluteUrl, '_blank');
+                    window.open(currentHref, '_blank');
                 }
-            } else {
-                console.warn("⚠️ Fallback: Opening absolute URL in new tab because Luigi is not ready.");
             }
-            console.groupEnd();
         });
-
         return link;
     }
 
-    // --- 5. INJECTION LOGIC ---
+    // --- 5. INJECTION LOOP ---
     function checkAndInject() {
         const toolbars = document.querySelectorAll('.myst-fm-block-header');
         toolbars.forEach(toolbar => {
             const subject = toolbar.querySelector('.myst-fm-block-subject');
             if (subject && subject.innerText.includes("Notebook examples")) {
                 
-                // Inject Back Button
+                // Back Button
                 if (!toolbar.querySelector('.custom-back-btn')) {
                     const backBtn = createBackButton();
-                    const badgesContainer = toolbar.querySelector('.myst-fm-block-badges');
-                    
-                    // Log injection for debugging
-                    // log("Injecting Back Button");
-                    
-                    if (badgesContainer) toolbar.insertBefore(backBtn, badgesContainer);
-                    else {
-                        const editLink = toolbar.querySelector('.myst-fm-edit-link');
-                        if (editLink) toolbar.insertBefore(backBtn, editLink);
-                        else toolbar.appendChild(backBtn);
-                    }
+                    const badges = toolbar.querySelector('.myst-fm-block-badges');
+                    if (badges) toolbar.insertBefore(backBtn, badges);
+                    else toolbar.appendChild(backBtn);
                 }
 
-                // Inject Rocket Button
+                // Rocket Button
                 if (!toolbar.querySelector('.custom-rocket-btn')) {
                     const rocketBtn = createRocketButton();
-                    if (rocketBtn) {
-                        // log("Injecting Rocket Button");
-                        toolbar.appendChild(rocketBtn);
-                    }
+                    if (rocketBtn) toolbar.appendChild(rocketBtn);
                 }
             }
         });
@@ -215,16 +200,9 @@ const DYNAMIC_SCRIPT = `
 
     // --- 6. INIT ---
     window.addEventListener('load', () => {
-        log("Window Loaded. Starting Luigi setup...");
-        
-        loadLuigiClient(() => {
-            log("Luigi Client Script Ready.");
-        });
-        
-        // Timeout to allow React to settle
+        loadLuigiClient(() => {});
         setTimeout(() => {
             checkAndInject();
-            
             const observer = new MutationObserver(() => checkAndInject());
             observer.observe(document.body, { childList: true, subtree: true });
         }, 1000); 
@@ -257,7 +235,7 @@ function injectScripts(dir) {
   });
 }
 
-console.log('🚀 Starting Debug Mode Injection...');
+console.log('🚀 Starting Context-Aware Injection...');
 let found = false;
 POTENTIAL_DIRS.forEach(dir => {
     if (fs.existsSync(dir)) {
