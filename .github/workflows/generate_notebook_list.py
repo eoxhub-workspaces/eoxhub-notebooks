@@ -17,8 +17,9 @@ SUBMODULE_ROOT = "external_notebooks"
 IGNORE_FOLDERS = ["venv", ".git", ".github", "_build", "_data", "dist"]
 DEF_ORG = "eoxhub-workspaces"
 DEF_REPO = "eoxhub-notebooks"
+FALLBACK_IMAGE = "build/_assets/previews/eoxhub_jupyter.jpg"
 
-def extract_last_image(nb, notebook_rel_path, output_dir="_build/html/build/_assets/previews", target_width=300):
+def extract_last_image(nb, notebook_rel_path, output_dir="_build/html/build/_assets/previews", target_width=230):
     os.makedirs(output_dir, exist_ok=True)
     found_images = []
     # Check markdown cells for images
@@ -194,7 +195,10 @@ def collect_notebooks():
                 rel_path = os.path.relpath(abs_path, ROOT_DIR).replace("\\", "/")
                 meta = extract_frontmatter(abs_path)
                 nb = nbformat.read(abs_path, as_version=4)
-                image = meta.get("image") or extract_last_image(nb, rel_path)
+                image = meta.get("image") or extract_last_image(nb, rel_path) or FALLBACK_IMAGE
+                topic = os.path.basename(os.path.dirname(rel_path)) if os.path.dirname(rel_path) != NOTEBOOK_DIR else "General"
+                # try to prettify name
+                topic = topic.replace("_", " ").title()
                 # TODO: need to extract available branch
                 catalog.append({
                     "title": meta.get("title", extract_title_from_first_header(nb) or os.path.splitext(file)[0].replace("_", " ")),
@@ -202,6 +206,7 @@ def collect_notebooks():
                     "metadata": meta,
                     "image": image,
                     "link": myst_url_sanitation(rel_path.replace(".ipynb", "")),
+                    "topic": topic,
                     "org": DEF_ORG,
                     "repo": DEF_REPO,
                     "source": "local",
@@ -234,7 +239,8 @@ def collect_notebooks():
                         repo_path = pathlib.Path(*p.parts[2:])
                         meta = extract_frontmatter(abs_path)
                         nb = nbformat.read(abs_path, as_version=4)
-                        image = meta.get("image") or extract_last_image(nb, rel_path)
+                        image = meta.get("image") or extract_last_image(nb, rel_path) or FALLBACK_IMAGE
+                        topic = os.path.basename(os.path.dirname(repo_path))
                         # TODO: need to extract available branch
                         catalog.append({
                             "title": meta.get("title", extract_title_from_first_header(nb) or os.path.splitext(file)[0].replace("_", " ")),
@@ -242,6 +248,7 @@ def collect_notebooks():
                             "metadata": meta,
                             "image": image,
                             "link": myst_url_sanitation(rel_path.replace(".ipynb", "")),
+                            "topic": topic,
                             "org": git_info["org"],
                             "repo": git_info["repo"],
                             "source": "submodule",

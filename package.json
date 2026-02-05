@@ -4,7 +4,7 @@
   "description": "MyST project with custom script injection",
   "scripts": {
     "start": "myst start",
-    "build": "myst build --html && node inject-scripts.js && python .github/workflows/generate_notebook_list.py && cp notebooks.json _build/html/notebooks.json && cp index.html _build/html/index.html && touch _build/html/.nojekyll",
+    "build": "myst build --html && node inject-scripts.js && python .github/workflows/generate_notebook_list.py && cp notebooks.json _build/html/notebooks.json && cp index.html _build/html/index.html && cp _static/eoxhub_jupyter.jpg _build/html/build/_assets/previews && touch _build/html/.nojekyll",
     "clean": "myst clean"
   },
   "devDependencies": {
