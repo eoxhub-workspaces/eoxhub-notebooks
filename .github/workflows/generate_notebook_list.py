@@ -153,6 +153,23 @@ def get_git_remote_info(repo_path):
 def extract_frontmatter(notebook_path):
     try:
         nb = nbformat.read(notebook_path, as_version=4)
+        
+        # 1. Check for notebook-level metadata (common with Jupytext)
+        if 'frontmatter' in nb.metadata:
+            return nb.metadata.get('frontmatter', {})
+        # MyST/Jupyter Book sometimes stores it here
+        if 'jupytext' in nb.metadata and 'jupytext_version' in nb.metadata.jupytext:
+             if 'kernelspec' in nb.metadata:
+                del nb.metadata["kernelspec"]
+             if 'jupytext' in nb.metadata:
+                del nb.metadata["jupytext"]
+             return dict(nb.metadata)
+
+        # 2. Check metadata of the first cell
+        if nb.cells and nb.cells[0].metadata:
+            return nb.cells[0].metadata
+
+        # 3. Fallback to YAML frontmatter in the first markdown cell
         if nb.cells and nb.cells[0].cell_type == 'markdown':
             content = nb.cells[0].source
             if content.strip().startswith('---'):
