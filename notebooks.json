@@ -1,8 +1,10 @@
 [
   {
     "title": "Scale your processes with Dask - hands on example",
-    "description": "",
-    "metadata": {},
+    "description": "This notebook demonstrates how to use Dask to process Sentinel-2 satellite data to create burn severity maps for wildfire assessment.",
+    "metadata": {
+      "description": "This notebook demonstrates how to use Dask to process Sentinel-2 satellite data to create burn severity maps for wildfire assessment."
+    },
     "image": "build/_assets/previews/notebooks_pangeo-dask_notebooks_example_wildfires_preview.png",
     "link": "notebooks/pangeo-dask-notebooks/example-wildfires",
     "topic": "Pangeo-Dask Notebooks",
