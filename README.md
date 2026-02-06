@@ -1,6 +1,6 @@
-# Euro Data Cube notebooks
+# EOxHub Workspaces notebooks
 
 A curated list of Jupyter notebooks demonstrating the capabilities of the
-Euro Data Cube platform. These notebooks can be directly executed by all
-Euro Data Cube customers within their own Jupyter Lab environment without
+EOxHub workspaces. These notebooks can be directly executed by
+EOxHub workspace customers within their own Jupyter Lab environment without
 further setup.
