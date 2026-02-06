@@ -17,8 +17,14 @@ SUBMODULE_ROOT = "external_notebooks"
 IGNORE_FOLDERS = ["venv", ".git", ".github", "_build", "_data", "dist"]
 DEF_ORG = "eoxhub-workspaces"
 DEF_REPO = "eoxhub-notebooks"
+FALLBACK_IMAGE = "build/_assets/previews/eoxhub_jupyter.jpg"
 
-def extract_last_image(nb, notebook_rel_path, output_dir="_build/html/build/_assets/previews", target_width=300):
+def extract_last_image(
+    nb,
+    notebook_rel_path,
+    output_dir="_build/html/build/_assets/previews",
+    target_width=300,
+):
     os.makedirs(output_dir, exist_ok=True)
     found_images = []
     # Check markdown cells for images
@@ -27,14 +33,14 @@ def extract_last_image(nb, notebook_rel_path, output_dir="_build/html/build/_ass
             lines = cell.source.splitlines()
             for line in lines:
                 # Match Markdown image: ![alt](path)
-                md_img = re.findall(r'!\[.*?\]\((.*?)\)', line)
+                md_img = re.findall(r"!\[.*?\]\((.*?)\)", line)
                 if md_img:
                     found_images.extend(md_img)
                 # Match MyST figure directive: :::{figure} ./image.png
-                myst_img = re.findall(r':::\{figure\}\s+(.*?)\s*$', line)
+                myst_img = re.findall(r":::\{figure\}\s+(.*?)\s*$", line)
                 if myst_img:
                     found_images.extend(myst_img)
-
+    
     if found_images:
         last_image_rel = found_images[-1].strip()
         notebook_dir = os.path.dirname(notebook_rel_path)
@@ -50,14 +56,50 @@ def extract_last_image(nb, notebook_rel_path, output_dir="_build/html/build/_ass
                     img = img.resize((target_width, h_size), Image.LANCZOS)
 
                     # Save to unique file
-                    image_name = notebook_rel_path.replace("/", "_").replace(".ipynb", "_preview.png")
+                    image_name = notebook_rel_path.replace("/", "_").replace(
+                        ".ipynb", "_preview.png"
+                    )
                     output_path = os.path.join(output_dir, image_name)
                     img.save(output_path)
                     relpath = os.path.join("build/_assets/previews", image_name)
                     return os.path.relpath(relpath, start=".").replace("\\", "/")
             except Exception as e:
-                print(f"[warn] Couldn't load/resize MyST image for {notebook_rel_path}: {e}")
+                print(
+                    f"[warn] Couldn't load/resize MyST image for {notebook_rel_path}: {e}"
+                )
 
+    # If no markdown images, check code output
+    for cell in reversed(nb.cells):
+        if cell.cell_type == "code":
+            for output in reversed(cell.get("outputs", [])):
+                data = output.get("data", {})
+                if "image/png" in data:
+                    b64 = data["image/png"]
+                    image_bytes = base64.b64decode(b64)
+
+                    try:
+                        # Load image from bytes
+                        image = Image.open(BytesIO(image_bytes))
+                        # Resize while maintaining aspect ratio
+                        w_percent = target_width / float(image.size[0])
+                        h_size = int(float(image.size[1]) * w_percent)
+                        image = image.resize((target_width, h_size), Image.LANCZOS)
+
+                        # Create a filename based on notebook path
+                        base_name = notebook_rel_path.replace("/", "_").replace(
+                            ".ipynb", "_preview.png"
+                        )
+                        image_path = os.path.join(output_dir, base_name)
+                        image.save(image_path)
+                        relpath = os.path.join("build/_assets/previews", base_name)
+
+                        return os.path.relpath(relpath, start=".").replace("\\", "/")
+                    except Exception as e:
+                        print(
+                            f"[warn] Failed to process image in {notebook_rel_path}: {e}"
+                        )
+                        return None
+    return None
     
     # If no markdown images, check code output
     for cell in reversed(nb.cells):
@@ -152,6 +194,23 @@ def get_git_remote_info(repo_path):
 def extract_frontmatter(notebook_path):
     try:
         nb = nbformat.read(notebook_path, as_version=4)
+        
+        # 1. Check for notebook-level metadata (common with Jupytext)
+        if 'frontmatter' in nb.metadata:
+            return nb.metadata.get('frontmatter', {})
+        # MyST/Jupyter Book sometimes stores it here
+        if 'jupytext' in nb.metadata and 'jupytext_version' in nb.metadata.jupytext:
+             if 'kernelspec' in nb.metadata:
+                del nb.metadata["kernelspec"]
+             if 'jupytext' in nb.metadata:
+                del nb.metadata["jupytext"]
+             return dict(nb.metadata)
+
+        # 2. Check metadata of the first cell
+        if nb.cells and nb.cells[0].metadata:
+            return nb.cells[0].metadata
+
+        # 3. Fallback to YAML frontmatter in the first markdown cell
         if nb.cells and nb.cells[0].cell_type == 'markdown':
             content = nb.cells[0].source
             if content.strip().startswith('---'):
@@ -194,7 +253,10 @@ def collect_notebooks():
                 rel_path = os.path.relpath(abs_path, ROOT_DIR).replace("\\", "/")
                 meta = extract_frontmatter(abs_path)
                 nb = nbformat.read(abs_path, as_version=4)
-                image = meta.get("image") or extract_last_image(nb, rel_path)
+                image = meta.get("image") or extract_last_image(nb, rel_path) or FALLBACK_IMAGE
+                topic = os.path.basename(os.path.dirname(rel_path)) if os.path.dirname(rel_path) != NOTEBOOK_DIR else "General"
+                # try to prettify name
+                topic = topic.replace("_", " ").title()
                 # TODO: need to extract available branch
                 catalog.append({
                     "title": meta.get("title", extract_title_from_first_header(nb) or os.path.splitext(file)[0].replace("_", " ")),
@@ -202,6 +264,7 @@ def collect_notebooks():
                     "metadata": meta,
                     "image": image,
                     "link": myst_url_sanitation(rel_path.replace(".ipynb", "")),
+                    "topic": topic,
                     "org": DEF_ORG,
                     "repo": DEF_REPO,
                     "source": "local",
@@ -234,7 +297,8 @@ def collect_notebooks():
                         repo_path = pathlib.Path(*p.parts[2:])
                         meta = extract_frontmatter(abs_path)
                         nb = nbformat.read(abs_path, as_version=4)
-                        image = meta.get("image") or extract_last_image(nb, rel_path)
+                        image = meta.get("image") or extract_last_image(nb, rel_path) or FALLBACK_IMAGE
+                        topic = os.path.basename(os.path.dirname(repo_path))
                         # TODO: need to extract available branch
                         catalog.append({
                             "title": meta.get("title", extract_title_from_first_header(nb) or os.path.splitext(file)[0].replace("_", " ")),
@@ -242,6 +306,7 @@ def collect_notebooks():
                             "metadata": meta,
                             "image": image,
                             "link": myst_url_sanitation(rel_path.replace(".ipynb", "")),
+                            "topic": topic,
                             "org": git_info["org"],
                             "repo": git_info["repo"],
                             "source": "submodule",

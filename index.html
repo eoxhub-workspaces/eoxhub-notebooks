@@ -3,73 +3,257 @@
 <head>
   <meta charset="UTF-8">
   <title>Example Explorer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <script type="module">
     import "https://cdn.jsdelivr.net/npm/@eox/layout@0.5.1/dist/eox-layout.js";
     import "https://cdn.jsdelivr.net/npm/@eox/itemfilter@1.9.1/dist/eox-itemfilter.js";
   </script>
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/@eox/ui/dist/style.min.css"
-  />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@eox/ui/dist/style.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/@luigi-project/client@2.21.1/luigi-client.js"></script>
+
+  <style>
+    /* Global Settings */
+    eox-itemfilter {
+      --form-flex-direction: row; 
+      --card-gap: 24px;
+      --card-width: 230px;
+      --card-height: 270px;
+      
+      --color-primary: #004170;
+      --bg-color: #ffffff;
+      
+      /* Ensure the component itself doesn't clip the shadows of its children */
+      overflow: visible; 
+      padding: 10px; /* Add padding to container so edge cards don't clip shadows */
+    }
+  </style>
 </head>
 
 <body class="light surface-container large-padding">
-  <article class="surface-container-lowest large-padding">
-    <h4>Example Explorer</h1>
-    <eox-itemfilter
-      class="top-margin"
-      id="catalog"
-      style="--form-flex-direction: row; --card-gap: 10px; --card-width: 270px; --card-height: 200px; --card-border-radius: 8px;"
-    >
-    </eox-itemfilter>
+  
+  <article class="surface-container-lowest large-padding" style="border-radius: 4px; min-height: 80vh;">
+    <h3 style="margin-top: 0; margin-bottom: 0.5rem; color: #004170; display: inline-block; padding-bottom: 4px;">
+      Example Explorer
+    </h3>
+    
+    <eox-itemfilter id="catalog" class="top-margin" style="opacity: 0; transition: opacity 0.3s ease-in;"></eox-itemfilter>
   </article>
   
   <script type="module">
     const el = document.getElementById('catalog');
 
-    // Fetch the JSON and pass it to the element
+    // --- 1. STYLE INJECTION ---
+    function injectShadowStyles() {
+      const shadow = el.shadowRoot;
+      if (!shadow) return;
+
+      if (shadow.getElementById('custom-tile-styles')) {
+          el.style.opacity = '1';
+          return;
+      }
+
+      const customCss = `
+        /* A. CARD CONTAINER */
+        eox-layout-item {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 2px; 
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s;
+            overflow: hidden; 
+            cursor: pointer;
+            margin: 2px;
+        }
+
+        /* B. HOVER EFFECT (Whole Tile) */
+        eox-layout-item:hover {
+            box-shadow: 0 3px 6px rgba(0,0,0,0.12); 
+            border-color: #b0c4de;
+            z-index: 1;
+        }
+
+        /* C. IMAGE RESET */
+        .image {
+            width: 100%;
+            height: 120px !important;
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+            display: block;
+            margin: 0 !important;
+            border-radius: 0 !important;
+            filter: none !important;
+            opacity: 1 !important;
+            transition: none !important;
+        }
+
+        .image::after, 
+        .image::before,
+        slot[name="image"]::after,
+        eox-layout-item::after {
+            display: none !important;
+            content: none !important;
+            background: none !important;
+        }
+
+        eox-layout-item:hover .image {
+            opacity: 1 !important;
+            filter: none !important;
+        }
+
+        /* D. TEXT AREA */
+        .title-container {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: #fff !important;
+            padding: 16px !important;
+            position: static !important;
+            height: auto !important;
+            background-image: none !important;
+        }
+
+        .title {
+            font-family: "Roboto", sans-serif;
+            font-size: 0.9rem;
+            line-height: 1.2;
+            font-weight: 300;
+            color: #004170;
+            margin-bottom: 6px;
+            white-space: nowrap;
+            text-wrap: auto!important;
+            text-overflow: unset;
+            text-shadow: none !important;
+        }
+
+        .subtitle {
+            font-family: "Roboto", sans-serif;
+            font-size: 0.7rem;
+            color: #555;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 5;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            opacity: 1 !important;
+            text-shadow: none !important;
+            margin-bottom: 6px;
+        }
+
+        /* E. ROCKET ICON */
+        .result-action {
+            align-self: flex-end;
+            margin-top: auto; 
+            color: #E18435;
+            background: transparent;
+            border-radius: 4px;
+            padding: 4px;
+            transition: background 0.2s;
+            margin-top: -10px!important;
+            margin-right: -10px!important;
+        }
+        .result-action:hover {
+            background-color: rgba(225, 132, 53, 0.1);
+            color: #c46d24;
+        }
+      `;
+
+      const styleTag = document.createElement('style');
+      styleTag.id = 'custom-tile-styles';
+      styleTag.textContent = customCss;
+      shadow.appendChild(styleTag);
+      
+      requestAnimationFrame(() => {
+          el.style.opacity = '1';
+      });
+    }
+
+    // --- 2. LOGIC ---
+    // Function to Activate Luigi features (Show Rocket)
+    function activateLuigiFeatures() {
+      console.log("✅ Luigi Handshake Successful. Enabling Workspace features.");
+      
+      // Update the element to show the action button
+      Object.assign(el, {
+        enableResultAction: true,
+        resultActionIcon: '<svg title="Execute in workspace" style="width:24px;height:24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.13 22.19L11.5 18.36C13.07 17.78 14.54 17 15.9 16.09L13.13 22.19M5.64 12.5L1.81 10.87L7.91 8.1C7 9.46 6.22 10.93 5.64 12.5M19.22 4C19.5 4 19.75 4 19.96 4.05C20.13 5.44 19.94 8.3 16.66 11.58C14.96 13.29 12.93 14.6 10.65 15.47L8.5 13.37C9.42 11.06 10.73 9.03 12.42 7.34C15.18 4.58 17.64 4 19.22 4M19.22 2C17.24 2 14.24 2.69 11 5.93C8.81 8.12 7.5 10.53 6.65 12.64C6.37 13.39 6.56 14.21 7.11 14.77L9.24 16.89C9.62 17.27 10.13 17.5 10.66 17.5C10.89 17.5 11.13 17.44 11.36 17.35C13.5 16.53 15.88 15.19 18.07 13C23.73 7.34 21.61 2.39 21.61 2.39S20.7 2 19.22 2M14.54 9.46C13.76 8.68 13.76 7.41 14.54 6.63S16.59 5.85 17.37 6.63C18.14 7.41 18.15 8.68 17.37 9.46C16.59 10.24 15.32 10.24 14.54 9.46M8.88 16.53L7.47 15.12L8.88 16.53M6.24 22L9.88 18.36C9.54 18.27 9.21 18.12 8.91 17.91L4.83 22H6.24M2 22H3.41L8.18 17.24L6.76 15.83L2 20.59V22M2 19.17L6.09 15.09C5.88 14.79 5.73 14.47 5.64 14.12L2 17.76V19.17Z" fill="currentColor"/></svg>'
+      });
+    }
+
+    // --- 3. INIT ---
     fetch('./notebooks.json')
       .then(res => res.json())
       .then(data => {
+        // Initial Config: ROCKET IS HIDDEN (enableResultAction: false)
         Object.assign(el, {
-        items: data,
-        titleProperty: "title",
-        imageProperty: "image",
-        resultType: "cards",
-        filterProperties: [
-          {
-            "keys": [
-              "title",
-            ],
-            "title": "Search",
-            "type": "text",
-            "placeholder": "Type Something...",
-            "expanded": true,
-          },
-        ],
-        enableResultAction: true,
-        subTitleProperty: "description",
-        resultType: "cards",
-        resultActionIcon: '<svg style="width:24px;height:24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>rocket-launch-outline</title><path d="M13.13 22.19L11.5 18.36C13.07 17.78 14.54 17 15.9 16.09L13.13 22.19M5.64 12.5L1.81 10.87L7.91 8.1C7 9.46 6.22 10.93 5.64 12.5M19.22 4C19.5 4 19.75 4 19.96 4.05C20.13 5.44 19.94 8.3 16.66 11.58C14.96 13.29 12.93 14.6 10.65 15.47L8.5 13.37C9.42 11.06 10.73 9.03 12.42 7.34C15.18 4.58 17.64 4 19.22 4M19.22 2C17.24 2 14.24 2.69 11 5.93C8.81 8.12 7.5 10.53 6.65 12.64C6.37 13.39 6.56 14.21 7.11 14.77L9.24 16.89C9.62 17.27 10.13 17.5 10.66 17.5C10.89 17.5 11.13 17.44 11.36 17.35C13.5 16.53 15.88 15.19 18.07 13C23.73 7.34 21.61 2.39 21.61 2.39S20.7 2 19.22 2M14.54 9.46C13.76 8.68 13.76 7.41 14.54 6.63S16.59 5.85 17.37 6.63C18.14 7.41 18.15 8.68 17.37 9.46C16.59 10.24 15.32 10.24 14.54 9.46M8.88 16.53L7.47 15.12L8.88 16.53M6.24 22L9.88 18.36C9.54 18.27 9.21 18.12 8.91 17.91L4.83 22H6.24M2 22H3.41L8.18 17.24L6.76 15.83L2 20.59V22M2 19.17L6.09 15.09C5.88 14.79 5.73 14.47 5.64 14.12L2 17.76V19.17Z" /></svg>',
+          items: data,
+          titleProperty: "title",
+          imageProperty: "image",
+          subTitleProperty: "description",
+          resultType: "cards", 
+          aggregateResults: "topic",
+          
+          // Disable by default. Only enable if Luigi handshake works.
+          enableResultAction: false, 
+          
+          filterProperties: [
+            { "keys": ["title"], "title": "Search", "type": "text", "placeholder": "Search examples...", "expanded": true }
+          ],
         });
-        el.addEventListener('click:result-action', (e) => {
-          const parentHost = new URL(LuigiClient.getEventData().parentOrigin).host;
-          const gitpullerUrl = `${e.detail.gitpuller}`.replace('{JHUB_HOST}', parentHost);
-          const urlObj = new URL(gitpullerUrl);
-          LuigiClient.addCoreSearchParams(Object.fromEntries(urlObj.searchParams));
-          LuigiClient.linkManager().preserveQueryParams(true).navigate(urlObj.pathname);
-        });
-        el.addEventListener('select', (e) => {
-          window.location.href = e.detail.link;
-        });
-        // debugger;
-      })
-      .catch(err => {
-        console.error('Failed to load notebook catalog:', err);
-      });
-      
-  </script>
 
+        // Setup Event Listeners
+        
+        // 1. Navigation Logic (Clicking the card)
+        // This is always active, providing the fallback navigation
+        el.addEventListener('select', (e) => {
+          if (e.detail && e.detail.link) window.location.href = e.detail.link;
+        });
+
+        // 2. Rocket Logic (Only triggered if button is visible)
+        el.addEventListener('click:result-action', (e) => {
+          console.log("🚀 Rocket clicked!", e.detail);
+          
+          // We can safely assume LuigiClient is initialized here, 
+          // because we only show the button if the handshake succeeded.
+          let parentHost = window.location.host;
+          
+          try {
+            const eventData = window.LuigiClient.getEventData();
+            if (eventData && eventData.parentOrigin) {
+              parentHost = new URL(eventData.parentOrigin).host;
+            }
+          } catch(err) { console.warn("Parent Host Error", err); }
+
+          const gitpullerUrl = `${e.detail.gitpuller}`.replace('{JHUB_HOST}', parentHost);
+          
+          try {
+            const urlObj = new URL(gitpullerUrl);
+            window.LuigiClient.addCoreSearchParams(Object.fromEntries(urlObj.searchParams));
+            window.LuigiClient.linkManager().preserveQueryParams(true).navigate(urlObj.pathname);
+          } catch (err) {
+            console.error("Navigation error", err);
+          }
+        });
+
+        // 3. Luigi Handshake
+        // We strictly wait for the Init Listener. 
+        // If this never fires (standalone mode), the rocket stays hidden.
+        if (window.LuigiClient) {
+             window.LuigiClient.addInitListener(() => activateLuigiFeatures());
+        }
+
+        // 4. Style Injection
+        const checkShadow = setInterval(() => {
+            if (el.shadowRoot) {
+                injectShadowStyles();
+                const observer = new MutationObserver(() => injectShadowStyles());
+                observer.observe(el.shadowRoot, { childList: true, subtree: true });
+                clearInterval(checkShadow);
+            }
+        }, 100);
+      });
+  </script>
 </body>
 </html>
