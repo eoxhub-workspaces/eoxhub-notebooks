@@ -14,5 +14,18 @@
     "source": "local",
     "path": "notebooks/pangeo-dask_notebooks/example_wildfires.ipynb",
     "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/pangeo-dask_notebooks/example_wildfires.ipynb&branch=main"
+  },
+  {
+    "title": "eoAPI registration example",
+    "description": "",
+    "metadata": {},
+    "image": "build/_assets/previews/eoxhub_jupyter.jpg",
+    "link": "notebooks/eoapi/eoapi-registration",
+    "topic": "Eoapi",
+    "org": "eoxhub-workspaces",
+    "repo": "eoxhub-notebooks",
+    "source": "local",
+    "path": "notebooks/eoAPI/eoAPI_registration.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/eoAPI/eoAPI_registration.ipynb&branch=main"
   }
 ]
