@@ -1,0 +1,739 @@
+<!DOCTYPE html><html lang="en" class="" style="scroll-padding:60px"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>CDSE Tiled Data Access - EOxHub Notebooks</title><meta property="og:title" content="CDSE Tiled Data Access - EOxHub Notebooks"/><meta name="generator" content="mystmd"/><meta name="description" content="Collection of examples for EOxHub Workspaces"/><meta property="og:description" content="Collection of examples for EOxHub Workspaces"/><meta name="keywords" content=""/><link rel="stylesheet" href="/eoxhub-notebooks/build/_assets/app-2K3KGISG.css"/><link rel="stylesheet" href="/eoxhub-notebooks/build/_assets/thebe-core-VKVHG5VY.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jupyter-matplotlib@0.11.3/css/mpl_widget.css"/><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css" integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ" crossorigin="anonymous"/><link rel="icon" href="/eoxhub-notebooks/favicon.ico"/><link rel="stylesheet" href="/eoxhub-notebooks/myst-theme.css"/><script>
+  const savedTheme = localStorage.getItem("myst:theme");
+  const theme = window.matchMedia("(prefers-color-scheme: light)").matches ? 'light' : 'dark';
+  const classes = document.documentElement.classList;
+  const hasAnyTheme = classes.contains('light') || classes.contains('dark');
+  if (!hasAnyTheme) classes.add(savedTheme ?? theme);
+</script></head><body class="m-0 transition-colors duration-500 bg-white dark:bg-stone-900"><div class="myst-skip-to-article fixed top-1 left-1 h-[0px] w-[0px] focus-within:z-40 focus-within:h-auto focus-within:w-auto bg-white overflow-hidden focus-within:p-2 focus-within:ring-1" aria-label="skip to content options"><a href="#skip-to-frontmatter" class="myst-skip-to-link block px-2 py-1 text-black underline">Skip to article frontmatter</a><a href="#skip-to-article" class="myst-skip-to-link block px-2 py-1 text-black underline">Skip to article content</a></div><dialog id="myst-no-css" style="position:fixed;left:0px;top:0px;width:100%;height:100vh;font-size:4rem;padding:1rem;color:black;background:white"><strong>Site not loading correctly?</strong><p>This may be due to an incorrect <code>BASE_URL</code> configuration. See<!-- --> <a href="https://mystmd.org/guide/deployment#deploy-base-url">the MyST Documentation</a> <!-- -->for reference.</p><script>
+    (() => {
+            // Test for has-styling variable set by the MyST stylesheet
+            const node = document.currentScript.parentNode;
+            const hasCSS = window.getComputedStyle(node).getPropertyValue("--has-styling");
+            if (hasCSS === ""){
+                    node.showModal();
+            }
+
+    })()
+</script></dialog><div class="myst-top-nav bg-white/80 backdrop-blur dark:bg-stone-900/80 shadow dark:shadow-stone-700 p-3 md:px-8 sticky w-full top-0 z-30 h-[60px]"><nav class="myst-top-nav-bar flex items-center justify-between flex-nowrap max-w-[1440px] mx-auto"><div class="flex flex-row xl:min-w-[19.5rem] mr-2 sm:mr-7 justify-start items-center shrink-0"><div class="block lg:hidden"><button class="myst-top-nav-menu-button flex items-center justify-center border-stone-400 text-stone-800 hover:text-stone-900 dark:text-stone-200 hover:dark:text-stone-100 w-10 h-10"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-slot="icon" width="1.5rem" height="1.5rem"><path fill-rule="evenodd" d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd"></path></svg><span class="sr-only">Open Menu</span></button></div><a class="myst-home-link flex items-center ml-3 dark:text-white w-fit md:ml-5 xl:ml-7" href="/eoxhub-notebooks/"><span class="text-md sm:text-xl tracking-tight sm:mr-5">Made with MyST</span></a></div><div class="flex items-center flex-grow w-auto"><div class="flex-grow hidden text-md lg:block"></div><div class="flex-grow block"></div><button type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="radix-:R75cp:" data-state="closed" class="myst-search-bar flex items-center h-10 aspect-square sm:w-64 text-left text-gray-600 dark:text-gray-300 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 myst-search-bar-disabled hover:ring-blue-500 dark:hover:ring-blue-500 hover:border-blue-500 dark:hover:border-blue-500"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-slot="icon" class="p-2.5 h-10 w-10 aspect-square"><path fill-rule="evenodd" d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z" clip-rule="evenodd"></path></svg><span class="myst-search-text-placeholder hidden sm:block grow">Search</span><div aria-hidden="true" class="myst-search-shortcut items-center hidden mx-1 font-mono text-sm text-gray-600 dark:text-gray-300 sm:flex gap-x-1"><kbd class="px-2 py-1 border border-gray-300 dark:border-gray-600 rounded-md shadow-[0px_2px_0px_0px_rgba(0,0,0,0.08)] dark:shadow-none hide-mac">CTRL</kbd><kbd class="px-2 py-1 border border-gray-300 dark:border-gray-600 rounded-md shadow-[0px_2px_0px_0px_rgba(0,0,0,0.08)] dark:shadow-none show-mac">⌘</kbd><kbd class="px-2 py-1 border border-gray-300 dark:border-gray-600 rounded-md shadow-[0px_2px_0px_0px_rgba(0,0,0,0.08)] dark:shadow-none ">K</kbd><script>
+;(() => {
+const script = document.currentScript;
+const root = script.parentElement;
+
+const isMac = /mac/i.test(
+      window.navigator.userAgentData?.platform ?? window.navigator.userAgent,
+    );
+root.querySelectorAll(".hide-mac").forEach(node => {node.classList.add(isMac ? "hidden" : "block")});
+root.querySelectorAll(".show-mac").forEach(node => {node.classList.add(!isMac ? "hidden" : "block")});
+})()</script></div></button><button class="myst-theme-button theme rounded-full aspect-square border border-stone-700 dark:border-white hover:bg-neutral-100 border-solid overflow-hidden text-stone-700 dark:text-white hover:text-stone-500 dark:hover:text-neutral-800 w-10 h-10 mx-3" title="Toggle theme between light and dark mode" aria-label="Toggle theme between light and dark mode"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-slot="icon" class="myst-theme-moon-icon h-full w-full p-0.5 hidden dark:block"><path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 0 1 .162.819A8.97 8.97 0 0 0 9 6a9 9 0 0 0 9 9 8.97 8.97 0 0 0 3.463-.69.75.75 0 0 1 .981.98 10.503 10.503 0 0 1-9.694 6.46c-5.799 0-10.5-4.7-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 0 1 .818.162Z" clip-rule="evenodd"></path></svg><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" class="myst-theme-sun-icon h-full w-full p-0.5 dark:hidden"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"></path></svg></button><div class="block sm:hidden"></div><div class="hidden sm:block"></div></div></nav></div><div class="myst-primary-sidebar fixed xl:article-grid grid-gap xl:w-full xl:pointer-events-none overflow-auto max-xl:w-[75vw] max-xl:max-w-[350px] max-xl:!top-0 max-xl:h-screen lg:hidden hidden z-10" style="top:60px"><div class="myst-primary-sidebar-pointer pointer-events-auto xl:col-margin-left flex-col overflow-hidden max-xl:h-full hidden xl:flex"><div class="myst-primary-sidebar-nav flex-grow py-6 overflow-y-auto primary-scrollbar"><nav aria-label="Navigation" class="myst-primary-sidebar-topnav overflow-y-hidden transition-opacity lg:hidden ml-3 xl:ml-0 mr-3 max-w-[350px]"><div class="w-full px-1 dark:text-white font-medium"></div></nav></div></div></div><main class="article-grid grid-gap"><article class="article-grid subgrid-gap col-screen article content"><div class="hidden"></div><div id="skip-to-frontmatter" aria-label="article frontmatter" class="myst-fm-block mb-8 pt-9"><div class="myst-fm-block-header flex items-center mb-5 h-6 text-sm font-light"><div class="myst-fm-block-subject flex-none pr-2 smallcaps">Notebook examples</div><div class="flex-grow"></div><div class="myst-fm-block-badges"><a href="https://github.com/eoxhub-workspaces/eoxhub-notebooks" title="GitHub Repository: eoxhub-workspaces/eoxhub-notebooks" target="_blank" rel="noopener noreferrer" class="myst-fm-github-link text-inherit hover:text-inherit"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" width="1.25rem" height="1.25rem" class="myst-fm-github-icon inline-block mr-1 opacity-60 hover:opacity-100"><path d="M12 2.5c-5.4 0-9.8 4.4-9.8 9.7 0 4.3 2.8 8 6.7 9.2.5.1.7-.2.7-.5v-1.8c-2.4.5-3.1-.6-3.3-1.1-.1-.3-.6-1.1-1-1.4-.3-.2-.8-.6 0-.6s1.3.7 1.5 1c.9 1.5 2.3 1.1 2.8.8.1-.6.3-1.1.6-1.3-2.2-.2-4.4-1.1-4.4-4.8 0-1.1.4-1.9 1-2.6-.1-.2-.4-1.2.1-2.6 0 0 .8-.3 2.7 1 .8-.2 1.6-.3 2.4-.3.8 0 1.7.1 2.4.3 1.9-1.3 2.7-1 2.7-1 .5 1.3.2 2.3.1 2.6.6.7 1 1.5 1 2.6 0 3.7-2.3 4.6-4.4 4.8.4.3.7.9.7 1.8V21c0 .3.2.6.7.5 3.9-1.3 6.6-4.9 6.6-9.2 0-5.4-4.4-9.8-9.8-9.8z"></path></svg></a></div><a href="https://github.com/eoxhub-workspaces/eoxhub-notebooks/edit/main/notebooks/data_access/CDSE_Tiled_Data_Access.ipynb" title="Edit This Page" target="_blank" rel="noopener noreferrer" class="myst-fm-edit-link text-inherit hover:text-inherit"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" width="1.25rem" height="1.25rem" class="myst-fm-edit-icon inline-block mr-1 opacity-60 hover:opacity-100"><path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"></path></svg></a><div class="myst-fm-downloads-dropdown relative flex inline-block mx-1 grow-0" data-headlessui-state=""><button class="myst-fm-downloads-button relative ml-2 -mr-1" id="headlessui-menu-button-:Rs8ucp:" type="button" aria-haspopup="menu" aria-expanded="false" data-headlessui-state=""><span class="sr-only">Downloads</span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" width="1.25rem" height="1.25rem" class="myst-fm-downloads-icon"><title>Download</title><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"></path></svg></button></div></div><h1 class="myst-fm-block-title mb-0">CDSE Tiled Data Access</h1></div><div class="block my-10 lg:sticky lg:z-10 lg:h-0 lg:pt-0 lg:my-0 lg:ml-10 lg:col-margin-right" style="top:60px"><nav></nav></div><div id="skip-to-article"></div><div id="tQ6Qc8K7It" class="myst-jp-nb-block relative group/block"><p>This notebook shows how to access data from CDSE programatically, converting it to a possible wanted format (such as Cloud Optimized Geotiff - COG) and lastly registers it into an eoAPI instance.</p><p>Following steps are addressed:</p><ul><li><p><strong>Searches</strong> for scenes (skipping those already in eoAPI).</p></li><li><p><strong>Downloads</strong> tiles in parallel.</p></li><li><p><strong>Converts</strong> to COG (skipping if file exists).</p></li><li><p><strong>Registers</strong> in eoAPI.</p></li></ul></div><div id="eSrUqBV8Zv" class="myst-jp-nb-block relative group/block"><div class="myst-jp-nb-block-spinner flex sticky top-[115px] z-10 opacity-90 group-hover/block:opacity-100 group-hover/block:hidden"><div class="flex absolute top-0 right-0"></div></div><div class="myst-jp-nb-block sticky top-[115px] z-10 opacity-90 group-hover/block:opacity-100 group-hover/block:flex"><div class="absolute -top-[12px] right-0 flex flex-row rounded bg-white dark:bg-slate-800"></div></div><div class="relative myst-code group not-prose my-5 text-sm shadow hover:shadow-md dark:shadow-2xl dark:shadow-neutral-900 border border-l-4 border-gray-200 border-l-blue-400 dark:border-l-blue-400 dark:border-gray-800"><pre class="block overflow-auto p-3 myst-code-body hljs" style="background-color:unset"><code class="language-python" style="white-space:pre"># First we make sure we import all used dependencies
+import os
+import time
+import json
+import math
+import threading
+import concurrent.futures
+from datetime import datetime, timedelta
+from pathlib import Path
+from dataclasses import dataclass
+
+import requests
+from oauthlib.oauth2 import BackendApplicationClient
+from oauthlib.oauth2.rfc6749.errors import TokenExpiredError
+from requests_oauthlib import OAuth2Session
+
+import rasterio
+from rasterio.io import MemoryFile
+from rasterio.merge import merge
+from rasterio.enums import Resampling
+from rio_cogeo.cogeo import cog_translate
+from rio_cogeo.profiles import cog_profiles
+import pystac
+
+from sentinelhub import SHConfig, BBox, bbox_to_dimensions, CRS</code></pre><button title="Copy to Clipboard" class="inline-flex items-center opacity-0 group-hover:opacity-100 hover:opacity-100 focus:opacity-100 active:opacity-100 cursor-pointer ml-2 transition-color duration-200 ease-in-out text-blue-400 hover:text-blue-500 absolute right-1 myst-code-copy-icon top-1" aria-pressed="false" aria-label="Copy code to clipboard"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75"></path></svg></button></div><div data-name="outputs-container" data-mdast-node-id="jHB0VZIhzmscArtsDECWx" class="max-w-full overflow-y-visible overflow-x-auto m-0 group not-prose relative text-left"></div></div><div id="G9clTGMrSJ" class="myst-jp-nb-block relative group/block"><div class="myst-jp-nb-block-spinner flex sticky top-[115px] z-10 opacity-90 group-hover/block:opacity-100 group-hover/block:hidden"><div class="flex absolute top-0 right-0"></div></div><div class="myst-jp-nb-block sticky top-[115px] z-10 opacity-90 group-hover/block:opacity-100 group-hover/block:flex"><div class="absolute -top-[12px] right-0 flex flex-row rounded bg-white dark:bg-slate-800"></div></div><div class="relative myst-code group not-prose my-5 text-sm shadow hover:shadow-md dark:shadow-2xl dark:shadow-neutral-900 border border-l-4 border-gray-200 border-l-blue-400 dark:border-l-blue-400 dark:border-gray-800"><pre class="block overflow-auto p-3 myst-code-body hljs" style="background-color:unset"><code class="language-python" style="white-space:pre"># General configuration
+
+# Output directory
+output_dir = Path(&quot;./bucket/samples/sentinel2_cogs&quot;)
+output_dir.mkdir(exist_ok=True)
+
+# eoAPI Configuration
+EOAPI_URL = &quot;http://eoapi-rw-stac:8080&quot;
+STAC_COLLECTION_ID = &quot;sentinel-2-vienna-cdse&quot;
+S3_BUCKET = f&quot;s3://{os.getenv(&quot;workspace_BUCKET&quot;)}&quot;
+S3_PREFIX = &quot;sentinel2_cogs&quot;
+
+ALL_BANDS = [&quot;B01&quot;, &quot;B02&quot;, &quot;B03&quot;, &quot;B04&quot;, &quot;B05&quot;, &quot;B06&quot;, &quot;B07&quot;, &quot;B08&quot;, &quot;B8A&quot;, &quot;B09&quot;, &quot;B11&quot;, &quot;B12&quot;]
+
+# Area of Interest
+bbox = BBox(bbox=[16.15, 47.95, 16.55, 48.3], crs=CRS.WGS84)
+end_date = datetime.now()
+# Trying to take most recent scenes
+start_date = end_date - timedelta(days=360)
+
+# Please make sure you the cdse secret is available in
+# the Credentials Manager and injection is enabled
+# or replace this with you own CDSE tokens
+CLIENT_ID = os.getenv(&quot;cdse_CLIENT_ID&quot;)
+CLIENT_SECRET = os.getenv(&quot;cdse_CLIENT_SECRET&quot;)
+TOKEN_URL = &quot;https://identity.dataspace.copernicus.eu/auth/realms/CDSE/protocol/openid-connect/token&quot;
+SH_BASE_URL = &quot;https://sh.dataspace.copernicus.eu&quot;</code></pre><button title="Copy to Clipboard" class="inline-flex items-center opacity-0 group-hover:opacity-100 hover:opacity-100 focus:opacity-100 active:opacity-100 cursor-pointer ml-2 transition-color duration-200 ease-in-out text-blue-400 hover:text-blue-500 absolute right-1 myst-code-copy-icon top-1" aria-pressed="false" aria-label="Copy code to clipboard"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75"></path></svg></button></div><div data-name="outputs-container" data-mdast-node-id="946A8aZz2VirEQypcO72r" class="max-w-full overflow-y-visible overflow-x-auto m-0 group not-prose relative text-left"></div></div><div id="zgNXXszIb0" class="myst-jp-nb-block relative group/block"><h3 id="authentication-manager" class="relative group"><span class="heading-text">Authentication Manager</span><a class="no-underline text-inherit hover:text-inherit inline-block w-0 px-0 translate-x-[10px] font-normal select-none transition-opacity opacity-0 focus:opacity-100 group-hover:opacity-70" href="#authentication-manager" title="Link to this Section" aria-label="Link to this Section">¶</a></h3><p>This class wraps the OAuth session to handle token refreshing automatically as it is possible to loose the session while accessing the various tiles</p></div><div id="KQzDtsajAf" class="myst-jp-nb-block relative group/block"><div class="myst-jp-nb-block-spinner flex sticky top-[115px] z-10 opacity-90 group-hover/block:opacity-100 group-hover/block:hidden"><div class="flex absolute top-0 right-0"></div></div><div class="myst-jp-nb-block sticky top-[115px] z-10 opacity-90 group-hover/block:opacity-100 group-hover/block:flex"><div class="absolute -top-[12px] right-0 flex flex-row rounded bg-white dark:bg-slate-800"></div></div><div class="relative myst-code group not-prose my-5 text-sm shadow hover:shadow-md dark:shadow-2xl dark:shadow-neutral-900 border border-l-4 border-gray-200 border-l-blue-400 dark:border-l-blue-400 dark:border-gray-800"><pre class="block overflow-auto p-3 myst-code-body hljs" style="background-color:unset"><code class="language-python" style="white-space:pre">class CDSESessionManager:
+    &quot;&quot;&quot;
+    Thread-safe session manager that automatically refreshes the token 
+    when a TokenExpiredError occurs.
+    &quot;&quot;&quot;
+    def __init__(self, client_id, client_secret):
+        self.client_id = client_id
+        self.client_secret = client_secret
+        self.token_url = TOKEN_URL
+        self.lock = threading.Lock()
+        self.session = None
+        self.authenticate()
+
+    def authenticate(self):
+        &quot;&quot;&quot;Create a new authenticated session&quot;&quot;&quot;
+        print(&quot;Authenticating with CDSE...&quot;)
+        client = BackendApplicationClient(client_id=self.client_id)
+        self.session = OAuth2Session(client=client)
+        token = self.session.fetch_token(
+            token_url=self.token_url,
+            client_secret=self.client_secret,
+            include_client_id=True
+        )
+        print(f&quot;   Token obtained. Expires in {token.get(&#x27;expires_in&#x27;, &#x27;unknown&#x27;)}s&quot;)
+        return self.session
+
+    def refresh_token(self):
+        &quot;&quot;&quot;Thread-safe token refresh&quot;&quot;&quot;
+        with self.lock:
+            # Check if token was just refreshed by another thread to avoid double-refresh
+            # (Simple heuristic: just re-auth)
+            print(&quot;\nToken expired. Refreshing...&quot;, end=&quot; &quot;)
+            try:
+                self.authenticate()
+                print(&quot;Done.&quot;)
+            except Exception as e:
+                print(f&quot;FAILED: {e}&quot;)
+                raise
+
+    def post(self, url, json_data, retries=1):
+        &quot;&quot;&quot;Wrapper for session.post with auto-refresh logic&quot;&quot;&quot;
+        try:
+            response = self.session.post(url, json=json_data)
+            # Sometimes the server returns 401 instead of the library raising TokenExpiredError
+            if response.status_code == 401:
+                raise TokenExpiredError(&quot;401 Unauthorized&quot;)
+            response.raise_for_status()
+            return response
+            
+        except TokenExpiredError:
+            if retries &gt; 0:
+                self.refresh_token()
+                # Retry the request with new session
+                return self.post(url, json_data, retries=retries-1)
+            else:
+                raise
+
+# Initialize the Manager
+auth_manager = CDSESessionManager(CLIENT_ID, CLIENT_SECRET)
+</code></pre><button title="Copy to Clipboard" class="inline-flex items-center opacity-0 group-hover:opacity-100 hover:opacity-100 focus:opacity-100 active:opacity-100 cursor-pointer ml-2 transition-color duration-200 ease-in-out text-blue-400 hover:text-blue-500 absolute right-1 myst-code-copy-icon top-1" aria-pressed="false" aria-label="Copy code to clipboard"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75"></path></svg></button></div><div data-name="outputs-container" data-mdast-node-id="s6aLKHM9mLDpH5ie7cdE-" class="max-w-full overflow-y-visible overflow-x-auto m-0 group not-prose relative text-left"></div></div><div id="FrbZrLPH5U" class="myst-jp-nb-block relative group/block"><div class="myst-jp-nb-block-spinner flex sticky top-[115px] z-10 opacity-90 group-hover/block:opacity-100 group-hover/block:hidden"><div class="flex absolute top-0 right-0"></div></div><div class="myst-jp-nb-block sticky top-[115px] z-10 opacity-90 group-hover/block:opacity-100 group-hover/block:flex"><div class="absolute -top-[12px] right-0 flex flex-row rounded bg-white dark:bg-slate-800"></div></div><div class="relative myst-code group not-prose my-5 text-sm shadow hover:shadow-md dark:shadow-2xl dark:shadow-neutral-900 border border-l-4 border-gray-200 border-l-blue-400 dark:border-l-blue-400 dark:border-gray-800"><pre class="block overflow-auto p-3 myst-code-body hljs" style="background-color:unset"><code class="language-python" style="white-space:pre"># Collection Setup
+coll_payload = {
+    &quot;type&quot;: &quot;Collection&quot;, &quot;stac_version&quot;: &quot;1.0.0&quot;, &quot;id&quot;: STAC_COLLECTION_ID,
+    &quot;title&quot;: &quot;Vienna Sentinel-2&quot;, &quot;description&quot;: &quot;Imported from CDSE&quot;,
+    &quot;eodash:rasterform&quot;: &quot;https://workspace-ui-public.gtif-austria.hub-otc.eox.at/api/public/share/public-4wazei3y-02/test/aducat_s2_form.json&quot;,
+    &quot;license&quot;: &quot;CC-BY-4.0&quot;,
+    &quot;extent&quot;: {&quot;spatial&quot;: {&quot;bbox&quot;: [[16.2, 48.1, 16.6, 48.3]]}, &quot;temporal&quot;: {&quot;interval&quot;: [[&quot;2020-01-01T00:00:00Z&quot;, None]]}},
+    &quot;links&quot;: []
+}
+try: 
+    requests.post(f&quot;{EOAPI_URL}/collections&quot;, json=coll_payload)
+except: pass</code></pre><button title="Copy to Clipboard" class="inline-flex items-center opacity-0 group-hover:opacity-100 hover:opacity-100 focus:opacity-100 active:opacity-100 cursor-pointer ml-2 transition-color duration-200 ease-in-out text-blue-400 hover:text-blue-500 absolute right-1 myst-code-copy-icon top-1" aria-pressed="false" aria-label="Copy code to clipboard"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75"></path></svg></button></div><div data-name="outputs-container" data-mdast-node-id="nZzESnwHhWGyM6lWHHDkb" class="max-w-full overflow-y-visible overflow-x-auto m-0 group not-prose relative text-left"></div></div><div id="wxdDeVQ8hE" class="myst-jp-nb-block relative group/block"><h2 id="search-in-cdse-stac" class="relative group"><span class="heading-text">Search in CDSE STAC</span><a class="no-underline text-inherit hover:text-inherit inline-block w-0 px-0 translate-x-[10px] font-normal select-none transition-opacity opacity-0 focus:opacity-100 group-hover:opacity-70" href="#search-in-cdse-stac" title="Link to this Section" aria-label="Link to this Section">¶</a></h2></div><div id="STREAKIFNT" class="myst-jp-nb-block relative group/block"><div class="myst-jp-nb-block-spinner flex sticky top-[115px] z-10 opacity-90 group-hover/block:opacity-100 group-hover/block:hidden"><div class="flex absolute top-0 right-0"></div></div><div class="myst-jp-nb-block sticky top-[115px] z-10 opacity-90 group-hover/block:opacity-100 group-hover/block:flex"><div class="absolute -top-[12px] right-0 flex flex-row rounded bg-white dark:bg-slate-800"></div></div><div class="relative myst-code group not-prose my-5 text-sm shadow hover:shadow-md dark:shadow-2xl dark:shadow-neutral-900 border border-l-4 border-gray-200 border-l-blue-400 dark:border-l-blue-400 dark:border-gray-800"><pre class="block overflow-auto p-3 myst-code-body hljs" style="background-color:unset"><code class="language-python" style="white-space:pre"># --------------------------------------------------------------------------------
+# Search for Latest Sentinel-2 Scenes
+# --------------------------------------------------------------------------------
+
+def get_existing_dates(eoapi_url, collection_id):
+    &quot;&quot;&quot;
+    Fetch all unique dates (YYYY-MM-DD) currently registered in the STAC collection.
+    &quot;&quot;&quot;
+    existing_dates = set()
+    url = f&quot;{eoapi_url}/collections/{collection_id}/items&quot;
+    
+    # Simple pagination handling to get all items
+    params = {&quot;limit&quot;: 100} 
+    
+    try:
+        print(f&quot; Checking existing dates in collection &#x27;{collection_id}&#x27;...&quot;)
+        while url:
+            response = requests.get(url, params=params)
+            if response.status_code == 404:
+                return set() # Collection likely doesn&#x27;t exist yet
+            
+            response.raise_for_status()
+            data = response.json()
+            
+            for feature in data.get(&#x27;features&#x27;, []):
+                # Extract YYYY-MM-DD
+                date_str = feature[&#x27;properties&#x27;][&#x27;datetime&#x27;][:10]
+                existing_dates.add(date_str)
+                
+            # Check for next page link
+            url = None
+            links = data.get(&#x27;links&#x27;, [])
+            for link in links:
+                if link[&#x27;rel&#x27;] == &#x27;next&#x27;:
+                    url = link[&#x27;href&#x27;]
+                    params = {} # Params usually included in next link
+                    break
+    except Exception as e:
+        print(f&quot; Could not fetch existing items (starting fresh?): {e}&quot;)
+        
+    return existing_dates
+
+def search_sentinel2_scenes(auth_manager, bbox, start_date, end_date, max_results=2):
+    &quot;&quot;&quot;
+    Search for Sentinel-2 scenes using CDSE OpenSearch API,
+    filtering out days that are already in the STAC collection.
+    &quot;&quot;&quot;
+    base_url = &quot;https://catalogue.dataspace.copernicus.eu/resto/api/collections/Sentinel2/search.json&quot;
+    
+    params = {
+        &quot;box&quot;: f&quot;{bbox.min_x},{bbox.min_y},{bbox.max_x},{bbox.max_y}&quot;,
+        &quot;startDate&quot;: start_date.strftime(&quot;%Y-%m-%dT%H:%M:%SZ&quot;),
+        &quot;completionDate&quot;: end_date.strftime(&quot;%Y-%m-%dT%H:%M:%SZ&quot;),
+        &quot;processingLevel&quot;: &quot;S2MSI2A&quot;, 
+        &quot;cloudCover&quot;: &quot;[0,5]&quot;,
+        &quot;maxRecords&quot;: 200,
+        &quot;sortParam&quot;: &quot;startDate&quot;,
+        &quot;sortOrder&quot;: &quot;descending&quot;
+    }
+    
+    # 1. Fetch existing dates from your catalog
+    existing_dates = get_existing_dates(EOAPI_URL, STAC_COLLECTION_ID)
+    if existing_dates:
+        print(f&quot; Found {len(existing_dates)} days already registered. Skipping these dates.&quot;)
+    
+    # 2. Search CDSE
+    print(&quot; Searching CDSE catalog...&quot;)
+    response = requests.get(base_url, params=params)
+    response.raise_for_status()
+    
+    results = response.json()
+    features = results.get(&#x27;features&#x27;, [])
+    
+    # 3. Filter results
+    # Initialize seen_dates with what is already in the DB so we don&#x27;t pick them again
+    seen_dates = existing_dates.copy()
+    converted_features = []
+    
+    for feature in features:
+        scene_id = feature[&#x27;id&#x27;]
+        # Get YYYY-MM-DD
+        scene_date = feature[&#x27;properties&#x27;][&#x27;startDate&#x27;][:10]
+        
+        # SKIP IF DATE ALREADY EXISTS (in DB or earlier in this loop)
+        if scene_date in seen_dates:
+            continue
+            
+        # Mark this date as seen so we don&#x27;t pick another scene from the same day
+        seen_dates.add(scene_date)
+        
+        converted_features.append({
+            &#x27;id&#x27;: scene_id,
+            &#x27;properties&#x27;: {
+                &#x27;datetime&#x27;: feature[&#x27;properties&#x27;][&#x27;startDate&#x27;],
+                &#x27;eo:cloud_cover&#x27;: feature[&#x27;properties&#x27;].get(&#x27;cloudCover&#x27;, 0)
+            },
+            &#x27;geometry&#x27;: feature.get(&#x27;geometry&#x27;),
+            &#x27;bbox&#x27;: feature.get(&#x27;bbox&#x27;)
+        })
+        
+        if len(converted_features) &gt;= max_results:
+            break
+    
+    return converted_features
+
+# Run the search, here we configure the area and time of interest as well as how many scenes to fetch
+scenes = search_sentinel2_scenes(auth_manager, bbox, start_date, end_date, 5)
+
+print(f&quot;\nSelected {len(scenes)} NEW scenes for processing:&quot;)
+for i, scene in enumerate(scenes, 1):
+    print(f&quot;{i}. ID: {scene[&#x27;id&#x27;]}&quot;)
+    print(f&quot;   Date: {scene[&#x27;properties&#x27;][&#x27;datetime&#x27;]}&quot;)
+    print(f&quot;   Cloud Cover: {scene[&#x27;properties&#x27;].get(&#x27;eo:cloud_cover&#x27;, &#x27;N/A&#x27;)}%\n&quot;)</code></pre><button title="Copy to Clipboard" class="inline-flex items-center opacity-0 group-hover:opacity-100 hover:opacity-100 focus:opacity-100 active:opacity-100 cursor-pointer ml-2 transition-color duration-200 ease-in-out text-blue-400 hover:text-blue-500 absolute right-1 myst-code-copy-icon top-1" aria-pressed="false" aria-label="Copy code to clipboard"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75"></path></svg></button></div><div data-name="outputs-container" data-mdast-node-id="f9LtZKYpiwgt9fHxX2jQF" class="max-w-full overflow-y-visible overflow-x-auto m-0 group not-prose relative text-left"></div></div><div id="fooCK8hpyC" class="myst-jp-nb-block relative group/block"><h2 id="data-conversion" class="relative group"><span class="heading-text">Data conversion</span><a class="no-underline text-inherit hover:text-inherit inline-block w-0 px-0 translate-x-[10px] font-normal select-none transition-opacity opacity-0 focus:opacity-100 group-hover:opacity-70" href="#data-conversion" title="Link to this Section" aria-label="Link to this Section">¶</a></h2></div><div id="ol7NoIq3Je" class="myst-jp-nb-block relative group/block"><div class="myst-jp-nb-block-spinner flex sticky top-[115px] z-10 opacity-90 group-hover/block:opacity-100 group-hover/block:hidden"><div class="flex absolute top-0 right-0"></div></div><div class="myst-jp-nb-block sticky top-[115px] z-10 opacity-90 group-hover/block:opacity-100 group-hover/block:flex"><div class="absolute -top-[12px] right-0 flex flex-row rounded bg-white dark:bg-slate-800"></div></div><div class="relative myst-code group not-prose my-5 text-sm shadow hover:shadow-md dark:shadow-2xl dark:shadow-neutral-900 border border-l-4 border-gray-200 border-l-blue-400 dark:border-l-blue-400 dark:border-gray-800"><pre class="block overflow-auto p-3 myst-code-body hljs" style="background-color:unset"><code class="language-python" style="white-space:pre">
+# --- Configuration ---
+TARGET_RES = 10 
+MAX_PIXELS = 2000 
+MAX_WORKERS = 2 
+MAX_RETRIES = 3
+RETRY_DELAY = 2
+
+@dataclass
+class SimpleBBox:
+    min_x: float; min_y: float; max_x: float; max_y: float
+
+def split_bbox_into_tiles(bbox):
+    w_deg, h_deg = bbox.max_x - bbox.min_x, bbox.max_y - bbox.min_y
+    center_lat = (bbox.min_y + bbox.max_y) / 2
+    m_lat, m_lon = 111320, 111320 * math.cos(math.radians(center_lat))
+    tot_w_px, tot_h_px = int((w_deg * m_lon) / TARGET_RES), int((h_deg * m_lat) / TARGET_RES)
+    cols, rows = math.ceil(tot_w_px / MAX_PIXELS), math.ceil(tot_h_px / MAX_PIXELS)
+    
+    tiles = []
+    print(f&quot;    Tiling: {cols}x{rows} grid&quot;)
+    for r in range(rows):
+        for c in range(cols):
+            tiles.append({
+                &quot;bbox&quot;: SimpleBBox(
+                    bbox.min_x + (c * (w_deg/cols)), 
+                    bbox.min_y + (r * (h_deg/rows)), 
+                    bbox.min_x + ((c+1) * (w_deg/cols)), 
+                    bbox.min_y + ((r+1) * (h_deg/rows))
+                ),
+                &quot;size&quot;: (int(tot_w_px/cols), int(tot_h_px/rows)),
+                &quot;index&quot;: (r, c)
+            })
+    return tiles
+
+def convert_to_cog(path, arr, transform, crs):
+    prof = cog_profiles.get(&quot;deflate&quot;).copy()
+    prof.update({
+        &quot;BIGTIFF&quot;: &quot;IF_NEEDED&quot;,
+        &quot;blockxsize&quot;: 512,
+        &quot;blockysize&quot;: 512,
+        &quot;photometric&quot;: &quot;MINISBLACK&quot;
+    })
+    with MemoryFile() as mem:
+        with mem.open(driver=&quot;GTiff&quot;, dtype=str(arr.dtype), count=arr.shape[0], 
+                      height=arr.shape[1], width=arr.shape[2], crs=crs, 
+                      transform=transform, photometric=&quot;MINISBLACK&quot;) as dst:
+            dst.write(arr)
+            dst.descriptions = tuple(ALL_BANDS)
+            dst.build_overviews([2,4,8,16], Resampling.nearest)
+            dst.update_tags(ns=&#x27;rio_overview&#x27;, resampling=&#x27;nearest&#x27;)
+        with mem.open() as src:
+            cog_translate(src, path, prof, in_memory=True, quiet=True)
+    print(f&quot;   COG Saved: {path}&quot;)
+
+def download_single_tile(auth_mgr, tile_data, scene_id, scene_datetime):
+    &quot;&quot;&quot;Worker function with RETRY logic&quot;&quot;&quot;
+    dt = datetime.fromisoformat(scene_datetime.replace(&#x27;Z&#x27;, &#x27;+00:00&#x27;))
+    
+    # ... (Evalscript needed for data extraction) ...
+    evalscript = &quot;&quot;&quot;
+    //VERSION=3
+    function setup() {
+        return {
+            input: [{ bands: &quot;&quot;&quot; + json.dumps(ALL_BANDS) + &quot;&quot;&quot;, units: &quot;DN&quot; }],
+            output: { bands: &quot;&quot;&quot; + str(len(ALL_BANDS)) + &quot;&quot;&quot;, sampleType: &quot;UINT16&quot; }
+        };
+    }
+    function evaluatePixel(sample) {
+        return [&quot;&quot;&quot; + &quot;, &quot;.join([f&quot;sample.{b}&quot; for b in ALL_BANDS]) + &quot;&quot;&quot;];
+    }
+    &quot;&quot;&quot;
+    
+    t_bbox = tile_data[&#x27;bbox&#x27;]
+    payload = {
+        &quot;input&quot;: {
+            &quot;bounds&quot;: {
+                &quot;bbox&quot;: [t_bbox.min_x, t_bbox.min_y, t_bbox.max_x, t_bbox.max_y],
+                &quot;properties&quot;: {&quot;crs&quot;: &quot;http://www.opengis.net/def/crs/EPSG/0/4326&quot;}
+            },
+            &quot;data&quot;: [{
+                &quot;type&quot;: &quot;sentinel-2-l2a&quot;,
+                &quot;dataFilter&quot;: {
+                    &quot;timeRange&quot;: {
+                        &quot;from&quot;: (dt - timedelta(minutes=30)).strftime(&quot;%Y-%m-%dT%H:%M:%SZ&quot;),
+                        &quot;to&quot;: (dt + timedelta(minutes=30)).strftime(&quot;%Y-%m-%dT%H:%M:%SZ&quot;)
+                    }
+                }
+            }]
+        },
+        &quot;output&quot;: {
+            &quot;width&quot;: tile_data[&#x27;size&#x27;][0], &quot;height&quot;: tile_data[&#x27;size&#x27;][1],
+            &quot;responses&quot;: [{&quot;identifier&quot;: &quot;default&quot;, &quot;format&quot;: {&quot;type&quot;: &quot;image/tiff&quot;}}]
+        },
+        &quot;evalscript&quot;: evalscript
+    }
+    
+    # --- Retry Loop ---
+    for attempt in range(1, MAX_RETRIES + 1):
+        try:
+            response = auth_mgr.post(f&quot;{SH_BASE_URL}/api/v1/process&quot;, payload)
+            # Assuming auth_mgr raises an exception on non-200. 
+            # If not, check response.status_code here.
+            
+            # Simple validation to ensure we actually got data
+            if response.content and len(response.content) &gt; 100:
+                return tile_data[&#x27;index&#x27;], response.content
+            else:
+                raise Exception(&quot;Empty response received&quot;)
+
+        except Exception as e:
+            # If this was the last attempt, fail
+            if attempt == MAX_RETRIES:
+                print(f&quot;      Tile {tile_data[&#x27;index&#x27;]} failed permanently: {e}&quot;)
+                return tile_data[&#x27;index&#x27;], None
+            
+            # Otherwise, wait and retry
+            sleep_time = RETRY_DELAY * attempt
+            print(f&quot;      Tile {tile_data[&#x27;index&#x27;]} failed (Attempt {attempt}/{MAX_RETRIES}). Retrying in {sleep_time}s...&quot;)
+            time.sleep(sleep_time)
+
+    return tile_data[&#x27;index&#x27;], None
+
+# --- Main Loop ---
+processed_scenes = []
+tiles = split_bbox_into_tiles(bbox) 
+
+for scene in scenes:
+    s_id, s_dt = scene[&#x27;id&#x27;], scene[&#x27;properties&#x27;][&#x27;datetime&#x27;]
+    cog_path = output_dir / f&quot;{s_dt[:10]}_{s_id}_cog.tif&quot;
+    print(f&quot;\nProcessing {s_id}...&quot;)
+
+    if cog_path.exists():
+        print(f&quot;   File exists. Skipping download.&quot;)
+        processed_scenes.append({&quot;id&quot;: s_id, &quot;path&quot;: cog_path, &quot;props&quot;: scene[&#x27;properties&#x27;], &quot;geom&quot;: scene[&#x27;geometry&#x27;]})
+        continue
+
+    print(f&quot;   Downloading {len(tiles)} tiles (Parallel)...&quot;)
+    tile_results = {}
+    
+    with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        futures = {executor.submit(download_single_tile, auth_manager, t, s_id, s_dt): t for t in tiles}
+        
+        for f in concurrent.futures.as_completed(futures):
+            idx, content = f.result()
+            # Only store if content is valid
+            if content: 
+                tile_results[idx] = content
+    
+    # --- Completeness Check ---
+    # We compare the number of valid results to the number of expected tiles.
+    if len(tile_results) != len(tiles):
+        missing_count = len(tiles) - len(tile_results)
+        print(f&quot;   Scene failed. Missing {missing_count} tiles. Discarding scene.&quot;)
+        # We &#x27;continue&#x27; here to move to the next scene without stitching
+        continue
+
+    print(&quot;   Stitching &amp; Converting...&quot;)
+    m_files, m_dsets = [], []
+    try:
+        for k in sorted(tile_results.keys()):
+            mf = MemoryFile(tile_results[k])
+            m_files.append(mf); m_dsets.append(mf.open())
+        
+        mosaic, trans = merge(m_dsets)
+        convert_to_cog(str(cog_path), mosaic, trans, m_dsets[0].crs)
+        
+        if cog_path.exists():
+            processed_scenes.append({&quot;id&quot;: s_id, &quot;path&quot;: cog_path, &quot;props&quot;: scene[&#x27;properties&#x27;], &quot;geom&quot;: scene[&#x27;geometry&#x27;]})
+    except Exception as e:
+        print(f&quot;   Stitching failed: {e}&quot;)
+    finally:
+        for d in m_dsets: d.close()
+        for m in m_files: m.close()</code></pre><button title="Copy to Clipboard" class="inline-flex items-center opacity-0 group-hover:opacity-100 hover:opacity-100 focus:opacity-100 active:opacity-100 cursor-pointer ml-2 transition-color duration-200 ease-in-out text-blue-400 hover:text-blue-500 absolute right-1 myst-code-copy-icon top-1" aria-pressed="false" aria-label="Copy code to clipboard"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75"></path></svg></button></div><div data-name="outputs-container" data-mdast-node-id="c8KA-cbNdK-5i3YJUD3XF" class="max-w-full overflow-y-visible overflow-x-auto m-0 group not-prose relative text-left"></div></div><div id="LsqGBmFWmQ" class="myst-jp-nb-block relative group/block"><h2 id="register-in-eoapi" class="relative group"><span class="heading-text">Register in eoAPI</span><a class="no-underline text-inherit hover:text-inherit inline-block w-0 px-0 translate-x-[10px] font-normal select-none transition-opacity opacity-0 focus:opacity-100 group-hover:opacity-70" href="#register-in-eoapi" title="Link to this Section" aria-label="Link to this Section">¶</a></h2><p>If wanted this example continues explaining how the retrieved data can be registered into an eoAPI instance</p></div><div id="xpWK2Mybg9" class="myst-jp-nb-block relative group/block"><div class="myst-jp-nb-block-spinner flex sticky top-[115px] z-10 opacity-90 group-hover/block:opacity-100 group-hover/block:hidden"><div class="flex absolute top-0 right-0"></div></div><div class="myst-jp-nb-block sticky top-[115px] z-10 opacity-90 group-hover/block:opacity-100 group-hover/block:flex"><div class="absolute -top-[12px] right-0 flex flex-row rounded bg-white dark:bg-slate-800"></div></div><div class="relative myst-code group not-prose my-5 text-sm shadow hover:shadow-md dark:shadow-2xl dark:shadow-neutral-900 border border-l-4 border-gray-200 border-l-blue-400 dark:border-l-blue-400 dark:border-gray-800"><pre class="block overflow-auto p-3 myst-code-body hljs" style="background-color:unset"><code class="language-python" style="white-space:pre">def create_and_register(scene, eoapi_url, collection_id):
+    s_id, props = scene[&#x27;id&#x27;], scene[&#x27;props&#x27;]
+    dt = datetime.fromisoformat(props[&#x27;datetime&#x27;].replace(&#x27;Z&#x27;, &#x27;+00:00&#x27;))
+    cog_url = f&quot;{S3_BUCKET}/{S3_PREFIX}/{scene[&#x27;path&#x27;].name}&quot;
+    
+    # Geometry fallback
+    geom = scene[&#x27;geom&#x27;]
+    if not geom: 
+        geom = {&quot;type&quot;: &quot;Polygon&quot;, &quot;coordinates&quot;: [[ [bbox.min_x, bbox.min_y], [bbox.max_x, bbox.min_y], [bbox.max_x, bbox.max_y], [bbox.min_x, bbox.max_y], [bbox.min_x, bbox.min_y] ]]}
+        
+    # Get BBox from geometry for STAC Item
+    coords = geom[&#x27;coordinates&#x27;][0]
+    xs, ys = [c[0] for c in coords], [c[1] for c in coords]
+    ibbox = [min(xs), min(ys), max(xs), max(ys)]
+
+    item = pystac.Item(id=s_id, geometry=geom, bbox=ibbox, datetime=dt, 
+                       properties={&quot;eo:cloud_cover&quot;: props.get(&#x27;eo:cloud_cover&#x27;, 0)}, collection=collection_id)
+    
+    item.add_asset(&quot;cog&quot;, pystac.Asset(href=cog_url, media_type=&quot;image/tiff; application=geotiff; profile=cloud-optimized&quot;, roles=[&quot;data&quot;, &quot;visual&quot;]))
+    
+    # Add XYZ Preview Link
+    eoapi_endpoint = os.getenv(&quot;workspace_RASTER_ENDPOINT&quot;)
+    xyz = f&quot;{eoapi_endpoint}/collections/{collection_id}/items/{s_id}/tiles/WebMercatorQuad/{{z}}/{{x}}/{{y}}@1x?assets=cog&amp;asset_bidx=cog|4,3,2&amp;rescale=0,3000&quot;
+    item.add_link(pystac.Link(rel=&quot;xyz&quot;, target=xyz, media_type=&quot;application/json&quot;))
+
+    res = requests.post(f&quot;{eoapi_url}/collections/{collection_id}/items&quot;, json=item.to_dict())
+    if res.status_code in [200, 201]: print(f&quot; Registered {s_id}&quot;)
+    else: print(f&quot; Failed {s_id}: {res.text}&quot;)
+
+print(f&quot;Registration...&quot;)
+for s in processed_scenes:
+    create_and_register(s, EOAPI_URL, STAC_COLLECTION_ID)</code></pre><button title="Copy to Clipboard" class="inline-flex items-center opacity-0 group-hover:opacity-100 hover:opacity-100 focus:opacity-100 active:opacity-100 cursor-pointer ml-2 transition-color duration-200 ease-in-out text-blue-400 hover:text-blue-500 absolute right-1 myst-code-copy-icon top-1" aria-pressed="false" aria-label="Copy code to clipboard"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75"></path></svg></button></div><div data-name="outputs-container" data-mdast-node-id="BjMuPLx6YZdu9Z8SNL9rD" class="max-w-full overflow-y-visible overflow-x-auto m-0 group not-prose relative text-left"></div></div><div id="vtDm6El6mz" class="myst-jp-nb-block relative group/block"><div class="myst-jp-nb-block-spinner flex sticky top-[115px] z-10 opacity-90 group-hover/block:opacity-100 group-hover/block:hidden"><div class="flex absolute top-0 right-0"></div></div><div class="myst-jp-nb-block sticky top-[115px] z-10 opacity-90 group-hover/block:opacity-100 group-hover/block:flex"><div class="absolute -top-[12px] right-0 flex flex-row rounded bg-white dark:bg-slate-800"></div></div><div class="relative myst-code group not-prose my-5 text-sm shadow hover:shadow-md dark:shadow-2xl dark:shadow-neutral-900 border border-l-4 border-gray-200 border-l-blue-400 dark:border-l-blue-400 dark:border-gray-800"><pre class="block overflow-auto p-3 myst-code-body hljs" style="background-color:unset"><code class="language-python" style="white-space:pre"># --------------------------------------------------------------------------------
+# Finally we update Collection Temporal Extent
+# --------------------------------------------------------------------------------
+import requests
+
+def update_collection_extent(eoapi_url, collection_id):
+    print(f&quot;Updating temporal extent for collection: &#x27;{collection_id}&#x27;...&quot;)
+
+    # 1. Fetch all item datetimes to determine the full range
+    all_datetimes = []
+    items_url = f&quot;{eoapi_url}/collections/{collection_id}/items&quot;
+    params = {&quot;limit&quot;: 100}
+
+    try:
+        # Loop through pages to get every single item&#x27;s date
+        while items_url:
+            r = requests.get(items_url, params=params)
+            r.raise_for_status()
+            data = r.json()
+            
+            for feature in data.get(&#x27;features&#x27;, []):
+                all_datetimes.append(feature[&#x27;properties&#x27;][&#x27;datetime&#x27;])
+            
+            # Handle Pagination (Follow &#x27;next&#x27; link)
+            items_url = None
+            for link in data.get(&#x27;links&#x27;, []):
+                if link[&#x27;rel&#x27;] == &#x27;next&#x27;:
+                    items_url = link[&#x27;href&#x27;]
+                    params = {} # Parameters are usually included in the &#x27;next&#x27; href
+                    break
+
+        if not all_datetimes:
+            print(&quot; No items found in collection. Skipping extent update.&quot;)
+            return
+
+        # 2. Calculate new Min/Max
+        min_dt = min(all_datetimes)
+        max_dt = max(all_datetimes)
+        
+        print(f&quot;   Found {len(all_datetimes)} items.&quot;)
+        print(f&quot;   Calculated Interval: {min_dt}  &lt;--&gt;  {max_dt}&quot;)
+
+        # 3. Fetch the current Collection definition
+        coll_url = f&quot;{eoapi_url}/collections/{collection_id}&quot;
+        coll_resp = requests.get(coll_url)
+        coll_resp.raise_for_status()
+        coll_data = coll_resp.json()
+        
+        # 4. Update the extent in the JSON
+        # STAC Spec: extent.temporal.interval is a list of lists [[start, end]]
+        coll_data[&#x27;extent&#x27;][&#x27;temporal&#x27;][&#x27;interval&#x27;] = [[min_dt, max_dt]]
+        
+        # 5. Send PUT request to save changes
+        update_resp = requests.put(coll_url, json=coll_data)
+        
+        if update_resp.status_code in [200, 204]:
+            print(f&quot; Success! Collection &#x27;{collection_id}&#x27; temporal extent updated.&quot;)
+        else:
+            print(f&quot; Failed to update collection. Server returned: {update_resp.status_code}&quot;)
+            print(update_resp.text)
+
+    except Exception as e:
+        print(f&quot; Error updating extent: {e}&quot;)
+
+# Run the update
+update_collection_extent(EOAPI_URL, STAC_COLLECTION_ID)</code></pre><button title="Copy to Clipboard" class="inline-flex items-center opacity-0 group-hover:opacity-100 hover:opacity-100 focus:opacity-100 active:opacity-100 cursor-pointer ml-2 transition-color duration-200 ease-in-out text-blue-400 hover:text-blue-500 absolute right-1 myst-code-copy-icon top-1" aria-pressed="false" aria-label="Copy code to clipboard"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 0 1-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 0 1 1.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 0 0-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 0 1-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H9.75"></path></svg></button></div><div data-name="outputs-container" data-mdast-node-id="nXeG8IH1nkCbBOoR9KYRh" class="max-w-full overflow-y-visible overflow-x-auto m-0 group not-prose relative text-left"></div></div><div class="myst-backmatter-parts"></div></article></main><script>((a,l)=>{if(!window.history.state||!window.history.state.key){let u=Math.random().toString(32).slice(2);window.history.replaceState({key:u},"")}try{let d=JSON.parse(sessionStorage.getItem(a)||"{}")[l||window.history.state.key];typeof d=="number"&&window.scrollTo(0,d)}catch(u){console.error(u),sessionStorage.removeItem(a)}})("positions", null)</script><link rel="modulepreload" href="/eoxhub-notebooks/build/entry.client-PCJPW7TK.js"/><link rel="modulepreload" href="/eoxhub-notebooks/build/_shared/chunk-AQ2CODAG.js"/><link rel="modulepreload" href="/eoxhub-notebooks/build/_shared/chunk-JJXTQVMA.js"/><link rel="modulepreload" href="/eoxhub-notebooks/build/_shared/chunk-OZE3FFNP.js"/><link rel="modulepreload" href="/eoxhub-notebooks/build/_shared/chunk-G62B6HZR.js"/><link rel="modulepreload" href="/eoxhub-notebooks/build/_shared/chunk-C4DFGG5C.js"/><link rel="modulepreload" href="/eoxhub-notebooks/build/_shared/chunk-J7TUH54J.js"/><link rel="modulepreload" href="/eoxhub-notebooks/build/_shared/chunk-FZ2S7OYD.js"/><link rel="modulepreload" href="/eoxhub-notebooks/build/_shared/chunk-JEM6JXYA.js"/><link rel="modulepreload" href="/eoxhub-notebooks/build/_shared/chunk-34XIY2DH.js"/><link rel="modulepreload" href="/eoxhub-notebooks/build/_shared/chunk-KQM5FBHR.js"/><link rel="modulepreload" href="/eoxhub-notebooks/build/_shared/chunk-OCWQY3HK.js"/><link rel="modulepreload" href="/eoxhub-notebooks/build/_shared/chunk-7HNKBP4B.js"/><link rel="modulepreload" href="/eoxhub-notebooks/build/_shared/chunk-CUKUDK3R.js"/><link rel="modulepreload" href="/eoxhub-notebooks/build/_shared/chunk-3EBOCCHJ.js"/><link rel="modulepreload" href="/eoxhub-notebooks/build/_shared/chunk-O4VQNZ62.js"/><link rel="modulepreload" href="/eoxhub-notebooks/build/_shared/chunk-4OEDG4JQ.js"/><link rel="modulepreload" href="/eoxhub-notebooks/build/_shared/chunk-GUCIBHGO.js"/><link rel="modulepreload" href="/eoxhub-notebooks/build/root-PMP5BIHC.js"/><link rel="modulepreload" href="/eoxhub-notebooks/build/_shared/chunk-IX5KPAHP.js"/><link rel="modulepreload" href="/eoxhub-notebooks/build/routes/$-5ZLZ2O3Y.js"/><script>window.__remixContext = {"url":"/notebooks/data-access/cdse-tiled-data-access","state":{"loaderData":{"root":{"config":{"version":3,"myst":"1.8.0","options":{"hide_toc":true,"hide_footer_links":true,"folders":true,"style":"/eoxhub-notebooks/build/custom-16119b67e8ada6e1f72689bf350b1541.css"},"nav":[],"actions":[],"projects":[{"subject":"Notebook examples","title":"EOxHub Notebooks","description":"Collection of examples for EOxHub Workspaces","github":"https://github.com/eoxhub-workspaces/eoxhub-notebooks","id":"feb2375d-3838-4365-bbd7-f43d501cdcbe","exports":[],"bibliography":[],"index":"readme","pages":[{"title":"Notebooks","level":1},{"title":"Data Access","level":2},{"slug":"notebooks.data-access.cdse-basic-data-access","title":"CDSE Basic Data Access","description":"","date":"","thumbnail":"","thumbnailOptimized":"","banner":"","bannerOptimized":"","tags":[],"level":3},{"slug":"notebooks.data-access.cdse-tiled-data-access","title":"CDSE Tiled Data Access","description":"","date":"","thumbnail":"","thumbnailOptimized":"","banner":"","bannerOptimized":"","tags":[],"level":3},{"title":"EoAPI","level":2},{"slug":"notebooks.eoapi.eoapi-registration","title":"eoAPI registration example","description":"","date":"","thumbnail":"","thumbnailOptimized":"","banner":"","bannerOptimized":"","tags":[],"level":3},{"title":"Pangeo Dask Notebooks","level":2},{"slug":"notebooks.pangeo-dask-notebooks.example-wildfires","title":"Scale your processes with Dask - hands on example","description":"","date":"","thumbnail":"","thumbnailOptimized":"","banner":"","bannerOptimized":"","tags":[],"level":3}]}]},"CONTENT_CDN_PORT":"3100","MODE":"static","BASE_URL":"/eoxhub-notebooks"},"routes/$":{"config":{"version":3,"myst":"1.8.0","options":{"hide_toc":true,"hide_footer_links":true,"folders":true,"style":"/eoxhub-notebooks/build/custom-16119b67e8ada6e1f72689bf350b1541.css"},"nav":[],"actions":[],"projects":[{"subject":"Notebook examples","title":"EOxHub Notebooks","description":"Collection of examples for EOxHub Workspaces","github":"https://github.com/eoxhub-workspaces/eoxhub-notebooks","id":"feb2375d-3838-4365-bbd7-f43d501cdcbe","exports":[],"bibliography":[],"index":"readme","pages":[{"title":"Notebooks","level":1},{"title":"Data Access","level":2},{"slug":"notebooks.data-access.cdse-basic-data-access","title":"CDSE Basic Data Access","description":"","date":"","thumbnail":"","thumbnailOptimized":"","banner":"","bannerOptimized":"","tags":[],"level":3},{"slug":"notebooks.data-access.cdse-tiled-data-access","title":"CDSE Tiled Data Access","description":"","date":"","thumbnail":"","thumbnailOptimized":"","banner":"","bannerOptimized":"","tags":[],"level":3},{"title":"EoAPI","level":2},{"slug":"notebooks.eoapi.eoapi-registration","title":"eoAPI registration example","description":"","date":"","thumbnail":"","thumbnailOptimized":"","banner":"","bannerOptimized":"","tags":[],"level":3},{"title":"Pangeo Dask Notebooks","level":2},{"slug":"notebooks.pangeo-dask-notebooks.example-wildfires","title":"Scale your processes with Dask - hands on example","description":"","date":"","thumbnail":"","thumbnailOptimized":"","banner":"","bannerOptimized":"","tags":[],"level":3}]}]},"page":{"version":3,"kind":"Notebook","sha256":"454b46cbbc2fe57dd552c8924bb8a248e374cf9eb11d8fcfbf7564459853e6b1","slug":"notebooks.data-access.cdse-tiled-data-access","location":"/notebooks/data_access/CDSE_Tiled_Data_Access.ipynb","dependencies":[],"frontmatter":{"title":"CDSE Tiled Data Access","content_includes_title":false,"kernelspec":{"name":"conda-env-global-global-eoxhub_general-py","display_name":"global-global-eoxhub_general","language":"python"},"github":"https://github.com/eoxhub-workspaces/eoxhub-notebooks","subject":"Notebook examples","numbering":{"title":{"offset":2}},"source_url":"https://github.com/eoxhub-workspaces/eoxhub-notebooks/blob/main/notebooks/data_access/CDSE_Tiled_Data_Access.ipynb","edit_url":"https://github.com/eoxhub-workspaces/eoxhub-notebooks/edit/main/notebooks/data_access/CDSE_Tiled_Data_Access.ipynb","exports":[{"format":"ipynb","filename":"CDSE_Tiled_Data_Access.ipynb","url":"/eoxhub-notebooks/build/CDSE_Tiled_Data_Acce-fd7e1b66bbdee1885ae499ef70427c87.ipynb"}]},"widgets":{},"mdast":{"type":"root","children":[{"type":"block","kind":"notebook-content","data":{"editable":true,"metadata":{"description":"This notebook shows how to access data from CDSE programatically, converting it to a possible wanted format (such as Cloud Optimized Geotiff - COG) and lastly registers it into an eoAPI instance.","title":"CDSE Tiled Data Access"},"slideshow":{"slide_type":""},"tags":[]},"children":[{"type":"paragraph","position":{"start":{"line":3,"column":1},"end":{"line":3,"column":1}},"children":[{"type":"text","value":"This notebook shows how to access data from CDSE programatically, converting it to a possible wanted format (such as Cloud Optimized Geotiff - COG) and lastly registers it into an eoAPI instance.","position":{"start":{"line":3,"column":1},"end":{"line":3,"column":1}},"key":"iaxeuA8uRB"}],"key":"xJ4RCbnVzk"},{"type":"paragraph","position":{"start":{"line":5,"column":1},"end":{"line":5,"column":1}},"children":[{"type":"text","value":"Following steps are addressed:","position":{"start":{"line":5,"column":1},"end":{"line":5,"column":1}},"key":"ypJESBDLbm"}],"key":"HRxwWzotNe"},{"type":"list","ordered":false,"spread":false,"position":{"start":{"line":6,"column":1},"end":{"line":9,"column":1}},"children":[{"type":"listItem","spread":true,"position":{"start":{"line":6,"column":1},"end":{"line":6,"column":1}},"children":[{"type":"paragraph","children":[{"type":"strong","position":{"start":{"line":6,"column":1},"end":{"line":6,"column":1}},"children":[{"type":"text","value":"Searches","position":{"start":{"line":6,"column":1},"end":{"line":6,"column":1}},"key":"uFru2IdpdW"}],"key":"EzhXPkCnGK"},{"type":"text","value":" for scenes (skipping those already in eoAPI).","position":{"start":{"line":6,"column":1},"end":{"line":6,"column":1}},"key":"OhtVOaztoo"}],"key":"NuWzvSVf8X"}],"key":"gQf5cw35cs"},{"type":"listItem","spread":true,"position":{"start":{"line":7,"column":1},"end":{"line":7,"column":1}},"children":[{"type":"paragraph","children":[{"type":"strong","position":{"start":{"line":7,"column":1},"end":{"line":7,"column":1}},"children":[{"type":"text","value":"Downloads","position":{"start":{"line":7,"column":1},"end":{"line":7,"column":1}},"key":"NaugYwVmye"}],"key":"bwfrzWQjOz"},{"type":"text","value":" tiles in parallel.","position":{"start":{"line":7,"column":1},"end":{"line":7,"column":1}},"key":"KataND9Ucj"}],"key":"OWGdu5EO0B"}],"key":"T1RPPZoz5s"},{"type":"listItem","spread":true,"position":{"start":{"line":8,"column":1},"end":{"line":8,"column":1}},"children":[{"type":"paragraph","children":[{"type":"strong","position":{"start":{"line":8,"column":1},"end":{"line":8,"column":1}},"children":[{"type":"text","value":"Converts","position":{"start":{"line":8,"column":1},"end":{"line":8,"column":1}},"key":"n7k0t2NjhR"}],"key":"YAWpINPNIv"},{"type":"text","value":" to COG (skipping if file exists).","position":{"start":{"line":8,"column":1},"end":{"line":8,"column":1}},"key":"pD9sseDZCX"}],"key":"ijKldcuYS4"}],"key":"I868RThRr2"},{"type":"listItem","spread":true,"position":{"start":{"line":9,"column":1},"end":{"line":9,"column":1}},"children":[{"type":"paragraph","children":[{"type":"strong","position":{"start":{"line":9,"column":1},"end":{"line":9,"column":1}},"children":[{"type":"text","value":"Registers","position":{"start":{"line":9,"column":1},"end":{"line":9,"column":1}},"key":"TtGBsYzIXx"}],"key":"iBymiSiJB6"},{"type":"text","value":" in eoAPI.","position":{"start":{"line":9,"column":1},"end":{"line":9,"column":1}},"key":"ouRHXXoeYj"}],"key":"zkjTfLnKIl"}],"key":"jypNz8yN9X"}],"key":"xpjetSCs0Z"}],"visibility":"show","key":"tQ6Qc8K7It"},{"type":"block","kind":"notebook-code","children":[{"type":"code","lang":"python","executable":true,"value":"# First we make sure we import all used dependencies\nimport os\nimport time\nimport json\nimport math\nimport threading\nimport concurrent.futures\nfrom datetime import datetime, timedelta\nfrom pathlib import Path\nfrom dataclasses import dataclass\n\nimport requests\nfrom oauthlib.oauth2 import BackendApplicationClient\nfrom oauthlib.oauth2.rfc6749.errors import TokenExpiredError\nfrom requests_oauthlib import OAuth2Session\n\nimport rasterio\nfrom rasterio.io import MemoryFile\nfrom rasterio.merge import merge\nfrom rasterio.enums import Resampling\nfrom rio_cogeo.cogeo import cog_translate\nfrom rio_cogeo.profiles import cog_profiles\nimport pystac\n\nfrom sentinelhub import SHConfig, BBox, bbox_to_dimensions, CRS","key":"C3Osyx3EmL"},{"type":"outputs","id":"jHB0VZIhzmscArtsDECWx","children":[],"key":"K3UHjUFefD"}],"key":"eSrUqBV8Zv"},{"type":"block","kind":"notebook-code","children":[{"type":"code","lang":"python","executable":true,"value":"# General configuration\n\n# Output directory\noutput_dir = Path(\"./bucket/samples/sentinel2_cogs\")\noutput_dir.mkdir(exist_ok=True)\n\n# eoAPI Configuration\nEOAPI_URL = \"http://eoapi-rw-stac:8080\"\nSTAC_COLLECTION_ID = \"sentinel-2-vienna-cdse\"\nS3_BUCKET = f\"s3://{os.getenv(\"workspace_BUCKET\")}\"\nS3_PREFIX = \"sentinel2_cogs\"\n\nALL_BANDS = [\"B01\", \"B02\", \"B03\", \"B04\", \"B05\", \"B06\", \"B07\", \"B08\", \"B8A\", \"B09\", \"B11\", \"B12\"]\n\n# Area of Interest\nbbox = BBox(bbox=[16.15, 47.95, 16.55, 48.3], crs=CRS.WGS84)\nend_date = datetime.now()\n# Trying to take most recent scenes\nstart_date = end_date - timedelta(days=360)\n\n# Please make sure you the cdse secret is available in\n# the Credentials Manager and injection is enabled\n# or replace this with you own CDSE tokens\nCLIENT_ID = os.getenv(\"cdse_CLIENT_ID\")\nCLIENT_SECRET = os.getenv(\"cdse_CLIENT_SECRET\")\nTOKEN_URL = \"https://identity.dataspace.copernicus.eu/auth/realms/CDSE/protocol/openid-connect/token\"\nSH_BASE_URL = \"https://sh.dataspace.copernicus.eu\"","key":"eqwDLbHiOd"},{"type":"outputs","id":"946A8aZz2VirEQypcO72r","children":[],"key":"bD0McCb0BJ"}],"key":"G9clTGMrSJ"},{"type":"block","kind":"notebook-content","children":[{"type":"heading","depth":3,"position":{"start":{"line":1,"column":1},"end":{"line":1,"column":1}},"children":[{"type":"text","value":"Authentication Manager","position":{"start":{"line":1,"column":1},"end":{"line":1,"column":1}},"key":"POv4x7qF5j"}],"identifier":"authentication-manager","label":"Authentication Manager","html_id":"authentication-manager","implicit":true,"key":"R6zaiVa7fY"},{"type":"paragraph","position":{"start":{"line":2,"column":1},"end":{"line":2,"column":1}},"children":[{"type":"text","value":"This class wraps the OAuth session to handle token refreshing automatically as it is possible to loose the session while accessing the various tiles","position":{"start":{"line":2,"column":1},"end":{"line":2,"column":1}},"key":"MtWWQ67wjN"}],"key":"EmerJE027S"}],"key":"zgNXXszIb0"},{"type":"block","kind":"notebook-code","children":[{"type":"code","lang":"python","executable":true,"value":"class CDSESessionManager:\n    \"\"\"\n    Thread-safe session manager that automatically refreshes the token \n    when a TokenExpiredError occurs.\n    \"\"\"\n    def __init__(self, client_id, client_secret):\n        self.client_id = client_id\n        self.client_secret = client_secret\n        self.token_url = TOKEN_URL\n        self.lock = threading.Lock()\n        self.session = None\n        self.authenticate()\n\n    def authenticate(self):\n        \"\"\"Create a new authenticated session\"\"\"\n        print(\"Authenticating with CDSE...\")\n        client = BackendApplicationClient(client_id=self.client_id)\n        self.session = OAuth2Session(client=client)\n        token = self.session.fetch_token(\n            token_url=self.token_url,\n            client_secret=self.client_secret,\n            include_client_id=True\n        )\n        print(f\"   Token obtained. Expires in {token.get('expires_in', 'unknown')}s\")\n        return self.session\n\n    def refresh_token(self):\n        \"\"\"Thread-safe token refresh\"\"\"\n        with self.lock:\n            # Check if token was just refreshed by another thread to avoid double-refresh\n            # (Simple heuristic: just re-auth)\n            print(\"\\nToken expired. Refreshing...\", end=\" \")\n            try:\n                self.authenticate()\n                print(\"Done.\")\n            except Exception as e:\n                print(f\"FAILED: {e}\")\n                raise\n\n    def post(self, url, json_data, retries=1):\n        \"\"\"Wrapper for session.post with auto-refresh logic\"\"\"\n        try:\n            response = self.session.post(url, json=json_data)\n            # Sometimes the server returns 401 instead of the library raising TokenExpiredError\n            if response.status_code == 401:\n                raise TokenExpiredError(\"401 Unauthorized\")\n            response.raise_for_status()\n            return response\n            \n        except TokenExpiredError:\n            if retries \u003e 0:\n                self.refresh_token()\n                # Retry the request with new session\n                return self.post(url, json_data, retries=retries-1)\n            else:\n                raise\n\n# Initialize the Manager\nauth_manager = CDSESessionManager(CLIENT_ID, CLIENT_SECRET)\n","key":"ULwM8MvyBA"},{"type":"outputs","id":"s6aLKHM9mLDpH5ie7cdE-","children":[],"key":"UCGIRbFMHQ"}],"key":"KQzDtsajAf"},{"type":"block","kind":"notebook-code","children":[{"type":"code","lang":"python","executable":true,"value":"# Collection Setup\ncoll_payload = {\n    \"type\": \"Collection\", \"stac_version\": \"1.0.0\", \"id\": STAC_COLLECTION_ID,\n    \"title\": \"Vienna Sentinel-2\", \"description\": \"Imported from CDSE\",\n    \"eodash:rasterform\": \"https://workspace-ui-public.gtif-austria.hub-otc.eox.at/api/public/share/public-4wazei3y-02/test/aducat_s2_form.json\",\n    \"license\": \"CC-BY-4.0\",\n    \"extent\": {\"spatial\": {\"bbox\": [[16.2, 48.1, 16.6, 48.3]]}, \"temporal\": {\"interval\": [[\"2020-01-01T00:00:00Z\", None]]}},\n    \"links\": []\n}\ntry: \n    requests.post(f\"{EOAPI_URL}/collections\", json=coll_payload)\nexcept: pass","key":"i6ZecdhmAn"},{"type":"outputs","id":"nZzESnwHhWGyM6lWHHDkb","children":[],"key":"dRQgjyz7nu"}],"key":"FrbZrLPH5U"},{"type":"block","kind":"notebook-content","children":[{"type":"heading","depth":2,"position":{"start":{"line":1,"column":1},"end":{"line":1,"column":1}},"children":[{"type":"text","value":"Search in CDSE STAC","position":{"start":{"line":1,"column":1},"end":{"line":1,"column":1}},"key":"N4v7fkfE3s"}],"identifier":"search-in-cdse-stac","label":"Search in CDSE STAC","html_id":"search-in-cdse-stac","implicit":true,"key":"P2veCcYu0N"}],"key":"wxdDeVQ8hE"},{"type":"block","kind":"notebook-code","children":[{"type":"code","lang":"python","executable":true,"value":"# --------------------------------------------------------------------------------\n# Search for Latest Sentinel-2 Scenes\n# --------------------------------------------------------------------------------\n\ndef get_existing_dates(eoapi_url, collection_id):\n    \"\"\"\n    Fetch all unique dates (YYYY-MM-DD) currently registered in the STAC collection.\n    \"\"\"\n    existing_dates = set()\n    url = f\"{eoapi_url}/collections/{collection_id}/items\"\n    \n    # Simple pagination handling to get all items\n    params = {\"limit\": 100} \n    \n    try:\n        print(f\" Checking existing dates in collection '{collection_id}'...\")\n        while url:\n            response = requests.get(url, params=params)\n            if response.status_code == 404:\n                return set() # Collection likely doesn't exist yet\n            \n            response.raise_for_status()\n            data = response.json()\n            \n            for feature in data.get('features', []):\n                # Extract YYYY-MM-DD\n                date_str = feature['properties']['datetime'][:10]\n                existing_dates.add(date_str)\n                \n            # Check for next page link\n            url = None\n            links = data.get('links', [])\n            for link in links:\n                if link['rel'] == 'next':\n                    url = link['href']\n                    params = {} # Params usually included in next link\n                    break\n    except Exception as e:\n        print(f\" Could not fetch existing items (starting fresh?): {e}\")\n        \n    return existing_dates\n\ndef search_sentinel2_scenes(auth_manager, bbox, start_date, end_date, max_results=2):\n    \"\"\"\n    Search for Sentinel-2 scenes using CDSE OpenSearch API,\n    filtering out days that are already in the STAC collection.\n    \"\"\"\n    base_url = \"https://catalogue.dataspace.copernicus.eu/resto/api/collections/Sentinel2/search.json\"\n    \n    params = {\n        \"box\": f\"{bbox.min_x},{bbox.min_y},{bbox.max_x},{bbox.max_y}\",\n        \"startDate\": start_date.strftime(\"%Y-%m-%dT%H:%M:%SZ\"),\n        \"completionDate\": end_date.strftime(\"%Y-%m-%dT%H:%M:%SZ\"),\n        \"processingLevel\": \"S2MSI2A\", \n        \"cloudCover\": \"[0,5]\",\n        \"maxRecords\": 200,\n        \"sortParam\": \"startDate\",\n        \"sortOrder\": \"descending\"\n    }\n    \n    # 1. Fetch existing dates from your catalog\n    existing_dates = get_existing_dates(EOAPI_URL, STAC_COLLECTION_ID)\n    if existing_dates:\n        print(f\" Found {len(existing_dates)} days already registered. Skipping these dates.\")\n    \n    # 2. Search CDSE\n    print(\" Searching CDSE catalog...\")\n    response = requests.get(base_url, params=params)\n    response.raise_for_status()\n    \n    results = response.json()\n    features = results.get('features', [])\n    \n    # 3. Filter results\n    # Initialize seen_dates with what is already in the DB so we don't pick them again\n    seen_dates = existing_dates.copy()\n    converted_features = []\n    \n    for feature in features:\n        scene_id = feature['id']\n        # Get YYYY-MM-DD\n        scene_date = feature['properties']['startDate'][:10]\n        \n        # SKIP IF DATE ALREADY EXISTS (in DB or earlier in this loop)\n        if scene_date in seen_dates:\n            continue\n            \n        # Mark this date as seen so we don't pick another scene from the same day\n        seen_dates.add(scene_date)\n        \n        converted_features.append({\n            'id': scene_id,\n            'properties': {\n                'datetime': feature['properties']['startDate'],\n                'eo:cloud_cover': feature['properties'].get('cloudCover', 0)\n            },\n            'geometry': feature.get('geometry'),\n            'bbox': feature.get('bbox')\n        })\n        \n        if len(converted_features) \u003e= max_results:\n            break\n    \n    return converted_features\n\n# Run the search, here we configure the area and time of interest as well as how many scenes to fetch\nscenes = search_sentinel2_scenes(auth_manager, bbox, start_date, end_date, 5)\n\nprint(f\"\\nSelected {len(scenes)} NEW scenes for processing:\")\nfor i, scene in enumerate(scenes, 1):\n    print(f\"{i}. ID: {scene['id']}\")\n    print(f\"   Date: {scene['properties']['datetime']}\")\n    print(f\"   Cloud Cover: {scene['properties'].get('eo:cloud_cover', 'N/A')}%\\n\")","key":"PX1hh9P4Pi"},{"type":"outputs","id":"f9LtZKYpiwgt9fHxX2jQF","children":[],"key":"gM6O4QVcU2"}],"key":"STREAKIFNT"},{"type":"block","kind":"notebook-content","children":[{"type":"heading","depth":2,"position":{"start":{"line":1,"column":1},"end":{"line":1,"column":1}},"children":[{"type":"text","value":"Data conversion","position":{"start":{"line":1,"column":1},"end":{"line":1,"column":1}},"key":"CUwQMJ7zDV"}],"identifier":"data-conversion","label":"Data conversion","html_id":"data-conversion","implicit":true,"key":"Sx22DvCkHP"}],"key":"fooCK8hpyC"},{"type":"block","kind":"notebook-code","children":[{"type":"code","lang":"python","executable":true,"value":"\n# --- Configuration ---\nTARGET_RES = 10 \nMAX_PIXELS = 2000 \nMAX_WORKERS = 2 \nMAX_RETRIES = 3\nRETRY_DELAY = 2\n\n@dataclass\nclass SimpleBBox:\n    min_x: float; min_y: float; max_x: float; max_y: float\n\ndef split_bbox_into_tiles(bbox):\n    w_deg, h_deg = bbox.max_x - bbox.min_x, bbox.max_y - bbox.min_y\n    center_lat = (bbox.min_y + bbox.max_y) / 2\n    m_lat, m_lon = 111320, 111320 * math.cos(math.radians(center_lat))\n    tot_w_px, tot_h_px = int((w_deg * m_lon) / TARGET_RES), int((h_deg * m_lat) / TARGET_RES)\n    cols, rows = math.ceil(tot_w_px / MAX_PIXELS), math.ceil(tot_h_px / MAX_PIXELS)\n    \n    tiles = []\n    print(f\"    Tiling: {cols}x{rows} grid\")\n    for r in range(rows):\n        for c in range(cols):\n            tiles.append({\n                \"bbox\": SimpleBBox(\n                    bbox.min_x + (c * (w_deg/cols)), \n                    bbox.min_y + (r * (h_deg/rows)), \n                    bbox.min_x + ((c+1) * (w_deg/cols)), \n                    bbox.min_y + ((r+1) * (h_deg/rows))\n                ),\n                \"size\": (int(tot_w_px/cols), int(tot_h_px/rows)),\n                \"index\": (r, c)\n            })\n    return tiles\n\ndef convert_to_cog(path, arr, transform, crs):\n    prof = cog_profiles.get(\"deflate\").copy()\n    prof.update({\n        \"BIGTIFF\": \"IF_NEEDED\",\n        \"blockxsize\": 512,\n        \"blockysize\": 512,\n        \"photometric\": \"MINISBLACK\"\n    })\n    with MemoryFile() as mem:\n        with mem.open(driver=\"GTiff\", dtype=str(arr.dtype), count=arr.shape[0], \n                      height=arr.shape[1], width=arr.shape[2], crs=crs, \n                      transform=transform, photometric=\"MINISBLACK\") as dst:\n            dst.write(arr)\n            dst.descriptions = tuple(ALL_BANDS)\n            dst.build_overviews([2,4,8,16], Resampling.nearest)\n            dst.update_tags(ns='rio_overview', resampling='nearest')\n        with mem.open() as src:\n            cog_translate(src, path, prof, in_memory=True, quiet=True)\n    print(f\"   COG Saved: {path}\")\n\ndef download_single_tile(auth_mgr, tile_data, scene_id, scene_datetime):\n    \"\"\"Worker function with RETRY logic\"\"\"\n    dt = datetime.fromisoformat(scene_datetime.replace('Z', '+00:00'))\n    \n    # ... (Evalscript needed for data extraction) ...\n    evalscript = \"\"\"\n    //VERSION=3\n    function setup() {\n        return {\n            input: [{ bands: \"\"\" + json.dumps(ALL_BANDS) + \"\"\", units: \"DN\" }],\n            output: { bands: \"\"\" + str(len(ALL_BANDS)) + \"\"\", sampleType: \"UINT16\" }\n        };\n    }\n    function evaluatePixel(sample) {\n        return [\"\"\" + \", \".join([f\"sample.{b}\" for b in ALL_BANDS]) + \"\"\"];\n    }\n    \"\"\"\n    \n    t_bbox = tile_data['bbox']\n    payload = {\n        \"input\": {\n            \"bounds\": {\n                \"bbox\": [t_bbox.min_x, t_bbox.min_y, t_bbox.max_x, t_bbox.max_y],\n                \"properties\": {\"crs\": \"http://www.opengis.net/def/crs/EPSG/0/4326\"}\n            },\n            \"data\": [{\n                \"type\": \"sentinel-2-l2a\",\n                \"dataFilter\": {\n                    \"timeRange\": {\n                        \"from\": (dt - timedelta(minutes=30)).strftime(\"%Y-%m-%dT%H:%M:%SZ\"),\n                        \"to\": (dt + timedelta(minutes=30)).strftime(\"%Y-%m-%dT%H:%M:%SZ\")\n                    }\n                }\n            }]\n        },\n        \"output\": {\n            \"width\": tile_data['size'][0], \"height\": tile_data['size'][1],\n            \"responses\": [{\"identifier\": \"default\", \"format\": {\"type\": \"image/tiff\"}}]\n        },\n        \"evalscript\": evalscript\n    }\n    \n    # --- Retry Loop ---\n    for attempt in range(1, MAX_RETRIES + 1):\n        try:\n            response = auth_mgr.post(f\"{SH_BASE_URL}/api/v1/process\", payload)\n            # Assuming auth_mgr raises an exception on non-200. \n            # If not, check response.status_code here.\n            \n            # Simple validation to ensure we actually got data\n            if response.content and len(response.content) \u003e 100:\n                return tile_data['index'], response.content\n            else:\n                raise Exception(\"Empty response received\")\n\n        except Exception as e:\n            # If this was the last attempt, fail\n            if attempt == MAX_RETRIES:\n                print(f\"      Tile {tile_data['index']} failed permanently: {e}\")\n                return tile_data['index'], None\n            \n            # Otherwise, wait and retry\n            sleep_time = RETRY_DELAY * attempt\n            print(f\"      Tile {tile_data['index']} failed (Attempt {attempt}/{MAX_RETRIES}). Retrying in {sleep_time}s...\")\n            time.sleep(sleep_time)\n\n    return tile_data['index'], None\n\n# --- Main Loop ---\nprocessed_scenes = []\ntiles = split_bbox_into_tiles(bbox) \n\nfor scene in scenes:\n    s_id, s_dt = scene['id'], scene['properties']['datetime']\n    cog_path = output_dir / f\"{s_dt[:10]}_{s_id}_cog.tif\"\n    print(f\"\\nProcessing {s_id}...\")\n\n    if cog_path.exists():\n        print(f\"   File exists. Skipping download.\")\n        processed_scenes.append({\"id\": s_id, \"path\": cog_path, \"props\": scene['properties'], \"geom\": scene['geometry']})\n        continue\n\n    print(f\"   Downloading {len(tiles)} tiles (Parallel)...\")\n    tile_results = {}\n    \n    with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:\n        futures = {executor.submit(download_single_tile, auth_manager, t, s_id, s_dt): t for t in tiles}\n        \n        for f in concurrent.futures.as_completed(futures):\n            idx, content = f.result()\n            # Only store if content is valid\n            if content: \n                tile_results[idx] = content\n    \n    # --- Completeness Check ---\n    # We compare the number of valid results to the number of expected tiles.\n    if len(tile_results) != len(tiles):\n        missing_count = len(tiles) - len(tile_results)\n        print(f\"   Scene failed. Missing {missing_count} tiles. Discarding scene.\")\n        # We 'continue' here to move to the next scene without stitching\n        continue\n\n    print(\"   Stitching \u0026 Converting...\")\n    m_files, m_dsets = [], []\n    try:\n        for k in sorted(tile_results.keys()):\n            mf = MemoryFile(tile_results[k])\n            m_files.append(mf); m_dsets.append(mf.open())\n        \n        mosaic, trans = merge(m_dsets)\n        convert_to_cog(str(cog_path), mosaic, trans, m_dsets[0].crs)\n        \n        if cog_path.exists():\n            processed_scenes.append({\"id\": s_id, \"path\": cog_path, \"props\": scene['properties'], \"geom\": scene['geometry']})\n    except Exception as e:\n        print(f\"   Stitching failed: {e}\")\n    finally:\n        for d in m_dsets: d.close()\n        for m in m_files: m.close()","key":"KczlmirR4V"},{"type":"outputs","id":"c8KA-cbNdK-5i3YJUD3XF","children":[],"key":"YkPotVnppt"}],"key":"ol7NoIq3Je"},{"type":"block","kind":"notebook-content","children":[{"type":"heading","depth":2,"position":{"start":{"line":1,"column":1},"end":{"line":1,"column":1}},"children":[{"type":"text","value":"Register in eoAPI","position":{"start":{"line":1,"column":1},"end":{"line":1,"column":1}},"key":"ksChOa2V3j"}],"identifier":"register-in-eoapi","label":"Register in eoAPI","html_id":"register-in-eoapi","implicit":true,"key":"ozo3SbXV6g"},{"type":"paragraph","position":{"start":{"line":3,"column":1},"end":{"line":3,"column":1}},"children":[{"type":"text","value":"If wanted this example continues explaining how the retrieved data can be registered into an eoAPI instance","position":{"start":{"line":3,"column":1},"end":{"line":3,"column":1}},"key":"ws5hONWG7O"}],"key":"pIyVS5AobI"}],"key":"LsqGBmFWmQ"},{"type":"block","kind":"notebook-code","children":[{"type":"code","lang":"python","executable":true,"value":"def create_and_register(scene, eoapi_url, collection_id):\n    s_id, props = scene['id'], scene['props']\n    dt = datetime.fromisoformat(props['datetime'].replace('Z', '+00:00'))\n    cog_url = f\"{S3_BUCKET}/{S3_PREFIX}/{scene['path'].name}\"\n    \n    # Geometry fallback\n    geom = scene['geom']\n    if not geom: \n        geom = {\"type\": \"Polygon\", \"coordinates\": [[ [bbox.min_x, bbox.min_y], [bbox.max_x, bbox.min_y], [bbox.max_x, bbox.max_y], [bbox.min_x, bbox.max_y], [bbox.min_x, bbox.min_y] ]]}\n        \n    # Get BBox from geometry for STAC Item\n    coords = geom['coordinates'][0]\n    xs, ys = [c[0] for c in coords], [c[1] for c in coords]\n    ibbox = [min(xs), min(ys), max(xs), max(ys)]\n\n    item = pystac.Item(id=s_id, geometry=geom, bbox=ibbox, datetime=dt, \n                       properties={\"eo:cloud_cover\": props.get('eo:cloud_cover', 0)}, collection=collection_id)\n    \n    item.add_asset(\"cog\", pystac.Asset(href=cog_url, media_type=\"image/tiff; application=geotiff; profile=cloud-optimized\", roles=[\"data\", \"visual\"]))\n    \n    # Add XYZ Preview Link\n    eoapi_endpoint = os.getenv(\"workspace_RASTER_ENDPOINT\")\n    xyz = f\"{eoapi_endpoint}/collections/{collection_id}/items/{s_id}/tiles/WebMercatorQuad/{{z}}/{{x}}/{{y}}@1x?assets=cog\u0026asset_bidx=cog|4,3,2\u0026rescale=0,3000\"\n    item.add_link(pystac.Link(rel=\"xyz\", target=xyz, media_type=\"application/json\"))\n\n    res = requests.post(f\"{eoapi_url}/collections/{collection_id}/items\", json=item.to_dict())\n    if res.status_code in [200, 201]: print(f\" Registered {s_id}\")\n    else: print(f\" Failed {s_id}: {res.text}\")\n\nprint(f\"Registration...\")\nfor s in processed_scenes:\n    create_and_register(s, EOAPI_URL, STAC_COLLECTION_ID)","key":"zpdBTQQ38V"},{"type":"outputs","id":"BjMuPLx6YZdu9Z8SNL9rD","children":[],"key":"fZ90ZUk0lq"}],"key":"xpWK2Mybg9"},{"type":"block","kind":"notebook-code","children":[{"type":"code","lang":"python","executable":true,"value":"# --------------------------------------------------------------------------------\n# Finally we update Collection Temporal Extent\n# --------------------------------------------------------------------------------\nimport requests\n\ndef update_collection_extent(eoapi_url, collection_id):\n    print(f\"Updating temporal extent for collection: '{collection_id}'...\")\n\n    # 1. Fetch all item datetimes to determine the full range\n    all_datetimes = []\n    items_url = f\"{eoapi_url}/collections/{collection_id}/items\"\n    params = {\"limit\": 100}\n\n    try:\n        # Loop through pages to get every single item's date\n        while items_url:\n            r = requests.get(items_url, params=params)\n            r.raise_for_status()\n            data = r.json()\n            \n            for feature in data.get('features', []):\n                all_datetimes.append(feature['properties']['datetime'])\n            \n            # Handle Pagination (Follow 'next' link)\n            items_url = None\n            for link in data.get('links', []):\n                if link['rel'] == 'next':\n                    items_url = link['href']\n                    params = {} # Parameters are usually included in the 'next' href\n                    break\n\n        if not all_datetimes:\n            print(\" No items found in collection. Skipping extent update.\")\n            return\n\n        # 2. Calculate new Min/Max\n        min_dt = min(all_datetimes)\n        max_dt = max(all_datetimes)\n        \n        print(f\"   Found {len(all_datetimes)} items.\")\n        print(f\"   Calculated Interval: {min_dt}  \u003c--\u003e  {max_dt}\")\n\n        # 3. Fetch the current Collection definition\n        coll_url = f\"{eoapi_url}/collections/{collection_id}\"\n        coll_resp = requests.get(coll_url)\n        coll_resp.raise_for_status()\n        coll_data = coll_resp.json()\n        \n        # 4. Update the extent in the JSON\n        # STAC Spec: extent.temporal.interval is a list of lists [[start, end]]\n        coll_data['extent']['temporal']['interval'] = [[min_dt, max_dt]]\n        \n        # 5. Send PUT request to save changes\n        update_resp = requests.put(coll_url, json=coll_data)\n        \n        if update_resp.status_code in [200, 204]:\n            print(f\" Success! Collection '{collection_id}' temporal extent updated.\")\n        else:\n            print(f\" Failed to update collection. Server returned: {update_resp.status_code}\")\n            print(update_resp.text)\n\n    except Exception as e:\n        print(f\" Error updating extent: {e}\")\n\n# Run the update\nupdate_collection_extent(EOAPI_URL, STAC_COLLECTION_ID)","key":"KpV7PNVXTV"},{"type":"outputs","id":"nXeG8IH1nkCbBOoR9KYRh","children":[],"key":"fAkcLSLxAr"}],"key":"vtDm6El6mz"}],"key":"ucXIyN8geu"},"references":{"cite":{"order":[],"data":{}}},"footer":{"navigation":{"prev":{"title":"CDSE Basic Data Access","url":"/notebooks/data-access/cdse-basic-data-access","group":"Data Access"},"next":{"title":"eoAPI registration example","url":"/notebooks/eoapi/eoapi-registration","group":"EoAPI"}}},"domain":"http://localhost:3000"},"project":{"subject":"Notebook examples","title":"EOxHub Notebooks","description":"Collection of examples for EOxHub Workspaces","github":"https://github.com/eoxhub-workspaces/eoxhub-notebooks","id":"feb2375d-3838-4365-bbd7-f43d501cdcbe","exports":[],"bibliography":[],"index":"readme","pages":[{"title":"Notebooks","level":1},{"title":"Data Access","level":2},{"slug":"notebooks.data-access.cdse-basic-data-access","title":"CDSE Basic Data Access","description":"","date":"","thumbnail":"","thumbnailOptimized":"","banner":"","bannerOptimized":"","tags":[],"level":3},{"slug":"notebooks.data-access.cdse-tiled-data-access","title":"CDSE Tiled Data Access","description":"","date":"","thumbnail":"","thumbnailOptimized":"","banner":"","bannerOptimized":"","tags":[],"level":3},{"title":"EoAPI","level":2},{"slug":"notebooks.eoapi.eoapi-registration","title":"eoAPI registration example","description":"","date":"","thumbnail":"","thumbnailOptimized":"","banner":"","bannerOptimized":"","tags":[],"level":3},{"title":"Pangeo Dask Notebooks","level":2},{"slug":"notebooks.pangeo-dask-notebooks.example-wildfires","title":"Scale your processes with Dask - hands on example","description":"","date":"","thumbnail":"","thumbnailOptimized":"","banner":"","bannerOptimized":"","tags":[],"level":3}]}}},"actionData":null,"errors":null},"future":{"unstable_dev":false,"unstable_postcss":false,"unstable_tailwind":false,"v2_errorBoundary":true,"v2_headers":true,"v2_meta":true,"v2_normalizeFormMethod":true,"v2_routeConvention":true}};</script><script type="module" async="">import "/eoxhub-notebooks/build/manifest-54BD5942.js";
+import * as route0 from "/eoxhub-notebooks/build/root-PMP5BIHC.js";
+import * as route1 from "/eoxhub-notebooks/build/routes/$-5ZLZ2O3Y.js";
+window.__remixRouteModules = {"root":route0,"routes/$":route1};
+
+import("/eoxhub-notebooks/build/entry.client-PCJPW7TK.js");</script>
+<style>
+  .custom-toolbar-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    color: inherit;
+    opacity: 0.6;
+    transition: opacity 0.2s, color 0.2s;
+    cursor: pointer;
+    margin-left: 0.5rem;
+  }
+  .custom-back-btn { margin-right: 0.25rem; }
+  .custom-toolbar-btn:hover { opacity: 1; color: #E18435; }
+  .custom-rocket-btn { color: #E18435 !important; }
+  .custom-rocket-btn:hover { color: #c46d24 !important; }
+  .custom-toolbar-btn svg { width: 100%; height: 100%; fill: currentColor; }
+</style>
+
+<script>
+  (function() {
+    // 1. STATE MANAGEMENT
+    // Start with the generic fallback, but we will overwrite this
+    // as soon as Luigi gives us the real context.
+    const DEFAULT_FALLBACK = "https://workspace.cubes-and-clouds.earthcode.eox.at/hub/user-redirect/git-pull";
+    let activeHubUrl = DEFAULT_FALLBACK;
+    
+    const LOG_PREFIX = "🛠️ [MicroFrontend]:";
+    function log(msg) { console.log(`${LOG_PREFIX} ${msg}`); }
+
+    // --- 2. LUIGI LOADER & CONTEXT HANDLER ---
+    function loadLuigiClient(callback) {
+        if (window.LuigiClient) {
+            setupContextListener();
+            callback();
+            return;
+        }
+        const script = document.createElement('script');
+        script.src = 'https://unpkg.com/@luigi-project/client/luigi-client.js';
+        script.onload = () => {
+            setupContextListener();
+            callback();
+        };
+        document.head.appendChild(script);
+    }
+
+    function setupContextListener() {
+        if (!window.LuigiClient) return;
+
+        // Listen for the handshake data from the Parent Frame
+        window.LuigiClient.addInitListener((context) => {
+            log("✅ Context Received");
+            
+            // EXTRACT DYNAMIC HOME URL
+            // structure: context.workspaceConfig.home -> "https://workspace.triallps25..."
+            if (context.workspaceConfig && context.workspaceConfig.home) {
+                const home = context.workspaceConfig.home;
+                // Ensure no trailing slash, then append the hub path
+                activeHubUrl = home.replace(/\/$/, '') + "/hub/user-redirect/git-pull";
+                
+                log("Updated Hub URL to: " + activeHubUrl);
+                
+                // Force update any buttons already rendered on the page
+                refreshRocketLinks();
+            }
+        });
+    }
+
+    // --- 3. URL BUILDERS ---
+    function getRepoInfo() {
+        const editLink = document.querySelector('a.myst-fm-edit-link');
+        if (!editLink || !editLink.href) return null;
+        try {
+            const url = new URL(editLink.href);
+            const parts = url.pathname.split('/');
+            if (parts.length < 6 || parts[3] !== 'edit') return null;
+            return {
+                repoUrl: `https://github.com/${parts[1]}/${parts[2]}`,
+                branch: parts[4],
+                filePath: parts.slice(5).join('/') 
+            };
+        } catch (e) { return null; }
+    }
+
+    function getLaunchUrl() {
+        const info = getRepoInfo();
+        if (!info) return null;
+        
+        const repoName = info.repoUrl.split('/').pop(); 
+        const jupyterPath = `lab/tree/${repoName}/${info.filePath}`;
+        
+        // Use the DYNAMIC 'activeHubUrl' here
+        const query = `?repo=${encodeURIComponent(info.repoUrl)}&urlpath=${encodeURIComponent(jupyterPath)}&branch=${info.branch}`;
+        return `${activeHubUrl}${query}`;
+    }
+
+    // Helper to update existing buttons when context arrives
+    function refreshRocketLinks() {
+        const btn = document.querySelector('.custom-rocket-btn');
+        if (btn) {
+            const newUrl = getLaunchUrl();
+            if (newUrl) {
+                btn.href = newUrl;
+                log("Refreshed Button HREF");
+            }
+        }
+    }
+
+    // --- 4. BUTTON CREATORS ---
+    function createBackButton() {
+        const btn = document.createElement('a');
+        btn.className = 'custom-toolbar-btn custom-back-btn';
+        btn.href = "#"; 
+        btn.setAttribute('aria-label', 'Go Back');
+        btn.title = "Go Back";
+        btn.innerHTML = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>`;
+
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (window.LuigiClient && window.LuigiClient.isLuigiClientInitialized()) {
+                window.LuigiClient.linkManager().goBack();
+            } else {
+                window.history.back();
+            }
+        });
+        return btn;
+    }
+
+    function createRocketButton() {
+        // Initial create might happen before Context arrives
+        // That's fine, we update it in 'refreshRocketLinks' later
+        const absoluteUrl = getLaunchUrl();
+        if (!absoluteUrl) return null;
+
+        const link = document.createElement('a');
+        link.className = 'custom-toolbar-btn custom-rocket-btn';
+        link.href = absoluteUrl; 
+        link.target = '_blank';
+        link.setAttribute('aria-label', 'Execute in workspace');
+        link.title = "Execute in workspace";
+        link.innerHTML = `<svg style="width:24px;height:24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Execute in workspace</title><path d="M13.13 22.19L11.5 18.36C13.07 17.78 14.54 17 15.9 16.09L13.13 22.19M5.64 12.5L1.81 10.87L7.91 8.1C7 9.46 6.22 10.93 5.64 12.5M19.22 4C19.5 4 19.75 4 19.96 4.05C20.13 5.44 19.94 8.3 16.66 11.58C14.96 13.29 12.93 14.6 10.65 15.47L8.5 13.37C9.42 11.06 10.73 9.03 12.42 7.34C15.18 4.58 17.64 4 19.22 4M19.22 2C17.24 2 14.24 2.69 11 5.93C8.81 8.12 7.5 10.53 6.65 12.64C6.37 13.39 6.56 14.21 7.11 14.77L9.24 16.89C9.62 17.27 10.13 17.5 10.66 17.5C10.89 17.5 11.13 17.44 11.36 17.35C13.5 16.53 15.88 15.19 18.07 13C23.73 7.34 21.61 2.39 21.61 2.39S20.7 2 19.22 2M14.54 9.46C13.76 8.68 13.76 7.41 14.54 6.63S16.59 5.85 17.37 6.63C18.14 7.41 18.15 8.68 17.37 9.46C16.59 10.24 15.32 10.24 14.54 9.46M8.88 16.53L7.47 15.12L8.88 16.53M6.24 22L9.88 18.36C9.54 18.27 9.21 18.12 8.91 17.91L4.83 22H6.24M2 22H3.41L8.18 17.24L6.76 15.83L2 20.59V22M2 19.17L6.09 15.09C5.88 14.79 5.73 14.47 5.64 14.12L2 17.76V19.17Z" /></svg>`;
+        
+        link.addEventListener('click', (e) => {
+            const isLuigiReady = window.LuigiClient && window.LuigiClient.isLuigiClientInitialized();
+            
+            // RE-READ the href at click time to ensure we use the updated URL
+            // (in case context arrived after button creation)
+            const currentHref = link.href;
+
+            if (isLuigiReady) {
+                e.preventDefault();
+                try {
+                    const urlObj = new URL(currentHref);
+                    const params = Object.fromEntries(urlObj.searchParams);
+                    const relativePath = urlObj.pathname;
+                    
+                    window.LuigiClient.addCoreSearchParams(params);
+                    window.LuigiClient.linkManager()
+                        .preserveQueryParams(true)
+                        .navigate(relativePath);
+                } catch (err) {
+                    window.open(currentHref, '_blank');
+                }
+            }
+        });
+        return link;
+    }
+
+    // --- 5. INJECTION LOOP ---
+    function checkAndInject() {
+        const toolbars = document.querySelectorAll('.myst-fm-block-header');
+        toolbars.forEach(toolbar => {
+            const subject = toolbar.querySelector('.myst-fm-block-subject');
+            if (subject && subject.innerText.includes("Notebook examples")) {
+                
+                // Back Button
+                if (!toolbar.querySelector('.custom-back-btn')) {
+                    const backBtn = createBackButton();
+                    const badges = toolbar.querySelector('.myst-fm-block-badges');
+                    if (badges) toolbar.insertBefore(backBtn, badges);
+                    else toolbar.appendChild(backBtn);
+                }
+
+                // Rocket Button
+                if (!toolbar.querySelector('.custom-rocket-btn')) {
+                    const rocketBtn = createRocketButton();
+                    if (rocketBtn) toolbar.appendChild(rocketBtn);
+                }
+            }
+        });
+    }
+
+    // --- 6. INIT ---
+    window.addEventListener('load', () => {
+        loadLuigiClient(() => {});
+        setTimeout(() => {
+            checkAndInject();
+            const observer = new MutationObserver(() => checkAndInject());
+            observer.observe(document.body, { childList: true, subtree: true });
+        }, 1000); 
+    });
+
+  })();
+</script>
+</body></html>

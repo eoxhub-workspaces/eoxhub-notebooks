@@ -5,6 +5,12 @@
     <loc>http://localhost:3000</loc>
   </url>
   <url>
+    <loc>http://localhost:3000/notebooks/data-access/cdse-basic-data-access</loc>
+  </url>
+  <url>
+    <loc>http://localhost:3000/notebooks/data-access/cdse-tiled-data-access</loc>
+  </url>
+  <url>
     <loc>http://localhost:3000/notebooks/eoapi/eoapi-registration</loc>
   </url>
   <url>
