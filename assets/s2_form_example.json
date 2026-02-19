@@ -1,0 +1,36 @@
+{
+  "jsonform": {
+    "title": "Select Visualization Preset",
+    "type": "object",
+    "options": {
+      "enum_titles": [
+        "Natural Color (True Color)",
+        "False Color Infrared (Vegetation)",
+        "Agriculture",
+        "Geology & Urban"
+      ]
+    },
+    "enum": [
+      {
+        "asset_bidx": "cog|4,3,2",
+        "rescale": "0,3000"
+      },
+      {
+        "asset_bidx": "cog|8,4,3",
+        "rescale": "0,4000"
+      },
+      {
+        "asset_bidx": "cog|11,8,2",
+        "rescale": "0,3000"
+      },
+      {
+        "asset_bidx": "cog|12,11,4",
+        "rescale": "0,3000"
+      }
+    ],
+    "default": {
+      "asset_bidx": "cog|4,3,2",
+      "rescale": "0,3000"
+    }
+  }
+}
