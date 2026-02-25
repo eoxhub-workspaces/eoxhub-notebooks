@@ -1,37 +1,5 @@
 [
   {
-    "title": "CDSE Tiled Data Access",
-    "description": "This notebook shows how to access data from CDSE programatically, converting it to a possible wanted format (such as Cloud Optimized Geotiff - COG) and lastly registers it into an eoAPI instance.",
-    "metadata": {
-      "description": "This notebook shows how to access data from CDSE programatically, converting it to a possible wanted format (such as Cloud Optimized Geotiff - COG) and lastly registers it into an eoAPI instance.",
-      "title": "CDSE Tiled Data Access"
-    },
-    "image": "build/_assets/previews/eoxhub_jupyter.jpg",
-    "link": "notebooks/data-access/cdse-tiled-data-access",
-    "topic": "Data Access",
-    "org": "eoxhub-workspaces",
-    "repo": "eoxhub-notebooks",
-    "source": "local",
-    "path": "notebooks/data_access/CDSE_Tiled_Data_Access.ipynb",
-    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/data_access/CDSE_Tiled_Data_Access.ipynb&branch=main"
-  },
-  {
-    "title": "CDSE Basic Data Access",
-    "description": "This notebook demonstrates the simplest way to authenticate with the Copernicus Data Space Ecosystem (CDSE), download a Sentinel-2 image, and render it.",
-    "metadata": {
-      "description": "This notebook demonstrates the simplest way to authenticate with the Copernicus Data Space Ecosystem (CDSE), download a Sentinel-2 image, and render it.",
-      "title": "CDSE Basic Data Access"
-    },
-    "image": "build/_assets/previews/eoxhub_jupyter.jpg",
-    "link": "notebooks/data-access/cdse-basic-data-access",
-    "topic": "Data Access",
-    "org": "eoxhub-workspaces",
-    "repo": "eoxhub-notebooks",
-    "source": "local",
-    "path": "notebooks/data_access/CDSE_Basic_Data_Access.ipynb",
-    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/data_access/CDSE_Basic_Data_Access.ipynb&branch=main"
-  },
-  {
     "title": "Scale your processes with Dask",
     "description": "This notebook demonstrates how to use Dask to process Sentinel-2 satellite data to create burn severity maps for wildfire assessment.",
     "metadata": {
@@ -62,5 +30,37 @@
     "source": "local",
     "path": "notebooks/eoAPI/eoAPI_registration.ipynb",
     "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/eoAPI/eoAPI_registration.ipynb&branch=main"
+  },
+  {
+    "title": "CDSE Tiled Data Access",
+    "description": "This notebook shows how to access data from CDSE programatically, converting it to a possible wanted format (such as Cloud Optimized Geotiff - COG) and lastly registers it into an eoAPI instance.",
+    "metadata": {
+      "description": "This notebook shows how to access data from CDSE programatically, converting it to a possible wanted format (such as Cloud Optimized Geotiff - COG) and lastly registers it into an eoAPI instance.",
+      "title": "CDSE Tiled Data Access"
+    },
+    "image": "build/_assets/previews/eoxhub_jupyter.jpg",
+    "link": "notebooks/data-access/cdse-tiled-data-access",
+    "topic": "Data Access",
+    "org": "eoxhub-workspaces",
+    "repo": "eoxhub-notebooks",
+    "source": "local",
+    "path": "notebooks/data_access/CDSE_Tiled_Data_Access.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/data_access/CDSE_Tiled_Data_Access.ipynb&branch=main"
+  },
+  {
+    "title": "CDSE Basic Data Access",
+    "description": "This notebook demonstrates the simplest way to authenticate with the Copernicus Data Space Ecosystem (CDSE), download a Sentinel-2 image, and render it.",
+    "metadata": {
+      "description": "This notebook demonstrates the simplest way to authenticate with the Copernicus Data Space Ecosystem (CDSE), download a Sentinel-2 image, and render it.",
+      "title": "CDSE Basic Data Access"
+    },
+    "image": "build/_assets/previews/eoxhub_jupyter.jpg",
+    "link": "notebooks/data-access/cdse-basic-data-access",
+    "topic": "Data Access",
+    "org": "eoxhub-workspaces",
+    "repo": "eoxhub-notebooks",
+    "source": "local",
+    "path": "notebooks/data_access/CDSE_Basic_Data_Access.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/data_access/CDSE_Basic_Data_Access.ipynb&branch=main"
   }
 ]
