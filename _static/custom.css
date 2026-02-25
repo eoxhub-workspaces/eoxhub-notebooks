@@ -1,3 +1,8 @@
 .sticky.w-screen.top-0 {
     display: none!important;
 }
+
+/* Removing top nav bar with search as it is not needed */
+.myst-top-nav {
+    display: none!important;
+}
