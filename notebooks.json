@@ -1,37 +1,5 @@
 [
   {
-    "title": "Scale your processes with Dask",
-    "description": "This notebook demonstrates how to use Dask to process Sentinel-2 satellite data to create burn severity maps for wildfire assessment.",
-    "metadata": {
-      "title": "Scale your processes with Dask",
-      "description": "This notebook demonstrates how to use Dask to process Sentinel-2 satellite data to create burn severity maps for wildfire assessment."
-    },
-    "image": "build/_assets/previews/notebooks_pangeo-dask_notebooks_example_wildfires_preview.png",
-    "link": "notebooks/pangeo-dask-notebooks/example-wildfires",
-    "topic": "Pangeo-Dask Notebooks",
-    "org": "eoxhub-workspaces",
-    "repo": "eoxhub-notebooks",
-    "source": "local",
-    "path": "notebooks/pangeo-dask_notebooks/example_wildfires.ipynb",
-    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/pangeo-dask_notebooks/example_wildfires.ipynb&branch=main"
-  },
-  {
-    "title": "eoAPI registration example",
-    "description": "This notebook demonstrates how to register data on the workspace eoAPI instance. The main step is creation of STAC metadata information to pass it to the eoAPI STAC endpoint.",
-    "metadata": {
-      "description": "This notebook demonstrates how to register data on the workspace eoAPI instance. The main step is creation of STAC metadata information to pass it to the eoAPI STAC endpoint.",
-      "title": "eoAPI registration example"
-    },
-    "image": "build/_assets/previews/eoxhub_jupyter.jpg",
-    "link": "notebooks/eoapi/eoapi-registration",
-    "topic": "Eoapi",
-    "org": "eoxhub-workspaces",
-    "repo": "eoxhub-notebooks",
-    "source": "local",
-    "path": "notebooks/eoAPI/eoAPI_registration.ipynb",
-    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/eoAPI/eoAPI_registration.ipynb&branch=main"
-  },
-  {
     "title": "CDSE Tiled Data Access",
     "description": "This notebook shows how to access data from CDSE programatically, converting it to a possible wanted format (such as Cloud Optimized Geotiff - COG) and lastly registers it into an eoAPI instance.",
     "metadata": {
@@ -62,5 +30,37 @@
     "source": "local",
     "path": "notebooks/data_access/CDSE_Basic_Data_Access.ipynb",
     "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/data_access/CDSE_Basic_Data_Access.ipynb&branch=main"
+  },
+  {
+    "title": "Scale your processes with Dask",
+    "description": "This notebook demonstrates how to use Dask to process Sentinel-2 satellite data to create burn severity maps for wildfire assessment.",
+    "metadata": {
+      "title": "Scale your processes with Dask",
+      "description": "This notebook demonstrates how to use Dask to process Sentinel-2 satellite data to create burn severity maps for wildfire assessment."
+    },
+    "image": "build/_assets/previews/notebooks_pangeo-dask_notebooks_example_wildfires_preview.png",
+    "link": "notebooks/pangeo-dask-notebooks/example-wildfires",
+    "topic": "Pangeo-Dask Notebooks",
+    "org": "eoxhub-workspaces",
+    "repo": "eoxhub-notebooks",
+    "source": "local",
+    "path": "notebooks/pangeo-dask_notebooks/example_wildfires.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/pangeo-dask_notebooks/example_wildfires.ipynb&branch=main"
+  },
+  {
+    "title": "eoAPI registration example",
+    "description": "This notebook demonstrates how to register data on the workspace eoAPI instance. The main step is creation of STAC metadata information to pass it to the eoAPI STAC endpoint.",
+    "metadata": {
+      "description": "This notebook demonstrates how to register data on the workspace eoAPI instance. The main step is creation of STAC metadata information to pass it to the eoAPI STAC endpoint.",
+      "title": "eoAPI registration example"
+    },
+    "image": "build/_assets/previews/eoxhub_jupyter.jpg",
+    "link": "notebooks/eoapi/eoapi-registration",
+    "topic": "Eoapi",
+    "org": "eoxhub-workspaces",
+    "repo": "eoxhub-notebooks",
+    "source": "local",
+    "path": "notebooks/eoAPI/eoAPI_registration.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/eoAPI/eoAPI_registration.ipynb&branch=main"
   }
 ]
