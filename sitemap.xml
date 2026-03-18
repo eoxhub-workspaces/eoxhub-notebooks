@@ -8,6 +8,9 @@
     <loc>http://localhost:3000/notebooks/data-access/cdse-basic-data-access</loc>
   </url>
   <url>
+    <loc>http://localhost:3000/notebooks/data-access/cdse-s3-bucket-access</loc>
+  </url>
+  <url>
     <loc>http://localhost:3000/notebooks/data-access/cdse-tiled-data-access</loc>
   </url>
   <url>

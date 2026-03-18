@@ -32,6 +32,22 @@
     "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/data_access/CDSE_Basic_Data_Access.ipynb&branch=main"
   },
   {
+    "title": "CDSE S3 Access",
+    "description": "This notebook shows how to access data from CDSE through the S3 interface",
+    "metadata": {
+      "description": "This notebook shows how to access data from CDSE through the S3 interface",
+      "title": "CDSE S3 Access"
+    },
+    "image": "build/_assets/previews/eoxhub_jupyter.jpg",
+    "link": "notebooks/data-access/cdse-s3-bucket-access",
+    "topic": "Data Access",
+    "org": "eoxhub-workspaces",
+    "repo": "eoxhub-notebooks",
+    "source": "local",
+    "path": "notebooks/data_access/CDSE_s3_Bucket_Access.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/data_access/CDSE_s3_Bucket_Access.ipynb&branch=main"
+  },
+  {
     "title": "Scale your processes with Dask",
     "description": "This notebook demonstrates how to use Dask to process Sentinel-2 satellite data to create burn severity maps for wildfire assessment.",
     "metadata": {
