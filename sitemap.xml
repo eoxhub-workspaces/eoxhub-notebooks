@@ -20,6 +20,9 @@
     <loc>http://localhost:3000/notebooks/eoapi/eoapi-vector-data-registration</loc>
   </url>
   <url>
+    <loc>http://localhost:3000/notebooks/mlflow/mlflow-examples</loc>
+  </url>
+  <url>
     <loc>http://localhost:3000/notebooks/pangeo-dask-notebooks/example-wildfires</loc>
   </url>
 </urlset>
