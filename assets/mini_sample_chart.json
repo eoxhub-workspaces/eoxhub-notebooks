@@ -1,0 +1,60 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Stays and Temperature Over Time",
+  "data": {
+    "name": "timeseries"
+  },
+  "vconcat": [
+    {
+      "title": "Sample Stays over Time",
+      "width": "container",
+      "height": 180,
+      "mark": {
+        "type": "line",
+        "point": true
+      },
+      "encoding": {
+        "x": {
+          "field": "time",
+          "type": "temporal",
+          "title": "Date"
+        },
+        "y": {
+          "field": "stays",
+          "type": "quantitative",
+          "title": "Number of Stays"
+        },
+        "tooltip": [
+          {"field": "time", "type": "temporal", "title": "Date"},
+          {"field": "stays", "type": "quantitative", "title": "Stays"}
+        ]
+      }
+    },
+    {
+      "title": "Mean Temperature over Time",
+      "width": "container",
+      "height": 180,
+      "mark": {
+        "type": "line",
+        "point": true,
+        "color": "orange"
+      },
+      "encoding": {
+        "x": {
+          "field": "time",
+          "type": "temporal",
+          "title": "Date"
+        },
+        "y": {
+          "field": "temp",
+          "type": "quantitative",
+          "title": "Temperature (°C)"
+        },
+        "tooltip": [
+          {"field": "time", "type": "temporal", "title": "Date"},
+          {"field": "temp", "type": "quantitative", "title": "Temp"}
+        ]
+      }
+    }
+  ]
+}

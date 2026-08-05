@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "options": {
+    "execute": true
+  },
+  "properties": {
+    "feature": {
+      "title": "Select region on map",
+      "type": "object",
+      "format": "feature",
+      "options": {
+        "drawtools": {
+          "for": "eox-map#main",
+          "layerId": "mini_sample_collection;:;",
+          "continuous": true,
+          "style": {
+            "fill-color": "#ffcc0033",
+            "stroke-color": "#ffcc00",
+            "stroke-width": 2
+          }
+        }
+      }
+    }
+  }
+}
