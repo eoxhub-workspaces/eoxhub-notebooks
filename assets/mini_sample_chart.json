@@ -1,0 +1,62 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Stays and Temperature Over Time",
+  "data": {
+    "name": "timeseries"
+  },
+  "encoding": {
+    "x": {
+      "field": "time",
+      "type": "temporal",
+      "title": "Date"
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "point": true,
+        "color": "#4c78a8"
+      },
+      "encoding": {
+        "y": {
+          "field": "stays",
+          "type": "quantitative",
+          "title": "Number of Stays",
+          "axis": {"titleColor": "#4c78a8"}
+        },
+        "tooltip": [
+          {"field": "time", "type": "temporal", "title": "Date"},
+          {"field": "stays", "type": "quantitative", "title": "Stays"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "point": true,
+        "color": "#f58518"
+      },
+      "encoding": {
+        "y": {
+          "field": "temp",
+          "type": "quantitative",
+          "title": "Temperature (°C)",
+          "axis": {
+            "orient": "right", 
+            "titleColor": "#f58518"
+          }
+        },
+        "tooltip": [
+          {"field": "time", "type": "temporal", "title": "Date"},
+          {"field": "temp", "type": "quantitative", "title": "Temp"}
+        ]
+      }
+    }
+  ],
+  "resolve": {
+    "scale": {
+      "y": "independent"
+    }
+  }
+}
