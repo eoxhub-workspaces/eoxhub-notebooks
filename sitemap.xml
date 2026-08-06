@@ -17,6 +17,9 @@
     <loc>http://localhost:3000/notebooks/eoapi/eoapi-registration</loc>
   </url>
   <url>
+    <loc>http://localhost:3000/notebooks/eoapi/eoapi-timeseries-registration</loc>
+  </url>
+  <url>
     <loc>http://localhost:3000/notebooks/eoapi/eoapi-vector-data-registration</loc>
   </url>
   <url>
