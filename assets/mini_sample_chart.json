@@ -4,25 +4,26 @@
   "data": {
     "name": "timeseries"
   },
-  "vconcat": [
+  "encoding": {
+    "x": {
+      "field": "time",
+      "type": "temporal",
+      "title": "Date"
+    }
+  },
+  "layer": [
     {
-      "title": "Sample Stays over Time",
-      "width": "container",
-      "height": 180,
       "mark": {
         "type": "line",
-        "point": true
+        "point": true,
+        "color": "#4c78a8"
       },
       "encoding": {
-        "x": {
-          "field": "time",
-          "type": "temporal",
-          "title": "Date"
-        },
         "y": {
           "field": "stays",
           "type": "quantitative",
-          "title": "Number of Stays"
+          "title": "Number of Stays",
+          "axis": {"titleColor": "#4c78a8"}
         },
         "tooltip": [
           {"field": "time", "type": "temporal", "title": "Date"},
@@ -31,24 +32,20 @@
       }
     },
     {
-      "title": "Mean Temperature over Time",
-      "width": "container",
-      "height": 180,
       "mark": {
         "type": "line",
         "point": true,
-        "color": "orange"
+        "color": "#f58518"
       },
       "encoding": {
-        "x": {
-          "field": "time",
-          "type": "temporal",
-          "title": "Date"
-        },
         "y": {
           "field": "temp",
           "type": "quantitative",
-          "title": "Temperature (°C)"
+          "title": "Temperature (°C)",
+          "axis": {
+            "orient": "right", 
+            "titleColor": "#f58518"
+          }
         },
         "tooltip": [
           {"field": "time", "type": "temporal", "title": "Date"},
@@ -56,5 +53,10 @@
         ]
       }
     }
-  ]
+  ],
+  "resolve": {
+    "scale": {
+      "y": "independent"
+    }
+  }
 }
