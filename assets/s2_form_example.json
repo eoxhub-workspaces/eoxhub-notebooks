@@ -12,24 +12,24 @@
     },
     "enum": [
       {
-        "asset_bidx": "cog|4,3,2",
+        "assets": "cog|bidx=4,3,2",
         "rescale": "0,3000"
       },
       {
-        "asset_bidx": "cog|8,4,3",
+        "assets": "cog|bidx=8,4,3",
         "rescale": "0,4000"
       },
       {
-        "asset_bidx": "cog|11,8,2",
+        "assets": "cog|bidx=11,8,2",
         "rescale": "0,3000"
       },
       {
-        "asset_bidx": "cog|12,11,4",
+        "assets": "cog|bidx=12,11,4",
         "rescale": "0,3000"
       }
     ],
     "default": {
-      "asset_bidx": "cog|4,3,2",
+      "assets": "cog|bidx=4,3,2",
       "rescale": "0,3000"
     }
   }
