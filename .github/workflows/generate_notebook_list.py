@@ -100,35 +100,6 @@ def extract_last_image(
                         )
                         return None
     return None
-    
-    # If no markdown images, check code output
-    for cell in reversed(nb.cells):
-        if cell.cell_type == "code":
-            for output in reversed(cell.get("outputs", [])):
-                data = output.get("data", {})
-                if "image/png" in data:
-                    b64 = data["image/png"]
-                    image_bytes = base64.b64decode(b64)
-
-                    try:
-                        # Load image from bytes
-                        image = Image.open(BytesIO(image_bytes))
-                        # Resize while maintaining aspect ratio
-                        w_percent = target_width / float(image.size[0])
-                        h_size = int(float(image.size[1]) * w_percent)
-                        image = image.resize((target_width, h_size), Image.LANCZOS)
-
-                        # Create a filename based on notebook path
-                        base_name = notebook_rel_path.replace("/", "_").replace(".ipynb", "_preview.png")
-                        image_path = os.path.join(output_dir, base_name)
-                        image.save(image_path)
-                        relpath = os.path.join("build/_assets/previews", base_name)
-
-                        return os.path.relpath(relpath, start=".").replace("\\", "/")
-                    except Exception as e:
-                        print(f"[warn] Failed to process image in {notebook_rel_path}: {e}")
-                        return None
-    return None
 
 def parse_gitmodules():
     """Parse .gitmodules to map paths to remote info."""
@@ -285,8 +256,13 @@ def collect_notebooks():
                 continue
 
             sub_rel = os.path.relpath(sub_path, ROOT_DIR)
-            git_info = submodules.get(os.path.normpath(sub_rel), {"org": None, "repo": None})
-            git_url = git_info["url"]
+            git_info = submodules.get(os.path.normpath(sub_rel))
+            if not git_info:
+                git_info = get_git_remote_info(sub_path)
+            git_url = git_info.get("url")
+            if not git_url:
+                print(f"[warn] Could not determine git URL for submodule {sub_rel}, skipping")
+                continue
 
             for dirpath, _, filenames in os.walk(sub_path):
                 for file in filenames:
@@ -307,11 +283,11 @@ def collect_notebooks():
                             "image": image,
                             "link": myst_url_sanitation(rel_path.replace(".ipynb", "")),
                             "topic": topic,
-                            "org": git_info["org"],
-                            "repo": git_info["repo"],
+                            "org": git_info.get("org"),
+                            "repo": git_info.get("repo"),
                             "source": "submodule",
                             "path": rel_path,
-                            "gitpuller": f"https://{{JHUB_HOST}}/hub/user-redirect/git-pull?repo={git_url}&urlpath=lab/tree/{git_info['repo']}/{repo_path}&branch=main",
+                            "gitpuller": f"https://{{JHUB_HOST}}/hub/user-redirect/git-pull?repo={git_url}&urlpath=lab/tree/{repo_path}&branch=main",
                         })
 
     return catalog

@@ -1,0 +1,3 @@
+[submodule "external_notebooks/group1/2025-BiDS-EODashboard"]
+	path = external_notebooks/group1/2025-BiDS-EODashboard
+	url = git@github.com:eurodatacube/2025-BiDS-EODashboard.git
