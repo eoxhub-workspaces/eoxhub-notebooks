@@ -188,6 +188,19 @@
     "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/pangeo-dask_notebooks/example_wildfires.ipynb&branch=main"
   },
   {
+    "title": "Getting started with R in EOxHub",
+    "description": "",
+    "metadata": {},
+    "image": "build/_assets/previews/notebooks_r_examples_start_with_R_preview.png",
+    "link": "notebooks/r-examples/start-with-r",
+    "topic": "R Examples",
+    "org": "eoxhub-workspaces",
+    "repo": "eoxhub-notebooks",
+    "source": "local",
+    "path": "notebooks/r_examples/start_with_R.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/r_examples/start_with_R.ipynb&branch=main"
+  },
+  {
     "title": "CDSE Basic Data Access",
     "description": "This notebook demonstrates the simplest way to authenticate with the Copernicus Data Space Ecosystem (CDSE), download a Sentinel-2 image, and render it.",
     "metadata": {

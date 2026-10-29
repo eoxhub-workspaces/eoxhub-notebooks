@@ -41,6 +41,9 @@
     <loc>http://localhost:3000/notebooks/pangeo-dask-notebooks/example-wildfires</loc>
   </url>
   <url>
+    <loc>http://localhost:3000/notebooks/r-examples/start-with-r</loc>
+  </url>
+  <url>
     <loc>http://localhost:3000/notebooks/sentinel-hub/edc-first-steps</loc>
   </url>
   <url>
