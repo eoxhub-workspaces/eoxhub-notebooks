@@ -1,5 +1,159 @@
 [
   {
+    "title": "EDC Sentinel Hub-XCUBE integration",
+    "description": "",
+    "metadata": {
+      "papermill": {
+        "duration": 0.020556,
+        "end_time": "2023-10-24T07:56:14.029143",
+        "exception": false,
+        "start_time": "2023-10-24T07:56:14.008587",
+        "status": "completed"
+      },
+      "tags": []
+    },
+    "image": "build/_assets/previews/eoxhub_jupyter.jpg",
+    "link": "notebooks/sentinel-hub/edc-sentinel-hub-xcube-integration",
+    "topic": "Sentinel Hub",
+    "org": "eoxhub-workspaces",
+    "repo": "eoxhub-notebooks",
+    "source": "local",
+    "path": "notebooks/Sentinel_Hub/EDC_Sentinel_Hub-XCUBE_integration.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/Sentinel_Hub/EDC_Sentinel_Hub-XCUBE_integration.ipynb&branch=main"
+  },
+  {
+    "title": "Using Sentinel Hub Process API in EDC: a starter's guide.",
+    "description": "",
+    "metadata": {
+      "papermill": {
+        "duration": 0.027883,
+        "end_time": "2023-10-24T07:58:15.317124",
+        "exception": false,
+        "start_time": "2023-10-24T07:58:15.289241",
+        "status": "completed"
+      },
+      "tags": []
+    },
+    "image": "build/_assets/previews/eoxhub_jupyter.jpg",
+    "link": "notebooks/sentinel-hub/sentinelhub-py",
+    "topic": "Sentinel Hub",
+    "org": "eoxhub-workspaces",
+    "repo": "eoxhub-notebooks",
+    "source": "local",
+    "path": "notebooks/Sentinel_Hub/sentinelhub-py.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/Sentinel_Hub/sentinelhub-py.ipynb&branch=main"
+  },
+  {
+    "title": "NDVI timeline",
+    "description": "",
+    "metadata": {
+      "papermill": {
+        "duration": 0.024954,
+        "end_time": "2023-10-24T07:55:44.100647",
+        "exception": false,
+        "start_time": "2023-10-24T07:55:44.075693",
+        "status": "completed"
+      },
+      "tags": []
+    },
+    "image": "build/_assets/previews/eoxhub_jupyter.jpg",
+    "link": "notebooks/sentinel-hub/edc-usecase-ndvi-timeline",
+    "topic": "Sentinel Hub",
+    "org": "eoxhub-workspaces",
+    "repo": "eoxhub-notebooks",
+    "source": "local",
+    "path": "notebooks/Sentinel_Hub/EDC_Usecase-NDVI_timeline.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/Sentinel_Hub/EDC_Usecase-NDVI_timeline.ipynb&branch=main"
+  },
+  {
+    "title": "EDC Sentinel Hub: Data Fusion",
+    "description": "",
+    "metadata": {
+      "papermill": {
+        "duration": 0.021209,
+        "end_time": "2023-10-24T07:56:33.614061",
+        "exception": false,
+        "start_time": "2023-10-24T07:56:33.592852",
+        "status": "completed"
+      },
+      "tags": []
+    },
+    "image": "build/_assets/previews/eoxhub_jupyter.jpg",
+    "link": "notebooks/sentinel-hub/edc-sentinelhub-datafusion-basic",
+    "topic": "Sentinel Hub",
+    "org": "eoxhub-workspaces",
+    "repo": "eoxhub-notebooks",
+    "source": "local",
+    "path": "notebooks/Sentinel_Hub/EDC_SentinelHub_DataFusion_Basic.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/Sentinel_Hub/EDC_SentinelHub_DataFusion_Basic.ipynb&branch=main"
+  },
+  {
+    "title": "EDC Sentinel Hub: Data Fusion",
+    "description": "",
+    "metadata": {
+      "papermill": {
+        "duration": 0.022289,
+        "end_time": "2023-10-24T07:57:34.413836",
+        "exception": false,
+        "start_time": "2023-10-24T07:57:34.391547",
+        "status": "completed"
+      },
+      "tags": []
+    },
+    "image": "build/_assets/previews/eoxhub_jupyter.jpg",
+    "link": "notebooks/sentinel-hub/edc-sentinelhub-datafusion-ndvi",
+    "topic": "Sentinel Hub",
+    "org": "eoxhub-workspaces",
+    "repo": "eoxhub-notebooks",
+    "source": "local",
+    "path": "notebooks/Sentinel_Hub/EDC_SentinelHub_DataFusion_NDVI.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/Sentinel_Hub/EDC_SentinelHub_DataFusion_NDVI.ipynb&branch=main"
+  },
+  {
+    "title": "How to access DEM data through Sentinel Hub API",
+    "description": "",
+    "metadata": {
+      "papermill": {
+        "duration": 0.020036,
+        "end_time": "2023-10-24T07:58:25.084222",
+        "exception": false,
+        "start_time": "2023-10-24T07:58:25.064186",
+        "status": "completed"
+      },
+      "tags": []
+    },
+    "image": "build/_assets/previews/notebooks_Sentinel_Hub_How_to_access_DEM_data_through_Sentinel_Hub_API_preview.png",
+    "link": "notebooks/sentinel-hub/how-to-access-dem-data-through-sentinel-hub-api",
+    "topic": "Sentinel Hub",
+    "org": "eoxhub-workspaces",
+    "repo": "eoxhub-notebooks",
+    "source": "local",
+    "path": "notebooks/Sentinel_Hub/How_to_access_DEM_data_through_Sentinel_Hub_API.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/Sentinel_Hub/How_to_access_DEM_data_through_Sentinel_Hub_API.ipynb&branch=main"
+  },
+  {
+    "title": "First steps on the Euro Data Cube platform",
+    "description": "",
+    "metadata": {
+      "papermill": {
+        "duration": 0.018039,
+        "end_time": "2023-10-24T07:58:45.096073",
+        "exception": false,
+        "start_time": "2023-10-24T07:58:45.078034",
+        "status": "completed"
+      },
+      "tags": []
+    },
+    "image": "build/_assets/previews/eoxhub_jupyter.jpg",
+    "link": "notebooks/sentinel-hub/edc-first-steps",
+    "topic": "Sentinel Hub",
+    "org": "eoxhub-workspaces",
+    "repo": "eoxhub-notebooks",
+    "source": "local",
+    "path": "notebooks/Sentinel_Hub/EDC_first-steps.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/Sentinel_Hub/EDC_first-steps.ipynb&branch=main"
+  },
+  {
     "title": "How to create an NDVI Time series using openEO",
     "description": "",
     "metadata": {
@@ -356,6 +510,67 @@
     "source": "local",
     "path": "notebooks/Sentinelhub/EDC_first-steps.ipynb",
     "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/Sentinelhub/EDC_first-steps.ipynb&branch=main"
+  },
+  {
+    "title": "Finished Goods Inventory indicator for RACE",
+    "description": "",
+    "metadata": {},
+    "image": "build/_assets/previews/notebooks_showcase_contributions_RACE_FinishedGoodsInventory_indicator_preview.png",
+    "link": "notebooks/showcase-contributions/race-finishedgoodsinventory-indicator",
+    "topic": "Showcase Contributions",
+    "org": "eoxhub-workspaces",
+    "repo": "eoxhub-notebooks",
+    "source": "local",
+    "path": "notebooks/showcase_contributions/RACE_FinishedGoodsInventory_indicator.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/showcase_contributions/RACE_FinishedGoodsInventory_indicator.ipynb&branch=main"
+  },
+  {
+    "title": "Crop-classification using Sentinel-2 time-series",
+    "description": "",
+    "metadata": {
+      "papermill": {
+        "duration": 0.006576,
+        "end_time": "2022-10-26T06:37:48.748617",
+        "exception": false,
+        "start_time": "2022-10-26T06:37:48.742041",
+        "status": "completed"
+      },
+      "tags": []
+    },
+    "image": "build/_assets/previews/notebooks_showcase_contributions_eurocrops-crop-classification-example_preview.png",
+    "link": "notebooks/showcase-contributions/eurocrops-crop-classification-example",
+    "topic": "Showcase Contributions",
+    "org": "eoxhub-workspaces",
+    "repo": "eoxhub-notebooks",
+    "source": "local",
+    "path": "notebooks/showcase_contributions/eurocrops-crop-classification-example.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/showcase_contributions/eurocrops-crop-classification-example.ipynb&branch=main"
+  },
+  {
+    "title": "Using the NASA VEDA EOAPI",
+    "description": "",
+    "metadata": {},
+    "image": "build/_assets/previews/notebooks_showcase_contributions_no2-so2-trend-veda-api-igarss-2023_preview.png",
+    "link": "notebooks/showcase-contributions/no2-so2-trend-veda-api-igarss-2023",
+    "topic": "Showcase Contributions",
+    "org": "eoxhub-workspaces",
+    "repo": "eoxhub-notebooks",
+    "source": "local",
+    "path": "notebooks/showcase_contributions/no2-so2-trend-veda-api-igarss-2023.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/showcase_contributions/no2-so2-trend-veda-api-igarss-2023.ipynb&branch=main"
+  },
+  {
+    "title": "Aerosol Optical Thickness (AOT) Anomaly Detection Using Sentinel-2",
+    "description": "",
+    "metadata": {},
+    "image": "build/_assets/previews/eoxhub_jupyter.jpg",
+    "link": "notebooks/showcase-contributions/aot-covid19",
+    "topic": "Showcase Contributions",
+    "org": "eoxhub-workspaces",
+    "repo": "eoxhub-notebooks",
+    "source": "local",
+    "path": "notebooks/showcase_contributions/AOT_COVID19.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/showcase_contributions/AOT_COVID19.ipynb&branch=main"
   },
   {
     "title": "MLflow connection examples",

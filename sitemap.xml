@@ -73,4 +73,37 @@
   <url>
     <loc>http://localhost:3000/notebooks/sentinelhub/sentinelhub-py</loc>
   </url>
+  <url>
+    <loc>http://localhost:3000/notebooks/sentinel-hub/edc-first-steps</loc>
+  </url>
+  <url>
+    <loc>http://localhost:3000/notebooks/sentinel-hub/edc-sentinelhub-datafusion-basic</loc>
+  </url>
+  <url>
+    <loc>http://localhost:3000/notebooks/sentinel-hub/edc-sentinelhub-datafusion-ndvi</loc>
+  </url>
+  <url>
+    <loc>http://localhost:3000/notebooks/sentinel-hub/edc-sentinel-hub-xcube-integration</loc>
+  </url>
+  <url>
+    <loc>http://localhost:3000/notebooks/sentinel-hub/edc-usecase-ndvi-timeline</loc>
+  </url>
+  <url>
+    <loc>http://localhost:3000/notebooks/sentinel-hub/how-to-access-dem-data-through-sentinel-hub-api</loc>
+  </url>
+  <url>
+    <loc>http://localhost:3000/notebooks/sentinel-hub/sentinelhub-py</loc>
+  </url>
+  <url>
+    <loc>http://localhost:3000/notebooks/showcase-contributions/aot-covid19</loc>
+  </url>
+  <url>
+    <loc>http://localhost:3000/notebooks/showcase-contributions/eurocrops-crop-classification-example</loc>
+  </url>
+  <url>
+    <loc>http://localhost:3000/notebooks/showcase-contributions/no2-so2-trend-veda-api-igarss-2023</loc>
+  </url>
+  <url>
+    <loc>http://localhost:3000/notebooks/showcase-contributions/race-finishedgoodsinventory-indicator</loc>
+  </url>
 </urlset>
