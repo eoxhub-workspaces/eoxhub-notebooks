@@ -1,64 +1,98 @@
 [
   {
-    "title": "MLflow connection examples",
+    "title": "How to create an NDVI Time series using openEO",
+    "description": "",
+    "metadata": {
+      "collapsed": false,
+      "jupyter": {
+        "outputs_hidden": false
+      }
+    },
+    "image": "build/_assets/previews/eoxhub_jupyter.jpg",
+    "link": "notebooks/openeo/openeo-ndvi-timeseries",
+    "topic": "Openeo",
+    "org": "eoxhub-workspaces",
+    "repo": "eoxhub-notebooks",
+    "source": "local",
+    "path": "notebooks/openEO/openEO_NDVI_Timeseries.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/openEO/openEO_NDVI_Timeseries.ipynb&branch=main"
+  },
+  {
+    "title": "Finished Goods Inventory indicator for RACE",
+    "description": "",
+    "metadata": {},
+    "image": "build/_assets/previews/notebooks_contributions_RACE_FinishedGoodsInventory_indicator_preview.png",
+    "link": "notebooks/contributions/race-finishedgoodsinventory-indicator",
+    "topic": "Contributions",
+    "org": "eoxhub-workspaces",
+    "repo": "eoxhub-notebooks",
+    "source": "local",
+    "path": "notebooks/contributions/RACE_FinishedGoodsInventory_indicator.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/contributions/RACE_FinishedGoodsInventory_indicator.ipynb&branch=main"
+  },
+  {
+    "title": "Crop-classification using Sentinel-2 time-series",
+    "description": "",
+    "metadata": {
+      "papermill": {
+        "duration": 0.006576,
+        "end_time": "2022-10-26T06:37:48.748617",
+        "exception": false,
+        "start_time": "2022-10-26T06:37:48.742041",
+        "status": "completed"
+      },
+      "tags": []
+    },
+    "image": "build/_assets/previews/notebooks_contributions_eurocrops-crop-classification-example_preview.png",
+    "link": "notebooks/contributions/eurocrops-crop-classification-example",
+    "topic": "Contributions",
+    "org": "eoxhub-workspaces",
+    "repo": "eoxhub-notebooks",
+    "source": "local",
+    "path": "notebooks/contributions/eurocrops-crop-classification-example.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/contributions/eurocrops-crop-classification-example.ipynb&branch=main"
+  },
+  {
+    "title": "Using the NASA VEDA EOAPI",
+    "description": "",
+    "metadata": {},
+    "image": "build/_assets/previews/notebooks_contributions_no2-so2-trend-veda-api-igarss-2023_preview.png",
+    "link": "notebooks/contributions/no2-so2-trend-veda-api-igarss-2023",
+    "topic": "Contributions",
+    "org": "eoxhub-workspaces",
+    "repo": "eoxhub-notebooks",
+    "source": "local",
+    "path": "notebooks/contributions/no2-so2-trend-veda-api-igarss-2023.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/contributions/no2-so2-trend-veda-api-igarss-2023.ipynb&branch=main"
+  },
+  {
+    "title": "Aerosol Optical Thickness (AOT) Anomaly Detection Using Sentinel-2",
     "description": "",
     "metadata": {},
     "image": "build/_assets/previews/eoxhub_jupyter.jpg",
-    "link": "notebooks/mlflow/mlflow-examples",
-    "topic": "Mlflow",
+    "link": "notebooks/contributions/aot-covid19",
+    "topic": "Contributions",
     "org": "eoxhub-workspaces",
     "repo": "eoxhub-notebooks",
     "source": "local",
-    "path": "notebooks/mlflow/mlflow_examples.ipynb",
-    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/mlflow/mlflow_examples.ipynb&branch=main"
+    "path": "notebooks/contributions/AOT_COVID19.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/contributions/AOT_COVID19.ipynb&branch=main"
   },
   {
-    "title": "eoAPI registration example",
-    "description": "This notebook demonstrates how to register data on the workspace eoAPI instance. The main step is creation of STAC metadata information to pass it to the eoAPI STAC endpoint.",
+    "title": "Scale your processes with Dask",
+    "description": "This notebook demonstrates how to use Dask to process Sentinel-2 satellite data to create burn severity maps for wildfire assessment.",
     "metadata": {
-      "description": "This notebook demonstrates how to register data on the workspace eoAPI instance. The main step is creation of STAC metadata information to pass it to the eoAPI STAC endpoint.",
-      "title": "eoAPI registration example"
+      "title": "Scale your processes with Dask",
+      "description": "This notebook demonstrates how to use Dask to process Sentinel-2 satellite data to create burn severity maps for wildfire assessment."
     },
-    "image": "build/_assets/previews/eoxhub_jupyter.jpg",
-    "link": "notebooks/eoapi/eoapi-registration",
-    "topic": "Eoapi",
+    "image": "build/_assets/previews/notebooks_pangeo-dask_notebooks_example_wildfires_preview.png",
+    "link": "notebooks/pangeo-dask-notebooks/example-wildfires",
+    "topic": "Pangeo-Dask Notebooks",
     "org": "eoxhub-workspaces",
     "repo": "eoxhub-notebooks",
     "source": "local",
-    "path": "notebooks/eoAPI/eoAPI_registration.ipynb",
-    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/eoAPI/eoAPI_registration.ipynb&branch=main"
-  },
-  {
-    "title": "Registering Timeseries Data in eoAPI",
-    "description": "This notebook provides a minimal example demonstrating how to ingest, separate, view, and register a timeseries dataset in eoAPI with dynamic postgis functions and eodash keys.",
-    "metadata": {
-      "description": "This notebook provides a minimal example demonstrating how to ingest, separate, view, and register a timeseries dataset in eoAPI with dynamic postgis functions and eodash keys.",
-      "title": "Registering Timeseries Data in eoAPI"
-    },
-    "image": "build/_assets/previews/eoxhub_jupyter.jpg",
-    "link": "notebooks/eoapi/eoapi-timeseries-registration",
-    "topic": "Eoapi",
-    "org": "eoxhub-workspaces",
-    "repo": "eoxhub-notebooks",
-    "source": "local",
-    "path": "notebooks/eoAPI/eoAPI_timeseries_registration.ipynb",
-    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/eoAPI/eoAPI_timeseries_registration.ipynb&branch=main"
-  },
-  {
-    "title": "Registering Vector Data into eoAPI",
-    "description": "This notebook demonstrates an end-to-end workflow for taking a vector dataset (like a zipped shapefile), ingesting it into a PostGIS database, and registering it as a SpatioTemporal Asset Catalog (STAC) Collection and Item within an eoAPI environment.",
-    "metadata": {
-      "description": "This notebook demonstrates an end-to-end workflow for taking a vector dataset (like a zipped shapefile), ingesting it into a PostGIS database, and registering it as a SpatioTemporal Asset Catalog (STAC) Collection and Item within an eoAPI environment.",
-      "title": "Registering Vector Data into eoAPI"
-    },
-    "image": "build/_assets/previews/eoxhub_jupyter.jpg",
-    "link": "notebooks/eoapi/eoapi-vector-data-registration",
-    "topic": "Eoapi",
-    "org": "eoxhub-workspaces",
-    "repo": "eoxhub-notebooks",
-    "source": "local",
-    "path": "notebooks/eoAPI/eoAPI_vector_data_registration.ipynb",
-    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/eoAPI/eoAPI_vector_data_registration.ipynb&branch=main"
+    "path": "notebooks/pangeo-dask_notebooks/example_wildfires.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/pangeo-dask_notebooks/example_wildfires.ipynb&branch=main"
   },
   {
     "title": "CDSE Basic Data Access",
@@ -109,19 +143,244 @@
     "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/data_access/CDSE_s3_Bucket_Access.ipynb&branch=main"
   },
   {
-    "title": "Scale your processes with Dask",
-    "description": "This notebook demonstrates how to use Dask to process Sentinel-2 satellite data to create burn severity maps for wildfire assessment.",
-    "metadata": {
-      "title": "Scale your processes with Dask",
-      "description": "This notebook demonstrates how to use Dask to process Sentinel-2 satellite data to create burn severity maps for wildfire assessment."
-    },
-    "image": "build/_assets/previews/notebooks_pangeo-dask_notebooks_example_wildfires_preview.png",
-    "link": "notebooks/pangeo-dask-notebooks/example-wildfires",
-    "topic": "Pangeo-Dask Notebooks",
+    "title": "Accessing Copernicus Marine data with the Copernicus Marine Toolbox",
+    "description": "",
+    "metadata": {},
+    "image": "build/_assets/previews/eoxhub_jupyter.jpg",
+    "link": "notebooks/data-access/cmems-copernicus-marine-toolbox",
+    "topic": "Data Access",
     "org": "eoxhub-workspaces",
     "repo": "eoxhub-notebooks",
     "source": "local",
-    "path": "notebooks/pangeo-dask_notebooks/example_wildfires.ipynb",
-    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/pangeo-dask_notebooks/example_wildfires.ipynb&branch=main"
+    "path": "notebooks/data_access/cmems_copernicus_marine_toolbox.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/data_access/cmems_copernicus_marine_toolbox.ipynb&branch=main"
+  },
+  {
+    "title": "eoAPI registration example",
+    "description": "This notebook demonstrates how to register data on the workspace eoAPI instance. The main step is creation of STAC metadata information to pass it to the eoAPI STAC endpoint.",
+    "metadata": {
+      "description": "This notebook demonstrates how to register data on the workspace eoAPI instance. The main step is creation of STAC metadata information to pass it to the eoAPI STAC endpoint.",
+      "title": "eoAPI registration example"
+    },
+    "image": "build/_assets/previews/eoxhub_jupyter.jpg",
+    "link": "notebooks/eoapi/eoapi-registration",
+    "topic": "Eoapi",
+    "org": "eoxhub-workspaces",
+    "repo": "eoxhub-notebooks",
+    "source": "local",
+    "path": "notebooks/eoAPI/eoAPI_registration.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/eoAPI/eoAPI_registration.ipynb&branch=main"
+  },
+  {
+    "title": "Registering Timeseries Data in eoAPI",
+    "description": "This notebook provides a minimal example demonstrating how to ingest, separate, view, and register a timeseries dataset in eoAPI with dynamic postgis functions and eodash keys.",
+    "metadata": {
+      "description": "This notebook provides a minimal example demonstrating how to ingest, separate, view, and register a timeseries dataset in eoAPI with dynamic postgis functions and eodash keys.",
+      "title": "Registering Timeseries Data in eoAPI"
+    },
+    "image": "build/_assets/previews/eoxhub_jupyter.jpg",
+    "link": "notebooks/eoapi/eoapi-timeseries-registration",
+    "topic": "Eoapi",
+    "org": "eoxhub-workspaces",
+    "repo": "eoxhub-notebooks",
+    "source": "local",
+    "path": "notebooks/eoAPI/eoAPI_timeseries_registration.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/eoAPI/eoAPI_timeseries_registration.ipynb&branch=main"
+  },
+  {
+    "title": "Registering Vector Data into eoAPI",
+    "description": "This notebook demonstrates an end-to-end workflow for taking a vector dataset (like a zipped shapefile), ingesting it into a PostGIS database, and registering it as a SpatioTemporal Asset Catalog (STAC) Collection and Item within an eoAPI environment.",
+    "metadata": {
+      "description": "This notebook demonstrates an end-to-end workflow for taking a vector dataset (like a zipped shapefile), ingesting it into a PostGIS database, and registering it as a SpatioTemporal Asset Catalog (STAC) Collection and Item within an eoAPI environment.",
+      "title": "Registering Vector Data into eoAPI"
+    },
+    "image": "build/_assets/previews/eoxhub_jupyter.jpg",
+    "link": "notebooks/eoapi/eoapi-vector-data-registration",
+    "topic": "Eoapi",
+    "org": "eoxhub-workspaces",
+    "repo": "eoxhub-notebooks",
+    "source": "local",
+    "path": "notebooks/eoAPI/eoAPI_vector_data_registration.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/eoAPI/eoAPI_vector_data_registration.ipynb&branch=main"
+  },
+  {
+    "title": "EDC Sentinel Hub-XCUBE integration",
+    "description": "",
+    "metadata": {
+      "papermill": {
+        "duration": 0.020556,
+        "end_time": "2023-10-24T07:56:14.029143",
+        "exception": false,
+        "start_time": "2023-10-24T07:56:14.008587",
+        "status": "completed"
+      },
+      "tags": []
+    },
+    "image": "build/_assets/previews/notebooks_Sentinelhub_EDC_Sentinel_Hub-XCUBE_integration_preview.png",
+    "link": "notebooks/sentinelhub/edc-sentinel-hub-xcube-integration",
+    "topic": "Sentinelhub",
+    "org": "eoxhub-workspaces",
+    "repo": "eoxhub-notebooks",
+    "source": "local",
+    "path": "notebooks/Sentinelhub/EDC_Sentinel_Hub-XCUBE_integration.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/Sentinelhub/EDC_Sentinel_Hub-XCUBE_integration.ipynb&branch=main"
+  },
+  {
+    "title": "Using Sentinel Hub Process API in EDC: a starter's guide.",
+    "description": "",
+    "metadata": {
+      "papermill": {
+        "duration": 0.027883,
+        "end_time": "2023-10-24T07:58:15.317124",
+        "exception": false,
+        "start_time": "2023-10-24T07:58:15.289241",
+        "status": "completed"
+      },
+      "tags": []
+    },
+    "image": "build/_assets/previews/notebooks_Sentinelhub_sentinelhub-py_preview.png",
+    "link": "notebooks/sentinelhub/sentinelhub-py",
+    "topic": "Sentinelhub",
+    "org": "eoxhub-workspaces",
+    "repo": "eoxhub-notebooks",
+    "source": "local",
+    "path": "notebooks/Sentinelhub/sentinelhub-py.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/Sentinelhub/sentinelhub-py.ipynb&branch=main"
+  },
+  {
+    "title": "NDVI timeline",
+    "description": "",
+    "metadata": {
+      "papermill": {
+        "duration": 0.024954,
+        "end_time": "2023-10-24T07:55:44.100647",
+        "exception": false,
+        "start_time": "2023-10-24T07:55:44.075693",
+        "status": "completed"
+      },
+      "tags": []
+    },
+    "image": "build/_assets/previews/notebooks_Sentinelhub_EDC_Usecase-NDVI_timeline_preview.png",
+    "link": "notebooks/sentinelhub/edc-usecase-ndvi-timeline",
+    "topic": "Sentinelhub",
+    "org": "eoxhub-workspaces",
+    "repo": "eoxhub-notebooks",
+    "source": "local",
+    "path": "notebooks/Sentinelhub/EDC_Usecase-NDVI_timeline.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/Sentinelhub/EDC_Usecase-NDVI_timeline.ipynb&branch=main"
+  },
+  {
+    "title": "EDC Sentinel Hub: Data Fusion",
+    "description": "",
+    "metadata": {
+      "papermill": {
+        "duration": 0.021209,
+        "end_time": "2023-10-24T07:56:33.614061",
+        "exception": false,
+        "start_time": "2023-10-24T07:56:33.592852",
+        "status": "completed"
+      },
+      "tags": []
+    },
+    "image": "build/_assets/previews/eoxhub_jupyter.jpg",
+    "link": "notebooks/sentinelhub/edc-sentinelhub-datafusion-basic",
+    "topic": "Sentinelhub",
+    "org": "eoxhub-workspaces",
+    "repo": "eoxhub-notebooks",
+    "source": "local",
+    "path": "notebooks/Sentinelhub/EDC_SentinelHub_DataFusion_Basic.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/Sentinelhub/EDC_SentinelHub_DataFusion_Basic.ipynb&branch=main"
+  },
+  {
+    "title": "EDC Sentinel Hub: Data Fusion",
+    "description": "",
+    "metadata": {
+      "papermill": {
+        "duration": 0.022289,
+        "end_time": "2023-10-24T07:57:34.413836",
+        "exception": false,
+        "start_time": "2023-10-24T07:57:34.391547",
+        "status": "completed"
+      },
+      "tags": []
+    },
+    "image": "build/_assets/previews/eoxhub_jupyter.jpg",
+    "link": "notebooks/sentinelhub/edc-sentinelhub-datafusion-ndvi",
+    "topic": "Sentinelhub",
+    "org": "eoxhub-workspaces",
+    "repo": "eoxhub-notebooks",
+    "source": "local",
+    "path": "notebooks/Sentinelhub/EDC_SentinelHub_DataFusion_NDVI.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/Sentinelhub/EDC_SentinelHub_DataFusion_NDVI.ipynb&branch=main"
+  },
+  {
+    "title": "How to access DEM data through Sentinel Hub API",
+    "description": "",
+    "metadata": {
+      "papermill": {
+        "duration": 0.020036,
+        "end_time": "2023-10-24T07:58:25.084222",
+        "exception": false,
+        "start_time": "2023-10-24T07:58:25.064186",
+        "status": "completed"
+      },
+      "tags": []
+    },
+    "image": "build/_assets/previews/notebooks_Sentinelhub_How_to_access_DEM_data_through_Sentinel_Hub_API_preview.png",
+    "link": "notebooks/sentinelhub/how-to-access-dem-data-through-sentinel-hub-api",
+    "topic": "Sentinelhub",
+    "org": "eoxhub-workspaces",
+    "repo": "eoxhub-notebooks",
+    "source": "local",
+    "path": "notebooks/Sentinelhub/How_to_access_DEM_data_through_Sentinel_Hub_API.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/Sentinelhub/How_to_access_DEM_data_through_Sentinel_Hub_API.ipynb&branch=main"
+  },
+  {
+    "title": "First steps on the Euro Data Cube platform",
+    "description": "",
+    "metadata": {
+      "papermill": {
+        "duration": 0.018039,
+        "end_time": "2023-10-24T07:58:45.096073",
+        "exception": false,
+        "start_time": "2023-10-24T07:58:45.078034",
+        "status": "completed"
+      },
+      "tags": []
+    },
+    "image": "build/_assets/previews/eoxhub_jupyter.jpg",
+    "link": "notebooks/sentinelhub/edc-first-steps",
+    "topic": "Sentinelhub",
+    "org": "eoxhub-workspaces",
+    "repo": "eoxhub-notebooks",
+    "source": "local",
+    "path": "notebooks/Sentinelhub/EDC_first-steps.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/Sentinelhub/EDC_first-steps.ipynb&branch=main"
+  },
+  {
+    "title": "MLflow connection examples",
+    "description": "",
+    "metadata": {},
+    "image": "build/_assets/previews/eoxhub_jupyter.jpg",
+    "link": "notebooks/mlflow/mlflow-examples",
+    "topic": "Mlflow",
+    "org": "eoxhub-workspaces",
+    "repo": "eoxhub-notebooks",
+    "source": "local",
+    "path": "notebooks/mlflow/mlflow_examples.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eoxhub-workspaces/eoxhub-notebooks&urlpath=lab/tree/eoxhub-notebooks/notebooks/mlflow/mlflow_examples.ipynb&branch=main"
+  },
+  {
+    "title": "URBAN HEALTH AND MEGACITIES: THE CASE OF NEW DELHI",
+    "description": "",
+    "metadata": {},
+    "image": "build/_assets/previews/external_notebooks_group1_2025-BiDS-EODashboard_notebook_Urban_Health_and_Megacities_preview.png",
+    "link": "external-notebooks/group1/2025-bids-eodashboard/notebook/urban-health-and-megacities",
+    "topic": "notebook",
+    "org": "eurodatacube",
+    "repo": "2025-BiDS-EODashboard",
+    "source": "submodule",
+    "path": "external_notebooks/group1/2025-BiDS-EODashboard/notebook/Urban_Health_and_Megacities.ipynb",
+    "gitpuller": "https://{JHUB_HOST}/hub/user-redirect/git-pull?repo=https://github.com/eurodatacube/2025-BiDS-EODashboard&urlpath=lab/tree/2025-BiDS-EODashboard/notebook/Urban_Health_and_Megacities.ipynb&branch=main"
   }
 ]
