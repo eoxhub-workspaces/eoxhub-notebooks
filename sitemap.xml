@@ -11,18 +11,6 @@
     <loc>http://localhost:3000/external-notebooks/group1/2025-bids-eodashboard/notebook/urban-health-and-megacities</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/notebooks/contributions/aot-covid19</loc>
-  </url>
-  <url>
-    <loc>http://localhost:3000/notebooks/contributions/eurocrops-crop-classification-example</loc>
-  </url>
-  <url>
-    <loc>http://localhost:3000/notebooks/contributions/no2-so2-trend-veda-api-igarss-2023</loc>
-  </url>
-  <url>
-    <loc>http://localhost:3000/notebooks/contributions/race-finishedgoodsinventory-indicator</loc>
-  </url>
-  <url>
     <loc>http://localhost:3000/notebooks/data-access/cdse-basic-data-access</loc>
   </url>
   <url>
@@ -51,27 +39,6 @@
   </url>
   <url>
     <loc>http://localhost:3000/notebooks/pangeo-dask-notebooks/example-wildfires</loc>
-  </url>
-  <url>
-    <loc>http://localhost:3000/notebooks/sentinelhub/edc-first-steps</loc>
-  </url>
-  <url>
-    <loc>http://localhost:3000/notebooks/sentinelhub/edc-sentinelhub-datafusion-basic</loc>
-  </url>
-  <url>
-    <loc>http://localhost:3000/notebooks/sentinelhub/edc-sentinelhub-datafusion-ndvi</loc>
-  </url>
-  <url>
-    <loc>http://localhost:3000/notebooks/sentinelhub/edc-sentinel-hub-xcube-integration</loc>
-  </url>
-  <url>
-    <loc>http://localhost:3000/notebooks/sentinelhub/edc-usecase-ndvi-timeline</loc>
-  </url>
-  <url>
-    <loc>http://localhost:3000/notebooks/sentinelhub/how-to-access-dem-data-through-sentinel-hub-api</loc>
-  </url>
-  <url>
-    <loc>http://localhost:3000/notebooks/sentinelhub/sentinelhub-py</loc>
   </url>
   <url>
     <loc>http://localhost:3000/notebooks/sentinel-hub/edc-first-steps</loc>
